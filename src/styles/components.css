@@ -1,0 +1,15 @@
+button {
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: 4px;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-normal);
+  background-color: var(--primary-500);
+  color: white;
+  transition: background-color 0.2s ease-in-out;
+  cursor: pointer;
+  border: none;
+}
+
+button:hover {
+  background-color: var(--primary-600);
+}
