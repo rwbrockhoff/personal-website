@@ -18,8 +18,14 @@ const { title, description, imageSrc, tags, demoLink, githubLink } = Astro.props
   <div class="project-info">
     <h3 class="text-primary">{title}</h3>
     <div class="project-links">
-      <a href={demoLink} class="project-link" target="_blank" rel="noopener noreferrer">View Demo</a
-      >
+      {
+        demoLink && (
+          <a href={demoLink} class="project-link" target="_blank" rel="noopener noreferrer">
+            Live Site
+          </a>
+        )
+      }
+
       <a href={githubLink} class="project-link" target="_blank" rel="noopener noreferrer">GitHub</a>
     </div>
     <p>{description}</p>

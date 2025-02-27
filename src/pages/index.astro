@@ -16,11 +16,13 @@ const { projects, skills } = data;
   <section id="home" class="section">
     <div class="home-content">
       <div class="container">
-        <h1>Ryan Brockhoff</h1>
+        <div class="home-inner-content">
+          <h1>Ryan Brockhoff</h1>
 
-        <p class="subtitle">Full Stack Developer</p>
+          <p class="subtitle">Full Stack Developer</p>
 
-        <a href="#projects" class="button">View My Work</a>
+          <a href="#projects" class="button">View My Work</a>
+        </div>
       </div>
     </div>
   </section>
@@ -139,6 +141,7 @@ const { projects, skills } = data;
     height: auto;
     border-radius: 100%;
     border: var(--space-min) solid var(--primary-color);
+    margin-bottom: var(--space-lg);
   }
 
   .about-text h2 {
@@ -147,6 +150,7 @@ const { projects, skills } = data;
   }
 
   .about-text p {
+    font-size: var(--font-size-lg);
     margin-bottom: var(--space-md);
   }
 

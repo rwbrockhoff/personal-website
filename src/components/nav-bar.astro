@@ -55,9 +55,9 @@ import '../styles/animations.css';
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
     max-width: 1200px;
     margin: 0 auto;
+    height: var(--nav-height);
   }
 
   .logo {
@@ -68,6 +68,7 @@ import '../styles/animations.css';
 
   .nav-links {
     display: flex;
+    align-items: flex-end;
     gap: var(--space-xl);
   }
 
@@ -78,6 +79,7 @@ import '../styles/animations.css';
   .nav-link {
     position: relative;
     padding-bottom: 3px;
+    line-height: 1.5;
   }
 
   .nav-link:after {
@@ -91,7 +93,8 @@ import '../styles/animations.css';
     transition: width var(--transition-speed) ease;
   }
 
-  .nav-link:hover:after {
+  .nav-link:hover:after,
+  .nav-link.active:after {
     width: 100%;
   }
 
