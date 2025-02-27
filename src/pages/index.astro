@@ -1,9 +1,206 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-import "../styles/theme.css";
+import { Image } from 'astro:assets';
+
+import Layout from '../layouts/layout.astro';
+import ProjectCard from '../components/project-card.astro';
+import SkillItem from '../components/skill-item.astro';
+import ContactForm from '../components/contact-form.astro';
+import data from '../data/index.js';
+import profilePhoto from '../assets/images/profile.png';
+
+const { projects, skills } = data;
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Ryan Brockhoff - Full Stack Developer">
+  <!-- Home Section -->
+  <section id="home" class="section">
+    <div class="home-content">
+      <div class="container">
+        <h1>Ryan Brockhoff</h1>
+
+        <p class="subtitle">Full Stack Developer</p>
+
+        <a href="#projects" class="button">View My Work</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="about-content">
+        <div class="about-image">
+          <Image src={profilePhoto} alt="Profile photo" />
+        </div>
+        <div class="about-text">
+          <h2>About Me</h2>
+
+          <p>
+            Hello! I'm Ryan, a Full Stack Developer with a passion for building beautiful,
+            functional web applications.
+          </p>
+          <p>
+            With a background in both frontend and backend development, I enjoy creating seamless
+            user experiences while ensuring robust functionality behind the scenes. I specialize in
+            React, Node.js, and modern JavaScript frameworks.
+          </p>
+          <p>
+            When I'm not coding, you can find me hiking, reading, or experimenting with new
+            technologies. I'm always looking to learn and grow as a developer.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="section">
+    <div class="container">
+      <h2 class="section-title text-primary">My Projects</h2>
+      <div class="projects-grid">
+        {
+          projects.map((project) => (
+            <ProjectCard
+              title={project.title}
+              description={project.description}
+              imageSrc={project.imageSrc}
+              tags={project.tags}
+              demoLink={project.demoLink}
+              githubLink={project.githubLink}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="section">
+    <div class="container">
+      <div class="skills-container">
+        <h2 class="section-title">My Skills</h2>
+        <div class="skills-grid">
+          {
+            skills.map((skill) => (
+              <SkillItem name={skill.name} iconSrc={skill.iconSrc} altText={skill.altText} />
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section">
+    <div class="container">
+      <h2 class="section-title">Get In Touch</h2>
+      <div class="contact-container">
+        <ContactForm />
+      </div>
+    </div>
+  </section>
 </Layout>
+
+<style>
+  h1 {
+    font-size: 3.5rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .subtitle {
+    font-size: 1.8rem;
+    color: white;
+    margin-bottom: var(--space-xl);
+  }
+
+  /* Projects Section */
+  .section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: var(--space-xl);
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: var(--space-xl);
+  }
+
+  /* About Section */
+  .about-content {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 50vw;
+  }
+
+  .about-image img {
+    width: 5rem;
+    height: auto;
+    border-radius: 100%;
+    border: var(--space-min) solid var(--primary-color);
+  }
+
+  .about-text h2 {
+    font-size: 2.5rem;
+    margin-bottom: var(--space-lg);
+  }
+
+  .about-text p {
+    margin-bottom: var(--space-md);
+  }
+
+  /* Projects Section */
+  .section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: var(--space-xl);
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: var(--space-xl);
+  }
+
+  /* Skills Section */
+  .skills-container {
+    text-align: center;
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 2rem;
+    margin-top: var(--space-xl);
+  }
+
+  .skill-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .skill-icon {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 0.5rem;
+  }
+
+  .skill-name {
+    font-size: 0.9rem;
+  }
+
+  /* Contact Section */
+  .contact-container {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .about-content {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

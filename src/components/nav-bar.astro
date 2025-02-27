@@ -1,0 +1,147 @@
+---
+import '../styles/global.css';
+import '../styles/animations.css';
+---
+
+<nav>
+  <div class="nav-container">
+    <div class="logo">RB</div>
+    <div class="nav-links">
+      <a href="#home" class="nav-link">Home</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="#projects" class="nav-link">Projects</a>
+      <a href="#skills" class="nav-link">Skills</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </div>
+    <div class="hamburger-menu">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+  </div>
+</nav>
+
+<script>
+  // Add scroll animations
+  document.addEventListener('DOMContentLoaded', () => {
+    // Add active class to nav links on scroll
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    window.addEventListener('scroll', () => {
+      let current: string | null = '';
+
+      sections.forEach((section) => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+
+        if (window.pageYOffset >= sectionTop - sectionHeight / 3) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach((link) => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+        }
+      });
+    });
+  });
+</script>
+
+<style>
+  .nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary-color);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: var(--space-xl);
+  }
+
+  .nav-links > a {
+    color: var(--primary-color-500);
+  }
+
+  .nav-link {
+    position: relative;
+    padding-bottom: 3px;
+  }
+
+  .nav-link:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--primary-200);
+    transition: width var(--transition-speed) ease;
+  }
+
+  .nav-link:hover:after {
+    width: 100%;
+  }
+
+  @media (max-width: 768px) {
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background-color: var(--bg-color);
+      padding: 1rem 0;
+      text-align: center;
+    }
+
+    .nav-links.active {
+      display: flex;
+    }
+
+    .hamburger-menu {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      cursor: pointer;
+    }
+
+    .bar {
+      width: 25px;
+      height: 3px;
+      background-color: var(--primary-color);
+      transition: all 0.3s ease;
+    }
+
+    .hamburger-menu.active .bar:nth-child(1) {
+      transform: translateY(9px) rotate(45deg);
+    }
+
+    .hamburger-menu.active .bar:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger-menu.active .bar:nth-child(3) {
+      transform: translateY(-9px) rotate(-45deg);
+    }
+  }
+
+  @media (min-width: 769px) {
+    .hamburger-menu {
+      display: none;
+    }
+  }
+</style>
