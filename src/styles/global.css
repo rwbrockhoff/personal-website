@@ -16,10 +16,10 @@
   --accent-color: #7952c9;
   --secondary-color: #1a1a1a;
   --hover-color: #2196f3;
-  --light-gray: #b1b1b1;
+  --light-gray: #f4f4f4;
 
   /* -- Colors: Backgrounds -- */
-  --background-light: #f8f9fa;
+  --background-light: rgb(236, 236, 236);
   --background-dark: #111827;
 
   /* -- Font -- */
@@ -114,6 +114,10 @@ a:hover {
   color: var(--primary-600);
 }
 
+.background-gray {
+  background-color: var(--light-gray);
+}
+
 .section {
   display: flex;
   align-items: center;
@@ -159,18 +163,6 @@ header {
   width: fit-content;
   justify-content: center;
   align-items: flex-start;
-}
-
-/* Skills Section */
-.skills-container {
-  text-align: center;
-}
-
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-  gap: 2rem;
-  margin-top: var(--space-xl);
 }
 
 /* Contact Section */

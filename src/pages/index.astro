@@ -28,8 +28,8 @@ const { projects, skills } = data;
   </section>
 
   <!-- About Section -->
-  <section id="about" class="section">
-    <div class="container">
+  <section id="about" class="section background-gray">
+    <div class="container background-gray">
       <div class="about-content">
         <div class="about-image">
           <Image src={profilePhoto} alt="Profile photo" />
@@ -55,8 +55,21 @@ const { projects, skills } = data;
     </div>
   </section>
 
+  <!-- Skills Section -->
+  <section id="skills" class="section">
+    <div class="container">
+      <div class="skills-grid">
+        {
+          skills.map((skill) => (
+            <SkillItem name={skill.name} iconSrc={skill.iconSrc} altText={skill.altText} />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
   <!-- Projects Section -->
-  <section id="projects" class="section">
+  <section id="projects" class="section background-gray">
     <div class="container">
       <h2 class="section-title text-primary">My Projects</h2>
       <div class="projects-grid">
@@ -72,22 +85,6 @@ const { projects, skills } = data;
             />
           ))
         }
-      </div>
-    </div>
-  </section>
-
-  <!-- Skills Section -->
-  <section id="skills" class="section">
-    <div class="container">
-      <div class="skills-container">
-        <h2 class="section-title">My Skills</h2>
-        <div class="skills-grid">
-          {
-            skills.map((skill) => (
-              <SkillItem name={skill.name} iconSrc={skill.iconSrc} altText={skill.altText} />
-            ))
-          }
-        </div>
       </div>
     </div>
   </section>
@@ -157,8 +154,8 @@ const { projects, skills } = data;
   /* Projects Section */
   .section-title {
     text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: var(--space-xl);
+    font-size: 2rem;
+    margin-bottom: 4rem;
   }
 
   .projects-grid {
@@ -168,31 +165,11 @@ const { projects, skills } = data;
   }
 
   /* Skills Section */
-  .skills-container {
-    text-align: center;
-  }
 
   .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     gap: 2rem;
-    margin-top: var(--space-xl);
-  }
-
-  .skill-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .skill-icon {
-    width: 60px;
-    height: 60px;
-    margin-bottom: 0.5rem;
-  }
-
-  .skill-name {
-    font-size: 0.9rem;
   }
 
   /* Contact Section */
