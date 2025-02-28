@@ -24,10 +24,13 @@ const {
   platformSrc,
   platform,
 } = Astro.props;
+
+// Assigns a class that changes the size of our demo GIF based on the platform (web/mobile)
+const containerClass = `screen-wrapper ${platform === 'web' ? 'screen-container' : 'mobile-screen-container'}`;
 ---
 
 <div class="project-card">
-  <div class="project-panel">
+  <div class="project-panel-left">
     <div class="project-header">
       <div class="project-tab">
         <h3 class="text-dark">{title}</h3>
@@ -63,22 +66,17 @@ const {
       </div>
     </div>
   </div>
-  <div class="project-panel">
+  <div class="project-panel-right">
     <div class="project-image">
       <Image src={platformSrc} alt={title} loading="lazy" />
+      <div class={containerClass}>
+        <img src={imageSrc} class="project-demo" alt="demo" loading="lazy" />
+      </div>
     </div>
   </div>
 </div>
 
 <style>
-  .project-panel {
-    width: 50%;
-  }
-
-  .project-header {
-    display: flex;
-  }
-
   .project-card {
     background-color: white;
     color: black;
@@ -86,10 +84,22 @@ const {
     overflow: hidden;
     position: relative;
     display: flex;
-    margin: 5rem 0;
+    margin: 5rem 2.5rem;
   }
 
-  .project-card:hover {
+  /* Panels */
+  .project-panel-left {
+    width: 65%;
+  }
+
+  .project-panel-right {
+    width: 35%;
+  }
+
+  /* Header & Tabs */
+  .project-header {
+    display: flex;
+    flex-wrap: wrap;
   }
 
   .project-tab {
@@ -103,37 +113,59 @@ const {
     margin-right: 2rem;
   }
 
+  /* Image Section */
   .project-image {
     height: 100%;
+    width: 90%;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  /* Devices & Screens */
+  .screen-wrapper {
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: absolute;
   }
 
-  .project-image img {
-    width: 60%;
-    height: 60%;
+  .screen-container {
+    top: 14%;
+    left: 16%;
+    width: 68%;
+    height: 70%;
+  }
+
+  .mobile-screen-container {
+    top: 25%;
+    left: 37%;
+    width: 24%;
+    height: 50%;
+  }
+
+  /* App Demo (GIF) */
+  .project-demo {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    transition: transform var(--transition-speed) ease;
   }
 
-  .project-card:hover .project-image img {
-    transform: scale(1.05);
-  }
-
+  /* Project Info & Tags */
   .project-info {
     padding: var(--space-xl);
+    padding-left: 2.5rem;
   }
 
   .project-info h3 {
     font-size: 1.5rem;
     margin-bottom: 0.5rem;
-  }
-
-  .project-info p {
-    color: black;
-    margin-bottom: var(--space-md);
   }
 
   .project-tags {
@@ -158,14 +190,13 @@ const {
   }
 
   @media (max-width: 768px) {
-    .project-card {
-      flex-direction: column;
-    }
-    .project-panel {
-      width: 100%;
-    }
+    .project-card,
     .project-header {
       flex-direction: column;
+    }
+    .project-panel-left,
+    .project-panel-right {
+      width: 100%;
     }
   }
 </style>

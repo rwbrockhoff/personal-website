@@ -136,8 +136,6 @@ a:hover {
   width: 100%;
 }
 
-/* Navigation Styles */
-
 header {
   position: fixed;
   top: 0;
@@ -169,12 +167,6 @@ header {
   width: fit-content;
   justify-content: center;
   align-items: flex-start;
-}
-
-/* Contact Section */
-.contact-container {
-  max-width: 600px;
-  margin: 0 auto;
 }
 
 /* Responsive */

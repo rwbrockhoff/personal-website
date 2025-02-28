@@ -6,7 +6,7 @@ export const projects = [
   {
     title: 'Tidytrek',
     description:
-      'CMS web application built in React for professional photographers. Focuses on reusable components, using many tables and joins in Postgres, and incorporating Material UI and Bootstrap for a clean design.',
+      'A full-stack note-taking app created to solidify proficiency in React, while delving into extensive libraries such as Stripe (Elements, Subscription), and Medium-Draft (Draft.js)',
     highlights: [
       'Focuses on reusable components',
       'Uses complex table relations in Postgres',
@@ -40,9 +40,9 @@ export const projects = [
     description:
       'A full-stack, responsive game based on Apples to Apples. Built mobile-first in React, using socket.io as the bulk of the technology to communicate game information.',
     highlights: [
-      'Focuses on reusable components',
-      'Uses complex table relations in Postgres',
-      'Incorporates Material UI and Bootstrap',
+      'Responsible for the majority of frontend implementation',
+      'Developed prototypes to improve user-flow using Figma',
+      'Debugged and pair-programmed with team through various challenges',
     ],
     imageSrc: '/images/projects/orangesdemo.gif',
     tags: ['React', 'Firebase', 'Chart.js'],
