@@ -9,8 +9,8 @@ export interface Props {
   tags: string[];
   demoLink: string;
   githubLink: string;
-  platformSrc: ImageMetadata;
-  platform: string;
+  deviceImageSrc: ImageMetadata;
+  isWeb: boolean;
 }
 
 const {
@@ -21,12 +21,12 @@ const {
   tags,
   demoLink,
   githubLink,
-  platformSrc,
-  platform,
+  deviceImageSrc,
+  isWeb,
 } = Astro.props;
 
 // Assigns a class that changes the size of our demo GIF based on the platform (web/mobile)
-const containerClass = `screen-wrapper ${platform === 'web' ? 'screen-container' : 'mobile-screen-container'}`;
+const containerClass = `screen-wrapper ${isWeb ? 'screen-container' : 'mobile-screen-container'}`;
 ---
 
 <div class="project-card">
@@ -68,7 +68,7 @@ const containerClass = `screen-wrapper ${platform === 'web' ? 'screen-container'
   </div>
   <div class="project-panel-right">
     <div class="project-image">
-      <Image src={platformSrc} alt={title} loading="lazy" />
+      <Image src={deviceImageSrc} alt={title} loading="lazy" />
       <div class={containerClass}>
         <img src={imageSrc} class="project-demo" alt="demo" loading="lazy" />
       </div>
@@ -190,10 +190,33 @@ const containerClass = `screen-wrapper ${platform === 'web' ? 'screen-container'
   }
 
   @media (max-width: 768px) {
-    .project-card,
     .project-header {
       flex-direction: column;
     }
+
+    .project-tab,
+    .project-image {
+      width: 100%;
+    }
+
+    .project-card {
+      flex-direction: column;
+      width: 90%;
+      margin: 5rem 1rem;
+      box-shadow: var(--box-shadow-light);
+    }
+
+    .project-links {
+      justify-content: center;
+      padding-top: 2rem;
+      margin: 0;
+      width: 100%;
+    }
+
+    .project-info {
+      padding: var(--space-sm) var(--space-lg);
+    }
+
     .project-panel-left,
     .project-panel-right {
       width: 100%;

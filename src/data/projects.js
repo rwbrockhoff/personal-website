@@ -16,8 +16,8 @@ export const projects = [
     tags: ['React', 'Node.js', 'PostgreSQL'],
     demoLink: 'https://tidytrek.co',
     githubLink: 'https://github.com/rwbrockhoff/tidytrek-frontend',
-    platformSrc: laptopImage,
-    platform: 'web',
+    deviceImaegSrc: laptopImage,
+    isWeb: true,
   },
   {
     title: 'Looking Fox',
@@ -32,8 +32,8 @@ export const projects = [
     tags: ['React', 'Node.js', 'PostgreSQL'],
     demoLink: '',
     githubLink: 'https://rwbrockhoff.github.io/ecrm/',
-    platformSrc: laptopImage,
-    platform: 'web',
+    deviceImaegSrc: laptopImage,
+    isWeb: true,
   },
   {
     title: 'Oranges',
@@ -48,7 +48,7 @@ export const projects = [
     tags: ['React', 'Firebase', 'Chart.js'],
     demoLink: 'https://oranges2oranges2.firebaseapp.com/',
     githubLink: 'https://github.com/rwbrockhoff/oranges',
-    platformSrc: mobileImage,
-    platform: 'mobile',
+    deviceImaegSrc: mobileImage,
+    isWeb: false,
   },
 ];
