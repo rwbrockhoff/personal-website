@@ -1,7 +1,6 @@
 .button {
   display: inline-block;
   padding: var(--space-min) var(--space-md);
-
   text-align: center;
   background-color: var(--primary-color);
   color: white;

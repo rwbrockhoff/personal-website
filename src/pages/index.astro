@@ -78,12 +78,13 @@ const { projects, skills } = data;
             <ProjectCard
               title={project.title}
               description={project.description}
+              highlights={project.highlights}
               imageSrc={project.imageSrc}
               tags={project.tags}
               demoLink={project.demoLink}
               githubLink={project.githubLink}
-              deviceSrc=""
-              deviceStyle=""
+              platformSrc={project.platformSrc}
+              platform={project.platform}
             />
           ))
         }
@@ -196,6 +197,7 @@ const { projects, skills } = data;
   @media (max-width: 768px) {
     .about-content {
       grid-template-columns: 1fr;
+      width: 90%;
     }
   }
 </style>
