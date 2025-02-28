@@ -1,12 +1,10 @@
 ---
-import { Image } from 'astro:assets';
-
 import Layout from '../layouts/layout.astro';
+import About from '../components/about.astro';
 import ProjectCard from '../components/project-card.astro';
 import SkillItem from '../components/skill-item.astro';
 import ContactForm from '../components/contact-form.astro';
 import data from '../data/index.js';
-import profilePhoto from '../assets/images/profile.png';
 
 const { projects, skills } = data;
 ---
@@ -27,33 +25,7 @@ const { projects, skills } = data;
     </div>
   </section>
 
-  <!-- About Section -->
-  <section id="about" class="section background-gray">
-    <div class="container background-gray">
-      <div class="about-content">
-        <div class="about-image">
-          <Image src={profilePhoto} alt="Profile photo" />
-        </div>
-        <div class="about-text">
-          <h2>About Me</h2>
-
-          <p>
-            Hello! I'm Ryan, a Full Stack Developer with a passion for building beautiful,
-            functional web applications.
-          </p>
-          <p>
-            With a background in both frontend and backend development, I enjoy creating seamless
-            user experiences while ensuring robust functionality behind the scenes. I specialize in
-            React, Node.js, and modern JavaScript frameworks.
-          </p>
-          <p>
-            When I'm not coding, you can find me hiking, reading, or experimenting with new
-            technologies. I'm always looking to learn and grow as a developer.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
+  <About />
 
   <!-- Skills Section -->
   <section id="skills" class="section">
@@ -140,32 +112,6 @@ const { projects, skills } = data;
     z-index: -1;
   }
 
-  /* About Section */
-  .about-content {
-    display: flex;
-    flex-direction: column;
-    margin: auto;
-    width: 50vw;
-  }
-
-  .about-image img {
-    width: 5rem;
-    height: auto;
-    border-radius: 100%;
-    border: var(--space-min) solid var(--primary-color);
-    margin-bottom: var(--space-lg);
-  }
-
-  .about-text h2 {
-    font-size: 2.5rem;
-    margin-bottom: var(--space-lg);
-  }
-
-  .about-text p {
-    font-size: var(--font-size-lg);
-    margin-bottom: var(--space-md);
-  }
-
   /* Projects Section */
   .section-title {
     text-align: center;
@@ -191,13 +137,5 @@ const { projects, skills } = data;
   .contact-container {
     max-width: 600px;
     margin: 0 auto;
-  }
-
-  /* Responsive */
-  @media (max-width: 768px) {
-    .about-content {
-      grid-template-columns: 1fr;
-      width: 90%;
-    }
   }
 </style>
