@@ -1,6 +1,9 @@
 ---
 import { Image } from 'astro:assets';
 import profilePhoto from '../assets/images/profile.png';
+import mediumIcon from '../assets/images/links/medium.svg';
+import linkedinIcon from '../assets/images/links/linkedin.svg';
+import githubIcon from '../assets/images/links/github.svg';
 ---
 
 <section id="about" class="section background-gray">
@@ -9,9 +12,30 @@ import profilePhoto from '../assets/images/profile.png';
       <div class="about-image">
         <Image src={profilePhoto} alt="Profile photo" />
       </div>
+      <h2>About Me</h2>
+      <ul class="about-links">
+        <li class="hover-underline with-icon">
+          <Image src={linkedinIcon} alt="LinkedIn Icon" />
+          <a
+            href="https://www.linkedin.com/in/ryanbrockhoff/"
+            target="_blank"
+            rel="noopener noreferrer">LinkedIn</a
+          >
+        </li>
+        <li class="hover-underline with-icon">
+          <Image src={githubIcon} alt="Github Icon" />
+          <a href="https://github.com/rwbrockhoff/" target="_blank" rel="noopener noreferrer"
+            >Github</a
+          >
+        </li>
+        <li class="hover-underline with-icon">
+          <Image src={mediumIcon} alt="Medium Icon" />
+          <a href="https://medium.com/@brockhoff" target="_blank" rel="noopener noreferrer"
+            >Medium</a
+          >
+        </li>
+      </ul>
       <div class="about-text">
-        <h2>About Me</h2>
-
         <p>
           Hello! I'm Ryan, a Full Stack Developer with a passion for building beautiful, functional
           web applications.
@@ -43,12 +67,19 @@ import profilePhoto from '../assets/images/profile.png';
     height: auto;
     border-radius: 100%;
     border: var(--space-min) solid var(--primary-color);
-    margin-bottom: var(--space-lg);
+    margin-bottom: var(--space-min);
   }
 
-  .about-text h2 {
-    font-size: 2.5rem;
-    margin-bottom: var(--space-lg);
+  .about-links {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 2rem;
+  }
+
+  .about-content h2 {
+    font-size: 2rem;
+    margin: var(--space-sm) 0;
   }
 
   .about-text p {
