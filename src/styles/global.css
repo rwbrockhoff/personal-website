@@ -13,15 +13,14 @@
   --primary-950: #1b1e15;
 
   --primary-color: var(--primary-500);
-  --accent-color: #7952c9;
-  --secondary-color: #1a1a1a;
-  --hover-color: #2196f3;
+  --error-color-light: #ffe2e6;
+  --error-color: #ff3860;
 
-  --dark-gray: rgb(238, 238, 238);
   --light-gray: #f4f4f4;
+  --dark-gray: #eeeeee;
 
   /* -- Colors: Backgrounds -- */
-  --background-light: rgb(236, 236, 236);
+  --background-light: #ececec;
   --background-dark: #111827;
 
   /* -- Font -- */

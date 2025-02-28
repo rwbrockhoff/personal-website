@@ -21,15 +21,6 @@
   animation-delay: 0.2s;
 }
 
-/* Active navigation styles */
-.nav-link.active {
-  color: var(--hover-color);
-}
-
-.nav-link.active:after {
-  width: 100%;
-}
-
 /* Add smooth transitions to project cards */
 .project-card {
   transition: box-shadow 0.3s ease;

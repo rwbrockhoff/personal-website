@@ -14,14 +14,15 @@
     <textarea id="message" name="message" rows="6" required></textarea>
     <span class="error-message" id="message-error"></span>
   </div>
-  <button type="submit" class="submit-button">Send Message</button>
-  <div id="form-status" class="form-status"></div>
+  <button id="submit-button" type="submit" class="button submit-button">Send Message</button>
+  <div id="form-status" class="form-status loading"></div>
 </form>
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const contactForm = document.getElementById('contact-form');
     const formStatus = document.getElementById('form-status');
+    const submitButton = document.getElementById('submit-button');
 
     if (contactForm) {
       contactForm.addEventListener('submit', function (e) {
@@ -58,25 +59,14 @@
 
         if (isValid) {
           // Show loading state
-          formStatus.textContent = 'Sending message...';
-          formStatus.className = 'form-status loading';
+          submitButton.textContent = 'Sending message...';
 
-          // In a real application, you would send data to your server here
-          // For now, we'll simulate a successful submission after a delay
-          setTimeout(() => {
-            // Reset the form
-            contactForm.reset();
+          contactForm.reset();
 
-            // Show success message
-            formStatus.textContent = 'Your message has been sent successfully!';
-            formStatus.className = 'form-status success';
-
-            // Clear success message after 5 seconds
-            setTimeout(() => {
-              formStatus.textContent = '';
-              formStatus.className = 'form-status';
-            }, 5000);
-          }, 1000);
+          // Show success message
+          submitButton.textContent = 'Send Message';
+          formStatus.textContent = 'Your message has been sent!';
+          formStatus.className = 'form-status success';
         }
       });
     }
@@ -102,8 +92,9 @@
   .form-group input,
   .form-group textarea {
     padding: 0.8rem;
-    background-color: var(--secondary-color);
-    border: 1px solid #333;
+    font-family: monospace;
+    background-color: var(--light-gray);
+    border: 1px solid #d6d6d6;
     border-radius: var(--border-radius);
     color: var(--primary-color);
     resize: vertical;
@@ -112,46 +103,37 @@
   .form-group input:focus,
   .form-group textarea:focus {
     outline: none;
-    border-color: var(--accent-color);
+    border-color: var(--primary-color);
   }
 
   .submit-button {
-    padding: 0.8rem 1.5rem;
-    background-color: var(--accent-color);
-    color: white;
-    border: none;
-    border-radius: var(--border-radius);
+    align-self: flex-end;
     cursor: pointer;
-    font-weight: bold;
-    transition: all var(--transition-speed) ease;
-    align-self: flex-start;
-  }
-
-  .submit-button:hover {
-    background-color: var(--hover-color);
+    padding: var(--space-sm) var(--space-md);
   }
 
   .error-message {
-    color: #ff3860;
-    font-size: 0.8rem;
+    color: var(--error-color);
+    font-size: 1rem;
     margin-top: 0.25rem;
     display: block;
   }
 
   .form-status {
     margin-top: 1rem;
-    padding: 0.5rem 0;
-  }
-
-  .form-status.loading {
-    color: #3273dc;
+    padding: 1rem;
+    border-radius: var(--border-radius);
   }
 
   .form-status.success {
-    color: #48c774;
+    background-color: var(--primary-100);
+    border: 2px solid var(--primary-300);
+    color: var(--primary-600);
   }
 
   .form-status.error {
-    color: #ff3860;
+    background-color: var(--error-color-light);
+    border: 2px solid var(--error-color);
+    color: var(--error-color);
   }
 </style>

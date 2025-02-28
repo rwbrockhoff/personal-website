@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+import codeIcon from '../assets/images/links/code.svg';
 import Layout from '../layouts/layout.astro';
 import About from '../components/about.astro';
 import ProjectCard from '../components/project-card.astro';
@@ -43,7 +45,9 @@ const { projects, skills } = data;
   <!-- Projects Section -->
   <section id="projects" class="section background-gray">
     <div class="container">
-      <h2 class="section-title text-dark">My Projects</h2>
+      <h2 class="section-title with-icon">
+        <Image src={codeIcon} alt="LinkedIn Icon" />My Projects
+      </h2>
       <div class="projects-container">
         {
           projects.map((project) => (
@@ -114,6 +118,7 @@ const { projects, skills } = data;
     text-align: center;
     font-size: 2.5rem;
     margin-bottom: var(--space-xl);
+    justify-content: center;
   }
 
   /* .projects-grid {
@@ -138,7 +143,7 @@ const { projects, skills } = data;
   .section-title {
     text-align: center;
     font-size: 2rem;
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
   }
 
   .projects-grid {
