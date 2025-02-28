@@ -71,8 +71,8 @@ const { projects, skills } = data;
   <!-- Projects Section -->
   <section id="projects" class="section background-gray">
     <div class="container">
-      <h2 class="section-title text-primary">My Projects</h2>
-      <div class="projects-grid">
+      <h2 class="section-title text-dark">My Projects</h2>
+      <div class="projects-container">
         {
           projects.map((project) => (
             <ProjectCard
@@ -82,6 +82,8 @@ const { projects, skills } = data;
               tags={project.tags}
               demoLink={project.demoLink}
               githubLink={project.githubLink}
+              deviceSrc=""
+              deviceStyle=""
             />
           ))
         }
@@ -119,10 +121,22 @@ const { projects, skills } = data;
     margin-bottom: var(--space-xl);
   }
 
-  .projects-grid {
+  /* .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     gap: var(--space-xl);
+  } */
+
+  .background-pattern {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('path-to-topographic-pattern.svg');
+    background-size: cover;
+    opacity: 0.05;
+    z-index: -1;
   }
 
   /* About Section */

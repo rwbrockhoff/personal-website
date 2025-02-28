@@ -16,6 +16,8 @@
   --accent-color: #7952c9;
   --secondary-color: #1a1a1a;
   --hover-color: #2196f3;
+
+  --dark-gray: rgb(238, 238, 238);
   --light-gray: #f4f4f4;
 
   /* -- Colors: Backgrounds -- */
@@ -57,6 +59,7 @@
 
   --transition-speed: 0.3s;
   --box-shadow-default: 0px 8px 0px -3px rgba(0, 0, 0, 0.75);
+  --box-shadow-light: 0px 8px 0px -3px rgba(0, 0, 0, 0.1);
   --box-shadow-primary: 0px 8px 0px -3px rgba(122, 132, 94, 0.75);
   --border-radius: var(--space-xs);
   --nav-height: 5rem;
@@ -88,8 +91,7 @@ h3,
 h4,
 h5,
 h6 {
-  margin-top: 0;
-  margin-bottom: var(--space-md);
+  margin: 0;
 }
 
 a {
@@ -111,11 +113,15 @@ a:hover {
 }
 
 .text-dark {
+  color: black;
+}
+
+.text-dark {
   color: var(--primary-600);
 }
 
 .background-gray {
-  background-color: var(--light-gray);
+  background-color: var(--dark-gray);
 }
 
 .section {

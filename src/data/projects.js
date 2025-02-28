@@ -2,7 +2,8 @@
 export const projects = [
   {
     title: 'Tidytrek',
-    description: 'A modern e-commerce platform for outdoor gear with integrated mapping features.',
+    description:
+      'CMS web application built in React for professional photographers. Focuses on reusable components, using many tables and joins in Postgres, and incorporating Material UI and Bootstrap for a clean design.',
     imageSrc: '/images/projects/duly_screen.gif',
     tags: ['React', 'Node.js', 'PostgreSQL'],
     demoLink: 'https://tidytrek.co',
