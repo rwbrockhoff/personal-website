@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import '../styles/animations.css';
+import ThemeSwitcher from './theme-switcher.astro';
 ---
 
 <nav>
@@ -12,6 +13,7 @@ import '../styles/animations.css';
       <a href="#skills" class="nav-link hover-underline">Skills</a>
       <a href="#projects" class="nav-link hover-underline">Projects</a>
       <a href="#contact" class="nav-link hover-underline">Contact</a>
+      <ThemeSwitcher />
     </div>
     <div class="hamburger-menu">
       <div class="bar"></div>
@@ -70,10 +72,7 @@ import '../styles/animations.css';
     display: flex;
     align-items: flex-end;
     gap: var(--space-xl);
-  }
-
-  .nav-links > a {
-    color: var(--primary-color-500);
+    color: var(--text-color);
   }
 
   @media (max-width: 768px) {
@@ -84,7 +83,7 @@ import '../styles/animations.css';
       top: 100%;
       left: 0;
       width: 100%;
-      background-color: var(--bg-color);
+      background-color: var(--background);
       padding: 1rem 0;
       text-align: center;
     }

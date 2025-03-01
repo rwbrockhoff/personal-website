@@ -33,7 +33,7 @@ const containerClass = `screen-wrapper ${isWeb ? 'screen-container' : 'mobile-sc
   <div class="project-panel-left">
     <div class="project-header">
       <div class="project-tab">
-        <h3 class="text-dark">{title}</h3>
+        <h3>{title}</h3>
       </div>
 
       <div class="project-links">
@@ -78,13 +78,20 @@ const containerClass = `screen-wrapper ${isWeb ? 'screen-container' : 'mobile-sc
 
 <style>
   .project-card {
-    background-color: white;
-    color: black;
+    background-color: var(--background);
+    color: var(--text-color);
     border-radius: var(--border-radius);
     overflow: hidden;
     position: relative;
     display: flex;
     margin: 5rem 2.5rem;
+    transition:
+      var(--background-transition),
+      box-shadow var(--transition-speed) ease;
+  }
+
+  .project-card:hover {
+    box-shadow: var(--box-shadow-light);
   }
 
   /* Panels */
@@ -181,6 +188,7 @@ const containerClass = `screen-wrapper ${isWeb ? 'screen-container' : 'mobile-sc
     padding: 0.2rem 0.5rem;
     border-radius: 4px;
     font-size: 0.8rem;
+    color: var(--text-color);
   }
 
   .project-links {
