@@ -1,9 +1,9 @@
 ---
 import { Image } from 'astro:assets';
 import profilePhoto from '../assets/images/profile.png';
-import mediumIcon from '../assets/images/links/medium.svg';
-import linkedinIcon from '../assets/images/links/linkedin.svg';
-import githubIcon from '../assets/images/links/github.svg';
+import MediumIcon from '../assets/images/links/medium.svg';
+import LinkedinIcon from '../assets/images/links/linkedin.svg';
+import GithubIcon from '../assets/images/links/github.svg';
 ---
 
 <section id="about" class="section background-alt">
@@ -15,7 +15,7 @@ import githubIcon from '../assets/images/links/github.svg';
       <h2>About Me</h2>
       <ul class="about-links">
         <li class="hover-underline with-icon">
-          <Image src={linkedinIcon} alt="LinkedIn Icon" />
+          <LinkedinIcon />
           <a
             href="https://www.linkedin.com/in/ryanbrockhoff/"
             target="_blank"
@@ -23,13 +23,13 @@ import githubIcon from '../assets/images/links/github.svg';
           >
         </li>
         <li class="hover-underline with-icon">
-          <Image src={githubIcon} alt="Github Icon" />
+          <GithubIcon />
           <a href="https://github.com/rwbrockhoff/" target="_blank" rel="noopener noreferrer"
             >Github</a
           >
         </li>
         <li class="hover-underline with-icon">
-          <Image src={mediumIcon} alt="Medium Icon" />
+          <MediumIcon />
           <a href="https://medium.com/@brockhoff" target="_blank" rel="noopener noreferrer"
             >Medium</a
           >
