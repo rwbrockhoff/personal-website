@@ -12,6 +12,7 @@
   --primary-900: #363a2d;
   --primary-950: #1b1e15;
 
+  --text-color: #000000;
   --primary-color: var(--primary-500);
   --accent-color: var(--primary-100);
 
@@ -23,7 +24,6 @@
   --background-alt: #ececec;
   --background-dark: #e5e5e5;
   --background-translucent: rgba(255, 255, 255, 0.7);
-  --text-color: #000000;
 
   /* -- Font -- */
   font-family: Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
@@ -180,10 +180,6 @@ a:hover {
 
 /* Responsive */
 @media (max-width: 768px) {
-  .about-content {
-    grid-template-columns: 1fr;
-  }
-
   .container {
     padding: 4rem var(--space-md);
   }
