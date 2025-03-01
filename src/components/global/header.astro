@@ -1,10 +1,8 @@
 ---
-import '../../styles/global.css';
-import '../../styles/animations.css';
 import ThemeSwitcher from './theme-switcher.astro';
 ---
 
-<header class="some">
+<header>
   <nav>
     <div class="nav-container">
       <div class="logo">RB</div>
@@ -44,6 +42,12 @@ import ThemeSwitcher from './theme-switcher.astro';
     border-bottom: 2px solid var(--background-alt);
   }
 
+  .logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary-color);
+  }
+
   .nav-container {
     display: flex;
     justify-content: space-between;
@@ -52,12 +56,6 @@ import ThemeSwitcher from './theme-switcher.astro';
     margin: 0 auto;
     padding: 0 var(--space-xl);
     height: var(--nav-height);
-  }
-
-  .logo {
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--primary-color);
   }
 
   .nav-links {

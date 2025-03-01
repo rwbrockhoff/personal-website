@@ -1,0 +1,20 @@
+.hover-underline {
+  position: relative;
+  padding-bottom: var(--space-min);
+}
+
+.hover-underline:after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--primary-200);
+  transition: width var(--transition-speed) ease;
+}
+
+.hover-underline:hover:after,
+.hover-underline.active:after {
+  width: 100%;
+}
