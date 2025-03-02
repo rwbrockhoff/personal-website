@@ -26,6 +26,7 @@
   --background-alt: #ececec;
   --background-dark: #e5e5e5;
   --background-translucent: rgba(255, 255, 255, 0.7);
+  --background-grid: radial-gradient(var(--primary-400) 0.5px, var(--primary-600) 0.5px);
 
   /* -- Typography -- */
   --font-family-base:
@@ -88,11 +89,22 @@
   --background-alt: var(--primary-800);
   --background-dark: var(--primary-900);
   --background-translucent: rgba(27, 30, 21, 0.8);
+  --background-grid: radial-gradient(var(--primary-600) 0.5px, var(--primary-800) 0.5px);
   --text-color: #ffffff;
   --text-color-invert: #000000;
   --text-color-primary: var(--primary-100);
   --box-shadow-default: 0px 8px 0px -4px var(--primary-700);
   --box-shadow-light: 0px 8px 0px -3px rgba(45, 45, 45, 0.6);
+}
+
+/* Change Defaults for Focus/Selection Behaviors */
+*:focus-visible {
+  outline: 2px solid var(--primary-300);
+}
+
+::selection {
+  color: white;
+  background: var(--primary-400);
 }
 
 /* Base Elements */

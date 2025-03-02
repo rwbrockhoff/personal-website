@@ -27,7 +27,7 @@ import ThemeSwitcher from './theme-switcher.astro';
 <style>
   header {
     position: fixed;
-    top: 1rem;
+    top: var(--space-md);
     left: 50%;
     transform: translateX(-50%);
     width: 50%;
@@ -35,18 +35,13 @@ import ThemeSwitcher from './theme-switcher.astro';
     height: var(--nav-height);
     transition: background-color var(--transition-speed) ease-in-out;
     border-radius: var(--border-radius-md);
-  }
-
-  .scrolled-header {
-    background-color: var(--background-translucent);
-    backdrop-filter: blur(10px);
-    border-bottom: 2px solid var(--background-alt);
+    color: white;
   }
 
   .logo {
     font-size: 1.8rem;
     font-weight: 700;
-    color: var(--text-color-primary);
+    color: var(--primary-100);
   }
 
   .nav-container {
@@ -63,6 +58,20 @@ import ThemeSwitcher from './theme-switcher.astro';
     display: flex;
     align-items: flex-end;
     gap: var(--space-xl);
+  }
+
+  /* Scrolled Header Styles */
+  header.scrolled-header {
+    background-color: var(--background-translucent);
+    backdrop-filter: blur(10px);
+    border-bottom: 2px solid var(--background-alt);
+    color: var(--text-color);
+  }
+
+  /* Invert Nav Text/SVG Color on Scroll & Active Menu (mobile) */
+  header.scrolled-header .logo,
+  header.scrolled-header :global(.theme-toggle),
+  .nav-links.active :global(.theme-toggle) {
     color: var(--text-color);
   }
 
@@ -70,10 +79,12 @@ import ThemeSwitcher from './theme-switcher.astro';
     header {
       width: 90%;
     }
+
     .nav-links {
       display: none;
     }
 
+    /* Mobile Nav Styles When Active */
     .nav-links.active {
       display: flex;
       flex-direction: column;
@@ -88,6 +99,7 @@ import ThemeSwitcher from './theme-switcher.astro';
         var(--background) 40%,
         var(--background-translucent) 100%
       );
+      color: var(--text-color);
       padding: var(--space-xl);
       border-radius: var(--border-radius-md);
       font-size: var(--font-size-lg);
@@ -127,11 +139,13 @@ import ThemeSwitcher from './theme-switcher.astro';
     .hamburger-menu {
       display: none;
     }
+
     header {
       width: 90%;
     }
   }
 
+  /* Only show smaller menu on larger screens */
   @media (min-width: 1200px) {
     header {
       width: 50%;

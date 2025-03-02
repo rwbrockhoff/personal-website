@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('scroll', () => {
     let current: string | null = '';
 
-    // Add small bottom border to header when user scrolls
+    // Change header styles on scroll
     header?.classList.toggle('scrolled-header', window.scrollY > 0);
 
     sections.forEach((section) => {

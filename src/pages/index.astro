@@ -13,7 +13,7 @@ import { projects } from '@data/projects.js';
     <div class="home-content">
       <div class="container">
         <div class="home-inner-content">
-          <h1 class="text-color-invert">👋🏻 Hi there, I'm Ryan.</h1>
+          <h1>👋🏻 Hi there, I'm Ryan.</h1>
 
           <h3 class="subtitle text-color-invert">full stack developer</h3>
 
@@ -69,11 +69,15 @@ import { projects } from '@data/projects.js';
     width: 100%;
     min-height: 60vh;
     background-color: var(--primary-300);
-    color: white;
     border-bottom: 5px solid var(--primary-color);
     text-align: center;
-    /* background-image: radial-gradient(var(--primary-500) 0.5px, var(--primary-700) 0.5px);
-    background-size: var(--space-md) var(--space-md); */
+    background-image: var(--background-grid);
+    background-size: var(--space-md) var(--space-md);
+  }
+
+  .home-content h1,
+  h3 {
+    color: white;
   }
 
   .home-inner-content {
@@ -98,18 +102,6 @@ import { projects } from '@data/projects.js';
     font-size: 2.5rem;
     margin-bottom: var(--space-xl);
     justify-content: center;
-  }
-
-  .background-pattern {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('path-to-topographic-pattern.svg');
-    background-size: cover;
-    opacity: 0.05;
-    z-index: -1;
   }
 
   /* Projects Section */
