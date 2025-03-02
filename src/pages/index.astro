@@ -3,11 +3,8 @@ import CodeIcon from '@images/links/code.svg';
 import Layout from '@layouts/layout.astro';
 import About from '@components/home/about.astro';
 import ProjectCard from '@components/home/project-card.astro';
-import SkillItem from '@components/home/skill-item.astro';
 import ContactForm from '@components/home/contact-form.astro';
-import data from '@data/index.js';
-
-const { projects, skills } = data;
+import { projects } from '@data/projects.js';
 ---
 
 <Layout title="Ryan Brockhoff - Full Stack Developer">
@@ -18,7 +15,7 @@ const { projects, skills } = data;
         <div class="home-inner-content">
           <h1 class="text-color-invert">👋🏻 Hi there, I'm Ryan.</h1>
 
-          <h3 class="subtitle text-color-invert">Full Stack Developer</h3>
+          <h3 class="subtitle text-color-invert">full stack developer</h3>
 
           <a href="#projects" class="button">View My Work</a>
         </div>
@@ -27,19 +24,6 @@ const { projects, skills } = data;
   </section>
 
   <About />
-
-  <!-- Skills Section -->
-  <section id="skills" class="section">
-    <div class="container">
-      <div class="skills-grid">
-        {
-          skills.map((skill) => (
-            <SkillItem name={skill.name} iconSrc={skill.iconSrc} altText={skill.altText} />
-          ))
-        }
-      </div>
-    </div>
-  </section>
 
   <!-- Projects Section -->
   <section id="projects" class="section background-alt">
