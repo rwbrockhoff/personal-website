@@ -14,6 +14,7 @@
 
   /* -- Semantic Colors -- */
   --text-color: #000000;
+  --text-color-invert: #ffffff;
   --primary-color: var(--primary-500);
   --accent-color: var(--primary-100);
   --error-color-light: #ffe2e6;
@@ -48,6 +49,7 @@
   --line-height-sm: 1.1;
   --line-height-base: 1.5;
   --line-height-md: 1.75;
+  --line-height-lg: 2;
 
   /* -- Spacing -- */
   --space-min: 0.25rem; /* 4px */
@@ -85,6 +87,7 @@
   --background-dark: var(--primary-900);
   --background-translucent: rgba(27, 30, 21, 0.8);
   --text-color: #ffffff;
+  --text-color-invert: #000000;
   --box-shadow-default: 0px 8px 0px -4px var(--primary-700);
   --box-shadow-light: 0px 8px 0px -3px rgba(45, 45, 45, 0.6);
 }
@@ -180,6 +183,7 @@ a:hover {
 .section {
   display: flex;
   align-items: center;
+  position: relative;
 }
 
 .container {
@@ -192,6 +196,10 @@ a:hover {
 .background-alt {
   background-color: var(--background-alt);
   transition: var(--background-transition);
+}
+
+.text-color-invert {
+  color: var(--text-color-invert);
 }
 
 /* Responsive */

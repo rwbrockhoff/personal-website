@@ -1,10 +1,29 @@
-<footer>Ryan Brockhoff | Software Developer</footer>
+<footer>
+  <p>⛰</p>
+  <p>©2019–2025 Ryan Brockhoff</p>
+  <p>
+    Built with <a
+      href="https://astro.build/"
+      class="hover-underline"
+      target="_blank"
+      rel="noopener noreferrer">Astro</a
+    > using plain 'ol js, html & css.
+  </p>
+</footer>
+
 <style>
   footer {
     background-color: var(--primary-900);
-    color: white;
     padding: var(--space-xl) 0;
     text-align: center;
+    opacity: 1;
+    background-image: radial-gradient(var(--primary-600) 0.5px, var(--primary-900) 0.5px);
+    background-size: var(--space-md) var(--space-md);
+  }
+
+  footer p {
+    color: var(--primary-200);
+    line-height: var(--line-height-lg);
   }
 
   .footer-content {

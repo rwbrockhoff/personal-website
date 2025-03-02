@@ -16,9 +16,9 @@ const { projects, skills } = data;
     <div class="home-content">
       <div class="container">
         <div class="home-inner-content">
-          <h1>Ryan Brockhoff</h1>
+          <h1 class="text-color-invert">👋🏻 Hi there, I'm Ryan.</h1>
 
-          <p class="subtitle">Full Stack Developer</p>
+          <h3 class="subtitle text-color-invert">Full Stack Developer</h3>
 
           <a href="#projects" class="button">View My Work</a>
         </div>
@@ -82,14 +82,13 @@ const { projects, skills } = data;
   /* Home Section */
   .home-content {
     display: flex;
-    background-color: var(--primary-200);
-    /* background-image: url('../assets/images/topo.png');
-    background-repeat: none;
-    background-blend-mode: color-burn; */
     width: 100%;
     height: 60vh;
+    background-color: var(--primary-300);
     color: white;
-    margin-top: var(--nav-height);
+    border-bottom: 5px solid var(--primary-color);
+    /* background-image: radial-gradient(var(--primary-500) 0.5px, var(--primary-700) 0.5px);
+    background-size: var(--space-md) var(--space-md); */
   }
 
   .home-inner-content {
@@ -98,13 +97,15 @@ const { projects, skills } = data;
     flex-direction: column;
     width: fit-content;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
+    width: 100%;
+    margin-top: 2rem;
   }
 
   .subtitle {
     font-size: 1.8rem;
-    color: var(--text-color);
-    margin-bottom: var(--space-xl);
+    /* color: var(--text-color); */
+    margin: var(--space-xl) 0;
   }
 
   /* Projects Section */
