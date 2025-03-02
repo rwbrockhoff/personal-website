@@ -1,5 +1,5 @@
-import laptopImage from '../assets/images/devices/mac.png';
-import mobileImage from '../assets/images/devices/iphone.png';
+import laptopImage from '@images/devices/mac.png';
+import mobileImage from '@images/devices/iphone.png';
 
 // Project data
 export const projects = [

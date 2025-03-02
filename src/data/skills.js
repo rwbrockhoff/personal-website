@@ -1,11 +1,11 @@
 // Skills data
-import reactIcon from '../assets/images/skills/react.svg';
-import jsIcon from '../assets/images/skills/javascript.svg';
-import nodeIcon from '../assets/images/skills/node.svg';
-import sqlIcon from '../assets/images/skills/postgresql.svg';
-import tsIcon from '../assets/images/skills/typescript.svg';
-import jestIcon from '../assets/images/skills/jest.svg';
-import gitIcon from '../assets/images/skills/git.svg';
+import reactIcon from '@images/skills/react.svg';
+import jsIcon from '@images/skills/javascript.svg';
+import nodeIcon from '@images/skills/node.svg';
+import sqlIcon from '@images/skills/postgresql.svg';
+import tsIcon from '@images/skills/typescript.svg';
+import jestIcon from '@images/skills/jest.svg';
+import gitIcon from '@images/skills/git.svg';
 
 export const skills = [
   { name: 'React', iconSrc: reactIcon, altText: 'React Icon' },
