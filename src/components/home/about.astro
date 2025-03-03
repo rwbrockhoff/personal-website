@@ -11,7 +11,7 @@ import GithubIcon from '@images/links/github.svg';
   <div class="container">
     <div class="about-content">
       <div class="about-image">
-        <Image src={profilePhoto} alt="Profile photo" />
+        <Image src={profilePhoto} alt="Ryan Brockhoff, web developer" />
       </div>
 
       <h2>About Me</h2>
@@ -20,23 +20,30 @@ import GithubIcon from '@images/links/github.svg';
 
       <ul class="about-links">
         <li class="hover-underline with-icon">
-          <LinkedinIcon />
+          <LinkedinIcon aria-hidden="true" />
           <a
             href="https://www.linkedin.com/in/ryanbrockhoff/"
             target="_blank"
-            rel="noopener noreferrer">LinkedIn</a
+            rel="noopener noreferrer"
+            aria-label="Visit my LinkedIn profile">LinkedIn</a
           >
         </li>
         <li class="hover-underline with-icon">
-          <GithubIcon />
-          <a href="https://github.com/rwbrockhoff/" target="_blank" rel="noopener noreferrer"
-            >Github</a
+          <GithubIcon aria-hidden="true" />
+          <a
+            href="https://github.com/rwbrockhoff/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Visit my Github profile">Github</a
           >
         </li>
         <li class="hover-underline with-icon">
-          <MediumIcon />
-          <a href="https://medium.com/@brockhoff" target="_blank" rel="noopener noreferrer"
-            >Medium</a
+          <MediumIcon aria-hidden="true" />
+          <a
+            href="https://medium.com/@brockhoff"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Visit my Medium profile">Medium</a
           >
         </li>
       </ul>

@@ -68,9 +68,14 @@ const containerClass = `screen-wrapper flex-center ${isWeb ? 'screen-container' 
   </div>
   <div class="project-panel-right">
     <div class="project-image">
-      <Image src={deviceImageSrc} alt={title} loading="lazy" />
+      <Image src={deviceImageSrc} alt={isWeb ? 'Macbook' : 'iPhone'} loading="lazy" />
       <div class={containerClass}>
-        <img src={imageSrc} class="project-demo" alt="demo" loading="lazy" />
+        <img
+          src={imageSrc}
+          class="project-demo"
+          alt={`GIF demo of Ryan's ${title} project.`}
+          loading="lazy"
+        />
       </div>
     </div>
   </div>
