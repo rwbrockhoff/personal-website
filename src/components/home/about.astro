@@ -1,12 +1,13 @@
 ---
 import { Image } from 'astro:assets';
+import Status from './status.astro';
 import profilePhoto from '@images/profile.png';
 import MediumIcon from '@images/links/medium.svg';
 import LinkedinIcon from '@images/links/linkedin.svg';
 import GithubIcon from '@images/links/github.svg';
 ---
 
-<section id="about" class="section">
+<section id="about" class="section background-alt">
   <div class="container">
     <div class="about-content">
       <div class="about-image">
@@ -14,6 +15,8 @@ import GithubIcon from '@images/links/github.svg';
       </div>
 
       <h2>About Me</h2>
+
+      <Status message="Currently working on this project" />
 
       <ul class="about-links">
         <li class="hover-underline with-icon">
@@ -60,7 +63,7 @@ import GithubIcon from '@images/links/github.svg';
     display: flex;
     flex-direction: column;
     margin: auto;
-    width: 50vw;
+    width: 60%;
   }
 
   .about-image img {
@@ -91,7 +94,6 @@ import GithubIcon from '@images/links/github.svg';
   /* Responsive */
   @media (max-width: 768px) {
     .about-content {
-      grid-template-columns: 1fr;
       width: 90%;
     }
   }

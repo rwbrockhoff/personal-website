@@ -1,0 +1,73 @@
+---
+import { workExperience } from '@data/work-experience';
+---
+
+<section id="experience" class="section">
+  <div class="container">
+    <div class="experience-content">
+      <h2>Experience</h2>
+      {
+        workExperience.map((job, index) => (
+          <div class="timeline-item" style={`animation-delay: ${index * 0.2}s`}>
+            <div class="timeline-content background-alt">
+              <h4 class="timeline-title">{job.title}</h4>
+              <p class="timeline-description">
+                {job.company} • {job.duration}
+              </p>
+              <p>{job.description}</p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .experience-content {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 60%;
+  }
+
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: var(--space-xl);
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.6s ease-in-out forwards;
+  }
+
+  .timeline-content {
+    padding: var(--space-md);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow-light);
+  }
+
+  .timeline-description {
+    font-size: var(--font-size-base);
+    color: var(--text-color-primary);
+    margin: var(--space-min) 0;
+    font-style: italic;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .experience-content {
+      width: 90%;
+    }
+  }
+</style>
