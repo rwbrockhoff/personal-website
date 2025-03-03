@@ -1,0 +1,30 @@
+---
+import ProjectCard from '@components/home/project-card.astro';
+import { projects } from '@data/projects.js';
+import CodeIcon from '@images/links/code.svg';
+---
+
+<section id="projects" class="section background-alt">
+  <div class="container">
+    <h2 class="flex-center with-icon">
+      <CodeIcon aria-hidden="true" />My Projects
+    </h2>
+    <div class="projects-container">
+      {
+        projects.map((project) => (
+          <ProjectCard
+            title={project.title}
+            description={project.description}
+            highlights={project.highlights}
+            imageSrc={project.imageSrc}
+            tags={project.tags}
+            demoLink={project.demoLink}
+            githubLink={project.githubLink}
+            deviceImageSrc={project.deviceImaegSrc}
+            isWeb={project.isWeb}
+          />
+        ))
+      }
+    </div>
+  </div>
+</section>

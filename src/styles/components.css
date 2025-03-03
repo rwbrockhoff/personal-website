@@ -13,5 +13,17 @@
 .button:hover {
   background-color: var(--primary-400);
   transform: translateY(-1px);
-  box-shadow: var(--box-shadow-default);
+  box-shadow: var(--box-shadow-light);
+}
+
+/* Inverse button variant */
+.button-inverse {
+  background-color: var(--background);
+  color: var(--text-color-primary);
+}
+
+.button-inverse:hover {
+  background-color: var(--background-alt);
+  transform: translateY(-1px);
+  box-shadow: var(--box-shadow-light);
 }

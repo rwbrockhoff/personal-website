@@ -1,106 +1,17 @@
 ---
-import CodeIcon from '@images/links/code.svg';
 import Layout from '@layouts/layout.astro';
+import Hero from '@components/home/hero.astro';
 import About from '@components/home/about.astro';
 import WorkExperience from '@components/home/work-experience.astro';
-import ProjectCard from '@components/home/project-card.astro';
-import { projects } from '@data/projects.js';
+import Projects from '@components/home/projects.astro';
 ---
 
 <Layout title="Ryan Brockhoff - Full Stack Developer">
-  <!-- Home Section -->
-  <section id="home" class="section">
-    <div class="home-content">
-      <div class="container">
-        <div class="home-inner-content flex-center">
-          <h1>👋🏻 Hi there, I'm Ryan.</h1>
-
-          <h3 class="subtitle text-color-invert">a full stack web developer</h3>
-
-          <a href="#projects" class="button">View My Work</a>
-        </div>
-      </div>
-    </div>
-  </section>
+  <Hero />
 
   <About />
 
   <WorkExperience />
 
-  <!-- Projects Section -->
-  <section id="projects" class="section background-alt">
-    <div class="container">
-      <h2 class="section-title with-icon">
-        <CodeIcon aria-hidden="true" />My Projects
-      </h2>
-      <div class="projects-container">
-        {
-          projects.map((project) => (
-            <ProjectCard
-              title={project.title}
-              description={project.description}
-              highlights={project.highlights}
-              imageSrc={project.imageSrc}
-              tags={project.tags}
-              demoLink={project.demoLink}
-              githubLink={project.githubLink}
-              deviceImageSrc={project.deviceImaegSrc}
-              isWeb={project.isWeb}
-            />
-          ))
-        }
-      </div>
-    </div>
-  </section>
+  <Projects />
 </Layout>
-
-<style>
-  /* Home Section */
-  .home-content {
-    display: flex;
-    width: 100%;
-    min-height: 60vh;
-    background-color: var(--primary-300);
-    border-bottom: 5px solid var(--primary-color);
-    text-align: center;
-    background-image: var(--background-grid);
-    background-size: var(--space-md) var(--space-md);
-  }
-
-  .home-content h1,
-  h3 {
-    color: white;
-  }
-
-  .home-inner-content {
-    height: 100%;
-    width: 100%;
-    flex-direction: column;
-    margin-top: var(--space-xl);
-  }
-
-  /* Projects Section */
-  .section-title {
-    justify-content: center;
-  }
-
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: var(--space-xl);
-  }
-
-  /* Skills Section */
-
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    gap: 2rem;
-  }
-
-  /* Contact Section */
-  .contact-container {
-    max-width: 600px;
-    margin: 0 auto;
-  }
-</style>
