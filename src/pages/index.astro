@@ -3,7 +3,6 @@ import CodeIcon from '@images/links/code.svg';
 import Layout from '@layouts/layout.astro';
 import About from '@components/home/about.astro';
 import ProjectCard from '@components/home/project-card.astro';
-import ContactForm from '@components/home/contact-form.astro';
 import { projects } from '@data/projects.js';
 ---
 
@@ -15,7 +14,7 @@ import { projects } from '@data/projects.js';
         <div class="home-inner-content">
           <h1>👋🏻 Hi there, I'm Ryan.</h1>
 
-          <h3 class="subtitle text-color-invert">full stack developer</h3>
+          <h3 class="subtitle text-color-invert">a full stack web developer</h3>
 
           <a href="#projects" class="button">View My Work</a>
         </div>
@@ -50,16 +49,6 @@ import { projects } from '@data/projects.js';
       </div>
     </div>
   </section>
-
-  <!-- Contact Section -->
-  <section id="contact" class="section">
-    <div class="container">
-      <h2 class="section-title">Get In Touch</h2>
-      <div class="contact-container">
-        <ContactForm />
-      </div>
-    </div>
-  </section>
 </Layout>
 
 <style>
@@ -89,11 +78,6 @@ import { projects } from '@data/projects.js';
     align-items: center;
     width: 100%;
     margin-top: 2rem;
-  }
-
-  .subtitle {
-    font-weight: 400;
-    margin: var(--space-xl) 0;
   }
 
   /* Projects Section */

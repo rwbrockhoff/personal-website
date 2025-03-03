@@ -22,15 +22,14 @@
   --error-color: #ff3860;
 
   /* -- Backgrounds -- */
-  --background: #ffffff;
-  --background-alt: #ececec;
-  --background-dark: #e5e5e5;
-  --background-translucent: rgba(255, 255, 255, 0.7);
+  --background: #f9f6f3;
+  --background-alt: #eae3d9;
+  --background-dark: #dbcbb8;
+  --background-translucent: rgba(249, 246, 243, 0.7);
   --background-grid: radial-gradient(var(--primary-400) 0.5px, var(--primary-600) 0.5px);
 
   /* -- Typography -- */
-  --font-family-base:
-    Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
+  --font-family-base: 'Fraunces Variable', serif;
 
   /* Font Sizes (GRT) */
   --font-size-xxs: 0.625rem; /* 10px */
@@ -86,7 +85,7 @@
 /* Dark Theme Variables */
 [data-theme='dark'] {
   --background: var(--primary-950);
-  --background-alt: var(--primary-800);
+  --background-alt: var(--primary-700);
   --background-dark: var(--primary-900);
   --background-translucent: rgba(27, 30, 21, 0.8);
   --background-grid: radial-gradient(var(--primary-600) 0.5px, var(--primary-800) 0.5px);
@@ -110,7 +109,7 @@
 /* Base Elements */
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: var(--nav-height);
+  scroll-padding-top: calc(var(--nav-height) - var(--space-md));
 }
 
 body {
@@ -211,6 +210,12 @@ a:hover {
 .background-alt {
   background-color: var(--background-alt);
   transition: var(--background-transition);
+}
+
+.subtitle {
+  font-weight: 400;
+  color: var(--text-color);
+  margin: var(--space-xl) 0;
 }
 
 .text-color-invert {
