@@ -12,7 +12,7 @@ import { projects } from '@data/projects.js';
   <section id="home" class="section">
     <div class="home-content">
       <div class="container">
-        <div class="home-inner-content">
+        <div class="home-inner-content flex-center">
           <h1>👋🏻 Hi there, I'm Ryan.</h1>
 
           <h3 class="subtitle text-color-invert">a full stack web developer</h3>
@@ -74,16 +74,10 @@ import { projects } from '@data/projects.js';
 
   .home-inner-content {
     height: 100%;
-    display: flex;
-    flex-direction: column;
-    width: fit-content;
-    justify-content: center;
-    align-items: center;
     width: 100%;
-    margin-top: 2rem;
+    flex-direction: column;
+    margin-top: var(--space-xl);
   }
-
-  /* Projects Section */
 
   /* Projects Section */
   .section-title {
