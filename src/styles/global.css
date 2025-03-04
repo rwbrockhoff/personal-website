@@ -99,16 +99,6 @@
   --box-shadow-light: 0px 8px 0px -3px rgba(45, 45, 45, 0.6);
 }
 
-/* Change Defaults for Focus/Selection Behaviors */
-*:focus-visible {
-  outline: 2px solid var(--primary-300);
-}
-
-::selection {
-  color: white;
-  background: var(--primary-400);
-}
-
 /* Base Elements */
 html {
   scroll-behavior: smooth;
@@ -134,6 +124,35 @@ main {
   flex: 1;
 }
 
+/* CSS Reset */
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
 /* Typography */
 h1,
 h2,
@@ -143,7 +162,6 @@ h5,
 h6,
 p {
   color: var(--text-color);
-  margin: 0;
 }
 
 h1 {
@@ -197,20 +215,6 @@ a:hover {
   opacity: 0.9;
 }
 
-/* Layout Components */
-.section {
-  display: flex;
-  align-items: center;
-  position: relative;
-}
-
-.container {
-  max-width: var(--max-content-width);
-  margin: 0 auto;
-  padding: 4rem var(--space-xl);
-  width: 100%;
-}
-
 .background-alt {
   background-color: var(--background-alt);
   transition: var(--background-transition);
@@ -218,8 +222,17 @@ a:hover {
 
 .subtitle {
   font-weight: 400;
-  color: var(--text-color);
   margin: var(--space-xl) 0;
+}
+
+/* Change Defaults for Focus/Selection Behaviors */
+*:focus-visible {
+  outline: 2px solid var(--primary-300);
+}
+
+::selection {
+  color: white;
+  background: var(--primary-400);
 }
 
 /* Responsive */

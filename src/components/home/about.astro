@@ -1,5 +1,6 @@
 ---
 import { Image } from 'astro:assets';
+import Section from '@components/global/section.astro';
 import Status from './status.astro';
 import profilePhoto from '@images/profile.png';
 import MediumIcon from '@images/links/medium.svg';
@@ -7,63 +8,57 @@ import LinkedinIcon from '@images/links/linkedin.svg';
 import GithubIcon from '@images/links/github.svg';
 ---
 
-<section id="about" class="section background-alt">
-  <div class="container">
-    <div class="readable-width">
-      <div class="about-image">
-        <Image src={profilePhoto} alt="Ryan Brockhoff, web developer" />
-      </div>
-
-      <h2>About Me</h2>
-
-      <Status message="Currently working on this project" />
-
-      <ul class="about-links">
-        <li class="hover-underline with-icon">
-          <LinkedinIcon aria-hidden="true" />
-          <a
-            href="https://www.linkedin.com/in/ryanbrockhoff/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Visit my LinkedIn profile">LinkedIn</a
-          >
-        </li>
-        <li class="hover-underline with-icon">
-          <GithubIcon aria-hidden="true" />
-          <a
-            href="https://github.com/rwbrockhoff/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Visit my Github profile">Github</a
-          >
-        </li>
-        <li class="hover-underline with-icon">
-          <MediumIcon aria-hidden="true" />
-          <a
-            href="https://medium.com/@brockhoff"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Visit my Medium profile">Medium</a
-          >
-        </li>
-      </ul>
-      <div class="about-text">
-        <p>
-          I'm a web developer with a passion for building beautiful, functional web applications.
-        </p>
-        <p>
-          With a professional background in frontend and backend development, I enjoy creating
-          seamless user experiences while ensuring robust functionality behind the scenes. I
-          specialize in React, Node.js, UI design, and data visualizations.
-        </p>
-        <p>
-          When I'm not coding, you can find me hiking, reading, or experimenting with new
-          technologies. I'm always looking to learn and grow as a developer.
-        </p>
-      </div>
-    </div>
+<Section id="about" className="background-alt" readableWidth>
+  <div class="about-image">
+    <Image src={profilePhoto} alt="Ryan Brockhoff, web developer" />
   </div>
-</section>
+
+  <h2>About Me</h2>
+
+  <Status message="Currently working on this project" />
+
+  <ul class="about-links">
+    <li class="hover-underline with-icon">
+      <LinkedinIcon aria-hidden="true" />
+      <a
+        href="https://www.linkedin.com/in/ryanbrockhoff/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Visit my LinkedIn profile">LinkedIn</a
+      >
+    </li>
+    <li class="hover-underline with-icon">
+      <GithubIcon aria-hidden="true" />
+      <a
+        href="https://github.com/rwbrockhoff/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Visit my Github profile">Github</a
+      >
+    </li>
+    <li class="hover-underline with-icon">
+      <MediumIcon aria-hidden="true" />
+      <a
+        href="https://medium.com/@brockhoff"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Visit my Medium profile">Medium</a
+      >
+    </li>
+  </ul>
+  <div class="about-text">
+    <p>I'm a web developer with a passion for building beautiful, functional web applications.</p>
+    <p>
+      With a professional background in frontend and backend development, I enjoy creating seamless
+      user experiences while ensuring robust functionality behind the scenes. I specialize in React,
+      Node.js, UI design, and data visualizations.
+    </p>
+    <p>
+      When I'm not coding, you can find me hiking, reading, or experimenting with new technologies.
+      I'm always looking to learn and grow as a developer.
+    </p>
+  </div>
+</Section>
 
 <style>
   .about-image img {
@@ -75,11 +70,9 @@ import GithubIcon from '@images/links/github.svg';
   }
 
   .about-links {
-    list-style: none;
     padding: 0;
     display: flex;
     gap: 2rem;
-    color: var(--text-color);
   }
 
   .about-text p {

@@ -1,0 +1,45 @@
+---
+interface SectionProps {
+  id?: string;
+  className?: string;
+  readableWidth?: boolean;
+}
+
+const { id, className = '', readableWidth = false } = Astro.props as SectionProps;
+---
+
+<section id={id} class={`section ${className}`}>
+  <div class="container">
+    <div class={readableWidth ? 'readable-width' : ''}>
+      <slot />
+    </div>
+  </div>
+</section>
+
+<style>
+  section {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem var(--space-xl);
+    width: 100%;
+  }
+
+  .readable-width {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 60%;
+  }
+
+  @media (max-width: 768px) {
+    .readable-width {
+      width: 90%;
+    }
+  }
+</style>
