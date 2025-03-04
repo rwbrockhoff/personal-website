@@ -9,7 +9,7 @@ import GithubIcon from '@images/links/github.svg';
 
 <section id="about" class="section background-alt">
   <div class="container">
-    <div class="about-content">
+    <div class="readable-width">
       <div class="about-image">
         <Image src={profilePhoto} alt="Ryan Brockhoff, web developer" />
       </div>
@@ -66,13 +66,6 @@ import GithubIcon from '@images/links/github.svg';
 </section>
 
 <style>
-  .about-content {
-    display: flex;
-    flex-direction: column;
-    margin: auto;
-    width: 60%;
-  }
-
   .about-image img {
     width: 5rem;
     height: auto;
@@ -89,19 +82,7 @@ import GithubIcon from '@images/links/github.svg';
     color: var(--text-color);
   }
 
-  .about-content h2 {
-    font-size: 2rem;
-    margin: var(--space-sm) 0;
-  }
-
   .about-text p {
     margin-bottom: var(--space-md);
-  }
-
-  /* Responsive */
-  @media (max-width: 768px) {
-    .about-content {
-      width: 90%;
-    }
   }
 </style>
