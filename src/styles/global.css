@@ -62,6 +62,7 @@
   --space-xxl: 3rem; /* 48px */
 
   /* -- Layout -- */
+  --border-radius-min: var(--space-min);
   --border-radius: var(--space-xs);
   --border-radius-md: var(--space-md);
   --nav-height: 5rem;
