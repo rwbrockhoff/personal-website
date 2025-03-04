@@ -178,8 +178,7 @@ const containerClass = `screen-wrapper flex-center ${isWeb ? 'screen-container' 
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
-    margin-top: var(--space-xl);
-    margin-bottom: var(--space-md);
+    margin: var(--space-xl) 0;
   }
 
   .project-tag {
@@ -215,13 +214,12 @@ const containerClass = `screen-wrapper flex-center ${isWeb ? 'screen-container' 
 
     .project-links {
       justify-content: center;
-      padding-top: 2rem;
-      margin: 0;
+      margin: var(--space-lg) 0;
       width: 100%;
     }
 
     .project-info {
-      padding: var(--space-sm) var(--space-lg);
+      padding: 0 var(--space-lg);
     }
 
     .project-panel-left,

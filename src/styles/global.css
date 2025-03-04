@@ -38,7 +38,7 @@
   --font-size-md: 1.25rem; /* 20px */
   --font-size-lg: 1.625rem; /* 26px */
   --font-size-xl: 2.0625rem; /* 33px */
-  --font-size-xxl: 2.625rem; /* 42px */
+  --font-size-2xl: 2.625rem; /* 42px */
 
   /* Font Weights */
   --font-weight-light: 300;
@@ -147,7 +147,7 @@ p {
 }
 
 h1 {
-  font-size: var(--font-size-xxl);
+  font-size: var(--font-size-2xl);
   line-height: var(--line-height-sm);
 }
 
