@@ -32,7 +32,7 @@ jobs:
         run: npm run build
 
       - name: Deploy to S3
-        run: aws s3 sync --delete ./dist/ s3://${{ secrets.S3_BUCKET_NAME }}/
+        run: aws s3 sync --delete ./dist/ s3://${{ secrets.AWS_S3_BUCKET_NAME }}/
 
       - name: Create CloudFront invalidation
         run: aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
