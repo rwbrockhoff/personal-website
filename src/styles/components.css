@@ -27,3 +27,10 @@
   transform: translateY(-1px);
   box-shadow: var(--box-shadow-light);
 }
+
+.astro-code {
+  padding: var(--space-md);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow-light);
+  margin-bottom: var(--space-lg);
+}

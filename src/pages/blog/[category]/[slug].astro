@@ -1,0 +1,85 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import Layout from '@layouts/layout.astro';
+import Section from '@components/global/section.astro';
+import GithubIcon from '@images/links/github.svg';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+
+  const paths = posts.map((post) => {
+    const [category, slug] = post.slug.split('/');
+    return {
+      params: { category, slug },
+    };
+  });
+
+  return paths;
+}
+
+const { category, slug } = Astro.params;
+const post = await getEntry('blog', `${category}/${slug}`);
+
+if (!post) throw new Error(`Post not found for slug: ${slug}`);
+
+const { data, render } = post;
+const { Content } = await render();
+---
+
+<Layout title={data.title}>
+  <article>
+    <header class="flex-center flex-col readable-width">
+      <h1>{data.title}</h1>
+      <p>{data.description}</p>
+
+      {
+        data.githubLink && (
+          <a
+            href={data.githubLink}
+            class="button button-inverse with-icon"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <GithubIcon aria-hidden="true" />
+            Github
+          </a>
+        )
+      }
+    </header>
+    <section class="article-content readable-width">
+      <Content />
+    </section>
+  </article>
+</Layout>
+
+<style>
+  article {
+    min-height: 100vh;
+  }
+
+  header {
+    width: 100%;
+    height: 40vh;
+    min-height: fit-content;
+    background-color: var(--primary-300);
+    background-image: var(--background-grid);
+    background-size: var(--space-md) var(--space-md);
+    border-bottom: 5px solid var(--primary-color);
+    text-align: center;
+    padding-top: var(--nav-height);
+  }
+
+  h1,
+  p {
+    color: white;
+    padding: var(--space-sm) 0;
+  }
+
+  .button {
+    margin: var(--space-md) 0;
+  }
+
+  .article-content {
+    margin: var(--space-xxl) auto;
+  }
+</style>

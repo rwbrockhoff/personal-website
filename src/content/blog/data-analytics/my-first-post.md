@@ -1,0 +1,66 @@
+---
+title: 'Data Visualization: Spotify Listening Habits'
+description: 'Exploring 2024 Spotify data trends using Python and Tableau.'
+pubDate: 2025-05-20
+tags: ['data analysis', 'spotify', 'tableau', 'python']
+image: '/images/spotify-project-cover.jpg'
+category: 'data-analytics'
+githubLink: 'https://github.com/rwbrockhoff/personal-website'
+---
+
+## What is a Bastion Server?
+
+A **bastion server** (also called a jump host) is a specialized security instance that serves as a controlled entry point into a private network. It acts as an intermediary between external networks (like your laptop) and internal resources (like private databases) that should never be directly accessible from the internet.
+
+Think of it as a **security checkpoint** - all access to private resources must go through this hardened, monitored gateway.
+
+## Architecture Overview
+
+**Traditional Insecure Approach:**
+
+```
+Internet → RDS Database (Public Access)
+❌ Database directly exposed to internet
+❌ Attack surface includes entire database
+❌ No audit trail of access
+```
+
+**Secure Bastion Architecture:**
+
+```
+Internet → Bastion Host (Public Subnet) → RDS Database (Private Subnet)
+✅ Database isolated from direct internet access
+✅ Single, hardened entry point
+✅ All access logged and auditable
+```
+
+## Implementation Process
+
+### 1. Network Architecture Setup
+
+**Private Subnet Configuration:**
+
+- Removed internet gateway routes from existing subnets containing Glue, Lambda, and RDS
+- Converted all data processing resources to private network access only
+- Maintained VPC endpoints for AWS service communication
+
+**Public Subnet Creation:**
+
+- Created dedicated `/24` public subnet (172.31.96.0/24) for bastion host only
+- Associated with custom route table containing internet gateway route (0.0.0.0/0 → igw)
+- Right-sized subnet for single-purpose security function
+
+### 2. Bastion Host Configuration
+
+**Instance Specifications:**
+
+- **Instance Type:** t3.nano ($3.50/month) - cost-optimized for SSH forwarding
+- **Image:** Amazon Linux 2023 - minimal, secure baseline
+- **Networking:** Public IP enabled in dedicated public subnet
+- **Storage:** Default 8GB gp3 - sufficient for minimal OS and logging
+
+**Security Group Rules:**
+
+- **Inbound:** SSH (port 22) from specific public IP only
+- **Outbound:** PostgreSQL (port 5432) to RDS security group
+- **Principle:** Minimal access, specific source/destination targeting
