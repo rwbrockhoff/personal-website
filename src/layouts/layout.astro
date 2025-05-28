@@ -4,6 +4,12 @@ import '@fontsource-variable/fraunces';
 
 import Header from '@components/global/header.astro';
 import Footer from '@components/global/footer.astro';
+
+interface LayoutProps {
+  title?: string;
+}
+
+const { title } = Astro.props as LayoutProps;
 ---
 
 <!doctype html>
@@ -14,7 +20,7 @@ import Footer from '@components/global/footer.astro';
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
     <meta name="generator" content={Astro.generator} />
-    <title>Ryan Brockhoff | Web Developer & Data Analyst</title>
+    <title>{title ? `${title} |` : ''} Ryan Brockhoff - Web Developer & Data Analyst</title>
   </head>
 
   <Header />
@@ -24,4 +30,5 @@ import Footer from '@components/global/footer.astro';
     </main>
     <Footer />
   </body>
+
 </html>

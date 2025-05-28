@@ -1,7 +1,6 @@
 ---
 import { getCollection, getEntry } from 'astro:content';
 import Layout from '@layouts/layout.astro';
-import Section from '@components/global/section.astro';
 import GithubIcon from '@images/links/github.svg';
 
 export async function getStaticPaths() {
@@ -28,7 +27,7 @@ const { Content } = await render();
 
 <Layout title={data.title}>
   <article>
-    <header class="flex-center flex-col readable-width">
+    <header class="flex-center flex-col readable-width white-text">
       <h1>{data.title}</h1>
       <p>{data.description}</p>
 
@@ -64,14 +63,12 @@ const { Content } = await render();
     background-color: var(--primary-300);
     background-image: var(--background-grid);
     background-size: var(--space-md) var(--space-md);
-    border-bottom: 5px solid var(--primary-color);
     text-align: center;
     padding-top: var(--nav-height);
+    box-shadow: var(--box-shadow-light);
   }
 
-  h1,
   p {
-    color: white;
     padding: var(--space-sm) 0;
   }
 
