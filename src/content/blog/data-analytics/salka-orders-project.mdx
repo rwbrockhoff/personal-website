@@ -1,6 +1,6 @@
 ---
-title: 'Data Visualization: Spotify Listening Habits'
-description: 'Exploring 2024 Spotify data trends using Python and Tableau.'
+title: 'Sälka Order Analysis and Reports'
+description: 'AWS data analysis pipeline to query order data and generate reports'
 pubDate: 2025-05-20
 tags: ['data analysis', 'spotify', 'tableau', 'python']
 image: '/images/spotify-project-cover.jpg'
@@ -8,11 +8,20 @@ category: 'data-analytics'
 githubLink: 'https://github.com/rwbrockhoff/personal-website'
 ---
 
+import BlogImage from '@components/global/blog-image.astro';
+import heroImage from '../../../assets/blog/data-analytics/check-for-na-values.png';
+
 ## What is a Bastion Server?
 
 A **bastion server** (also called a jump host) is a specialized security instance that serves as a controlled entry point into a private network. It acts as an intermediary between external networks (like your laptop) and internal resources (like private databases) that should never be directly accessible from the internet.
 
 Think of it as a **security checkpoint** - all access to private resources must go through this hardened, monitored gateway.
+
+<BlogImage
+  src={heroImage}
+  alt="Demo for NA values"
+  caption="Looking at dataset for columns with NA values"
+/>
 
 ## Architecture Overview
 

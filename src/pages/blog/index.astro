@@ -11,7 +11,7 @@ const posts = await getCollection('blog');
     <h1>Blog</h1>
     <p>Thoughts on development, data analysis, and technology</p>
   </header>
-  <Section>
+  <Section className="posts-container">
     <div class="posts-grid">
       {
         posts.map((post) => (
@@ -42,6 +42,10 @@ const posts = await getCollection('blog');
     border-bottom: 5px solid var(--primary-color);
     text-align: center;
     padding-top: var(--nav-height);
+  }
+
+  .posts-container {
+    border: 2px solid red;
   }
 
   .posts-grid {
