@@ -169,6 +169,7 @@ p {
 h1 {
   font-size: var(--font-size-2xl);
   line-height: var(--line-height-sm);
+  margin: var(--space-md) 0;
 }
 
 h2 {
@@ -180,22 +181,26 @@ h2 {
 h3 {
   font-size: var(--font-size-lg);
   line-height: var(--line-height-sm);
+  margin: var(--space-sm) 0;
 }
 
 h4 {
   font-size: var(--font-size-md);
   line-height: var(--line-height-base);
+  margin: var(--space-sm) 0;
 }
 
 h5 {
   font-size: var(--font-size-xs);
   line-height: var(--line-height-base);
+  margin: var(--space-xs) 0;
 }
 
 h6 {
   font-size: var(--font-size-xxs);
   font-weight: var(--font-weight-light);
   line-height: var(--line-height-base);
+  margin: var(--space-xs) 0;
 }
 
 p,
@@ -215,6 +220,14 @@ a {
 
 a:hover {
   opacity: 0.9;
+}
+
+/* Horizontal Rule */
+hr {
+  border: none;
+  height: 1px;
+  background-color: var(--text-color-muted);
+  margin: var(--space-xl) 0;
 }
 
 .background-alt {

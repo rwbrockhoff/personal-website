@@ -29,8 +29,10 @@ const { src, alt, caption, priority = false, class: className } = Astro.props;
   }
 
   .blog-image {
-    max-width: 100%;
+    width: auto;
     height: auto;
+    max-width: 100%;
+    max-height: 600px;
     border-radius: var(--border-radius-min);
     box-shadow: var(--box-shadow-light);
   }
