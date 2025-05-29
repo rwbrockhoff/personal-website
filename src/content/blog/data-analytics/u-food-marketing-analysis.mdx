@@ -1,0 +1,245 @@
+---
+title: 'U-Food Marketing Campaign Analysis'
+description: 'AWS data analysis pipeline to query order data and generate reports'
+pubDate: 2025-05-20
+tags: ['python', 'pandas', 'matplotlib', 'seaborn']
+category: 'data-analytics'
+githubLink: 'https://github.com/rwbrockhoff/ufoods-marketing-campaign-analysis'
+---
+
+import BlogImage from '@components/global/blog-image.astro';
+import topFiveSegments from '@assets/blog/data-analytics/u-food-marketing-analysis/top-five-segments.png';
+import individualCampaigns from '@assets/blog/data-analytics/u-food-marketing-analysis/individual-campaigns.png';
+import acceptedCampaignsPerAgeGroup from '@assets/blog/data-analytics/u-food-marketing-analysis/accepted-campaigns-per-age-group.png';
+import purchaseMethodsCampaigns from '@assets/blog/data-analytics/u-food-marketing-analysis/purchase-methods-campaigns.png';
+import amountSpentChildrenCount from '@assets/blog/data-analytics/u-food-marketing-analysis/amount-spent-children-count.png';
+import educationDemographics from '@assets/blog/data-analytics/u-food-marketing-analysis/education-demographics.png';
+import maritalStatusDemographics from '@assets/blog/data-analytics/u-food-marketing-analysis/marital-status-demographics.png';
+import webTrafficConversion from '@assets/blog/data-analytics/u-food-marketing-analysis/web-traffic-conversion.png';
+import averageOrderValue from '@assets/blog/data-analytics/u-food-marketing-analysis/average-order-value.png';
+
+[Click here to jump to the Complete Technical Analysis Report (includes visualizations)](#complete-technical-analysis--report)
+
+---
+
+### The Challenge
+
+I recently tackled a business case from UFood, Brazil's leading food delivery platform. The goal for the marketing team was to spend their budget more wisely and make data-driven decisions for marketing campaign optimization. They had a focus on establishing customer segmentation, while evaluating what characteristics and channels led to the highest campaign conversion.
+
+<br />
+### The Purpose
+
+The goal was to work with a realistic business dataset that would allow me to clean, transform, and explore data that could create actionable, data-driven results for a marketing team. I was also excited to create visually appealing visualizations with Matplotblib and Seaborn that would help demonstrate insights for business professionals, while also putting my technical expertise to the test with Python and Pandas.
+
+<br />
+**Data Foundation**
+
+- 2,240 customer records across 6 marketing campaigns
+- 5 product categories from wines to exotic fruits
+- 3 sales channels: physical stores, catalogs, and web
+
+---
+
+### Data Exploration Discoveries
+
+#### Finding #1: The Family Size Effect
+
+The first major insight emerged when I analyzed campaign acceptance against household demographics. The relationship was evident: customers with fewer children showed significantly higher response rates.
+
+This wasn't just correlation--it made logical sense. Customers with fewer dependents have more disposable income and flexibility to try new products.
+
+<br />
+#### Finding #2: The Catalog Surprise
+
+Here's what genuinely surprised me: in our digital-first world, **catalog marketing was outperforming digital channels by 8 percentage points.** While everyone focuses on web optimization, the data showed that traditional catalog marketing was actually the most effective channel.
+
+<br />
+#### Finding #3: The Hidden High-Value Segments
+
+While educated customers with few children made up a large portion of conversions, I discovered something interesting about two overlooked age groups: 23-30 and 70+ year-olds performed even better. The sample sizes were smaller, but this is exactly why I love data exploration--there's always a story hiding in the data. In this case, it creates a meaningful discovery that could lead the marketing team to focus on an emerging customer base.
+
+When we look at the conversion rate for these two demographics:
+
+- Ages 23-30: 67% conversion rate
+- Ages 70+: 58% conversion rate
+- Overall average: 43%
+
+### The Technical Process
+
+**Data Exploration**: Started with systematic data quality checks and exploratory analysis to understand the dataset structure and identify any anomalies.
+
+<br />
+
+**Correlation Analysis**: Used statistical methods to identify relationships between customer demographics and campaign success, focusing on actionable business insights.
+
+<br />
+
+**Customer Segmentation**: Developed behavioral-based customer groups:
+
+- Family-Focused Buyers (moderate engagement)
+- Premium Enthusiasts (high-value, wine preference)
+- Catalog Loyalists (traditional channel preference)
+- Digital Newcomers (web-focused, younger)
+
+**Visualization Strategy**: Created clear, business-ready visualizations that could communicate findings to both technical and non-technical stakeholders.
+
+<br />
+### Business Impact
+
+The analysis identified four concrete optimization opportunities:
+
+1. **Channel Reallocation**: Increase catalog marketing investment based on superior conversion data
+2. **Demographic Targeting**: Focus premium campaigns on customers with 0-1 children
+3. **Segment-Specific Messaging**: Develop tailored approaches for high-converting age brackets
+4. **Cross-Channel Learning**: Apply catalog success principles to improve web/store performance
+   <br />
+
+### Key Takeaway
+
+This project reinforced something important: the most valuable insights often come from questioning conventional wisdom and letting data guide decisions rather than assumptions. The catalog marketing finding alone could significantly impact UFood's budget allocation strategy - all because we took the time to analyze what actually works rather than what we expected to work.
+
+<br />I believe the final in-depth report would guide UFood's marketing department towards increased
+campaign conversion, better understanding of their core customers, and provide direction for future
+marketing efforts that would greatly improve their ROI, campaign conversion, and overall sales.
+
+<br />
+
+---
+
+## Complete Technical Analysis & Report
+
+Below you'll find the complete methodology, all statistical findings, and detailed business recommendations with supporting visualizations.
+[You can also click here to review this project's code on Github.](https://github.com/rwbrockhoff/ufoods-marketing-campaign-analysis)
+
+<br />
+**What's included in the technical analysis:**
+
+- Data exploration and quality assessment
+- Statistical correlation analysis
+- Customer segmentation methodology
+- Channel performance comparison
+- Detailed business recommendations
+- All supporting visualizations
+
+### Data Analysis Summary
+
+- Married, educated users with 0-1 children are the most likely to accept campaigns and spend more.
+- Campaigns are effective in increasing wine sales, and more recent campaigns (3-5) have been more effective.
+- Age groups of 23-30 and 70+ are smaller in population size, but show promising results with higher campaign conversions, higher spent on campaigns, and high web traffic conversion.
+- Catalog customers are more likely to accept campaigns than in-store or web purchases (by 8%).
+
+<br />
+### Top Performing Customer Segments
+
+Customers that are married, educated, with 0-1 children, between ages of 41 and 50 were the most likely to accept campaigns and have higher sales overall. This group significantly outperforms similar segments.
+
+<BlogImage
+  src={topFiveSegments}
+  alt="Top 5 Marketing Segments"
+  caption="0-1: Represents Number of Children"
+/>
+
+### Individual Campaigns
+
+Campaigns 3-5 were most effective at converting customers while Campaign 2 was significantly less effective. Campaigns showed a strong relationship with total spent on wine products (even more than total spent overall).
+
+<br />
+**Steps to Consider:**
+
+- Continue using more recent campaign strategies, as these have been more effective.
+- Emphasize wine sales in marketing campaigns.
+
+<BlogImage src={individualCampaigns} alt="Individual Campaign Success" />
+
+### Age Groups and Campaign Conversion
+
+41-50 age group is accepting the most campaigns overall, but have a lower conversion rate. Whereas 31-40, 41-50, and 51-60 age groups have a much better conversion rate while still having similar results. Meanwhile, our 23-30 and 71-81 age groups have a higher conversion rate for campaigns, but far fewer customers fall in these age brackets.
+
+<br />
+**Steps to Consider:**
+
+- Work on increasing conversion for ages 41-50 where they have the highest accepted campaigns but at a significantly lower conversion rate.
+- Focus on bringing in more users between ages 23-30 and 70+. While these demographics are a smaller portion of your total user base, they have a significantly higher campaign conversion.
+
+<BlogImage src={acceptedCampaignsPerAgeGroup} alt="Accepted campaigns based on age group" />
+
+### Campaign Methods (In Store, Web, Catalog)
+
+While in person and web sales account for a majority of sales, catalog customers were more likely to accept campaigns (8% increase).
+
+<br />
+**Steps to Consider:**
+
+- Consider increasing investment in catalog campaigns to see if it generates more sales without impacting online or web purchases.
+- Or consider stronger marketing effort for in store purchases since it accounts for the biggest percentage of overall sales.
+
+<BlogImage
+  src={purchaseMethodsCampaigns}
+  alt="Purchase methods per campaign"
+  caption="8% increase on Catalog Purchases for those accepting campaigns."
+/>
+
+### Amount Spent vs Number of Children
+
+The fewer children a customer has, the more likely they are to accept campaigns and spend more.
+
+<br />
+**Steps to Consider:**
+
+- Focus marketing efforts on those with fewer children (potential 34% improvement in acceptance rates)
+- Explore product and marketing offerings specifically designed for families
+
+<BlogImage
+  src={amountSpentChildrenCount}
+  alt="Amount spent based on number of children in household"
+/>
+
+### Average Spent Based on Education
+
+Those with a basic education level have a low average order value and accept significantly fewer campaigns. Where as all other education levels have a comparable order value and campaign acceptance.
+
+<br />
+**Steps to Consider:**
+
+- Focus marketing efforts on those with at least a graduation education level.
+- Explore why basic education level individuals are less receptive to campaigns and overall spending.
+
+<BlogImage src={educationDemographics} alt="Average spent based on education level" />
+
+### Campaign Acceptance Based on Marital Status
+
+Customers that are married or together accept more campaigns that other demographics. Similar results found in total spent.
+
+<br />
+**Steps to Consider:**
+
+- Increase marketing effort towards customers that are married, since they have a significantly higher acceptance rate of campaigns and total money spent.
+
+<BlogImage
+  src={maritalStatusDemographics}
+  alt="Marketing campaign acceptance based on marital status"
+/>
+
+### Web Traffic Conversion
+
+Web conversion rates are generally high for all demographics. However, ages 31-50 account for the most website visits and have a lower conversion rate compared to other age groups. Similar conversion findings were found for accepting campaigns as well.
+
+<br />
+**Steps to Consider:**
+
+- Focus on increasing web conversion for 41-50 age group since it has the highest web traffic and a lower purchase conversion.
+- Try to expand user base for demographics that show high web traffic conversion.
+
+<BlogImage
+  src={webTrafficConversion}
+  alt="Web traffic sales conversion based on age demographics"
+/>
+
+### Average Order Value
+
+Age groups of 23-30 and 70+ have significantly higher total spent when accepting campaigns. While 23-30 and 70+ age demographics have accepted more total campaigns at a lower average order value.
+
+<BlogImage
+  src={averageOrderValue}
+  alt="Average order value based on customers who accept campaigns"
+/>
