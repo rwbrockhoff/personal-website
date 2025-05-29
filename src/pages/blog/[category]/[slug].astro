@@ -1,7 +1,7 @@
 ---
 import { getCollection, getEntry } from 'astro:content';
 import Layout from '@layouts/layout.astro';
-import GithubIcon from '@images/links/github.svg';
+import GithubIcon from '@images/icons/github.svg';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -31,6 +31,11 @@ const { Content } = await render();
       <h1>{data.title}</h1>
       <p>{data.description}</p>
 
+      <p class="post-tags">
+        <strong>tags: </strong>
+        {data.tags && data.tags.join(', ')}
+      </p>
+
       {
         data.githubLink && (
           <a
@@ -58,7 +63,7 @@ const { Content } = await render();
 
   header {
     width: 100%;
-    height: 40vh;
+    height: 50vh;
     min-height: fit-content;
     background-color: var(--primary-300);
     background-image: var(--background-grid);
@@ -74,6 +79,10 @@ const { Content } = await render();
 
   .button {
     margin: var(--space-md) 0;
+  }
+
+  .post-tags {
+    font-size: var(--font-size-xs);
   }
 
   .article-content {

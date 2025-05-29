@@ -21,7 +21,8 @@ const posts = await getCollection('blog');
                 <h2 class="post-title">{post.data.title}</h2>
                 <p class="post-description">{post.data.description}</p>
                 <p class="post-category">{post.data.category.replace('-', ' ')}</p>
-                {/* {post.data.tags && post.data.tags.map((tag) => <p class="post-tags">{tag}</p>)} */}
+
+                {post.data.tags && <p class="post-tags">{post.data.tags.join(', ')}</p>}
               </div>
             </a>
           </article>
