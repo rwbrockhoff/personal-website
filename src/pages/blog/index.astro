@@ -18,7 +18,7 @@ const posts = await getCollection('blog');
           <article class="post-card">
             <a href={`/blog/${post.slug}/`} class="post-link">
               <div class="post-content flex-col">
-                <p class="post-category">{post.data.category}</p>
+                <p class="post-category">{post.data.category.replace('-', ' ')}</p>
                 <h2 class="post-title">{post.data.title}</h2>
 
                 <p class="post-description">{post.data.description}</p>
