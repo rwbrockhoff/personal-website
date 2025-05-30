@@ -50,15 +50,52 @@ const { Content } = await render();
         )
       }
     </header>
-    <section class="article-content readable-width">
-      <Content />
+
+    <section class="article-content">
+      <a href="/blog" class="blog-button">Back to Blog</a>
+      <div class="readable-width">
+        <Content />
+      </div>
     </section>
   </article>
 </Layout>
 
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const button = document.querySelector('.blog-button') as HTMLElement;
+
+    if (!button) return;
+
+    button.style.opacity = '0';
+
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      const headerHeight = window.innerHeight * 0.5; // 50vh
+
+      // Show button when scrolled past 50% of header
+      if (scrollY > headerHeight * 0.5) button.style.opacity = '1';
+      else button.style.opacity = '0';
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+  });
+</script>
+
 <style>
   article {
     min-height: 100vh;
+  }
+
+  a.blog-button {
+    position: sticky;
+    z-index: 100;
+    top: var(--space-xxl);
+    left: var(--space-xxl);
+    color: var(--primary-color);
+    opacity: 0;
+    cursor: pointer;
+    transition: all var(--transition-speed) ease;
   }
 
   header {
@@ -87,5 +124,11 @@ const { Content } = await render();
 
   .article-content {
     margin: var(--space-xxl) auto;
+  }
+
+  @media (max-width: 1200px) {
+    a.blog-button {
+      display: none;
+    }
   }
 </style>
