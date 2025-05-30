@@ -1,16 +1,18 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '@layouts/layout.astro';
+import Hero from '@components/global/hero.astro';
 import Section from '@components/global/section.astro';
 
 const posts = await getCollection('blog');
 ---
 
 <Layout title="Blog">
-  <header class="blog-header flex-center flex-col white-text">
+  <Hero className="flex-center flex-col white-text">
     <h1>Blog</h1>
     <p>Thoughts on development, data analysis, and technology</p>
-  </header>
+  </Hero>
+
   <Section className="posts-container">
     <div class="posts-grid">
       {
@@ -34,18 +36,6 @@ const posts = await getCollection('blog');
 </Layout>
 
 <style>
-  .blog-header {
-    width: 100%;
-    height: 40vh;
-    min-height: fit-content;
-    background-color: var(--primary-300);
-    background-image: var(--background-grid);
-    background-size: var(--space-md) var(--space-md);
-    border-bottom: 5px solid var(--primary-color);
-    text-align: center;
-    padding-top: var(--nav-height);
-  }
-
   .posts-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));

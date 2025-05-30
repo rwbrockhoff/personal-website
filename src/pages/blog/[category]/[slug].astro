@@ -1,19 +1,16 @@
 ---
 import { getCollection, getEntry } from 'astro:content';
 import Layout from '@layouts/layout.astro';
+import Hero from '@components/global/hero.astro';
 import GithubIcon from '@images/icons/github.svg';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
 
-  const paths = posts.map((post) => {
+  return posts.map((post) => {
     const [category, slug] = post.slug.split('/');
-    return {
-      params: { category, slug },
-    };
+    return { params: { category, slug } };
   });
-
-  return paths;
 }
 
 const { category, slug } = Astro.params;
@@ -27,13 +24,13 @@ const { Content } = await render();
 
 <Layout title={data.title}>
   <article>
-    <header class="flex-center flex-col readable-width white-text">
+    <Hero className="flex-center flex-col readable-width white-text">
       <h1>{data.title}</h1>
-      <p>{data.description}</p>
+      <p class="text-padding">{data.description}</p>
 
-      <p class="post-tags">
+      <p class="post-tags text-padding">
         <strong>tags: </strong>
-        {data.tags && data.tags.join(', ')}
+        {data.tags?.join(', ') || 'No tags'}
       </p>
 
       {
@@ -49,7 +46,7 @@ const { Content } = await render();
           </a>
         )
       }
-    </header>
+    </Hero>
 
     <section class="article-content">
       <a href="/blog" class="blog-button">Back to Blog</a>
@@ -87,6 +84,10 @@ const { Content } = await render();
     min-height: 100vh;
   }
 
+  .article-content {
+    margin: var(--space-xxl) auto;
+  }
+
   a.blog-button {
     position: sticky;
     z-index: 100;
@@ -98,32 +99,12 @@ const { Content } = await render();
     transition: all var(--transition-speed) ease;
   }
 
-  header {
-    width: 100%;
-    height: 50vh;
-    min-height: fit-content;
-    background-color: var(--primary-300);
-    background-image: var(--background-grid);
-    background-size: var(--space-md) var(--space-md);
-    text-align: center;
-    padding-top: var(--nav-height);
-    box-shadow: var(--box-shadow-light);
-  }
-
-  p {
+  p.text-padding {
     padding: var(--space-sm) 0;
-  }
-
-  .button {
-    margin: var(--space-md) 0;
   }
 
   .post-tags {
     font-size: var(--font-size-xs);
-  }
-
-  .article-content {
-    margin: var(--space-xxl) auto;
   }
 
   @media (max-width: 1200px) {

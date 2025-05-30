@@ -238,7 +238,6 @@ hr {
 
 .subtitle {
   font-weight: 400;
-  margin: var(--space-xl) 0;
 }
 
 /* Change Defaults for Focus/Selection Behaviors */
