@@ -1,0 +1,32 @@
+---
+title: 'Sälka Designs: Automated ETL & Analytics Pipeline'
+description: 'Serverless ETL pipeline that automatically ingests Squarespace order data, validates quality, and delivers weekly production reports via email.'
+pubDate: 2025-05-20
+tags: ['aws', 'python', 'sql', 'pandas']
+category: 'data-analytics'
+githubLink: 'https://github.com/rwbrockhoff/personal-website'
+---
+
+import BlogImage from '@components/global/blog-image.astro';
+import architectureDiagram from '@assets/blog/data-analytics/salka-designs-automated-etl/salka-architecture-diagram.png';
+
+### Project Summary
+
+Sälka Designs is a small business looking to streamline their production process by automating their production schedule and bill of materials (often referred to as a BOM). The goal was to create an automated, cloud-based pipeline that would ingest their order data from their Squarespace e-commerce and create a report to help the production team with managing weekly orders. In addition, we needed to store the cleaned data in a database for future sales reports and other extensions from this project based on business needs.
+
+### Project Requirements
+
+Sälka Designs needs a weekly excel file with three separate reports:
+
+- Pending Orders
+- Order Schedule
+- Bill of Materials (materials cut list)
+
+## Architecture Overview
+
+<BlogImage
+  src={architectureDiagram}
+  alt="AWS cloud architecture overview for data ingestion, etl processing, analytics, and reporting."
+  caption="The code for this project can be viewed in the Github repo link found in the header."
+  fullSize
+/>
