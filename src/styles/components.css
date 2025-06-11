@@ -7,7 +7,6 @@
   color: white;
   font-size: var(--font-size-base);
   border-radius: var(--border-radius);
-  transition: all var(--transition-speed) ease;
   border: none;
 }
 

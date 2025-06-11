@@ -82,7 +82,6 @@
   --box-shadow-light: 0px 8px 0px -3px rgba(0, 0, 0, 0.1);
   --box-shadow-primary: 0px 8px 0px -3px rgba(122, 132, 94, 0.75);
   --transition-speed: 0.3s;
-  --background-transition: background-color 1s ease-in-out;
 }
 
 /* Dark Theme Variables */
@@ -114,7 +113,6 @@ body {
   font-family: var(--font-family-base);
   line-height: var(--line-height-base);
   margin: 0;
-  transition: var(--background-transition);
 }
 
 #app {
@@ -233,7 +231,6 @@ hr {
 
 .background-alt {
   background-color: var(--background-alt);
-  transition: var(--background-transition);
 }
 
 .subtitle {

@@ -58,25 +58,29 @@ const { Content } = await render();
 </Layout>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const button = document.querySelector('.blog-button') as HTMLElement;
+  let scrollHandler: (() => void) | null = null;
 
+  const setupBlogButton = () => {
+    const button = document.querySelector('.blog-button') as HTMLElement;
     if (!button) return;
 
-    button.style.opacity = '0';
+    // Remove old listener
+    if (scrollHandler) window.removeEventListener('scroll', scrollHandler);
 
-    const handleScroll = () => {
+    // Create handler
+    scrollHandler = () => {
       const scrollY = window.scrollY;
-      const headerHeight = window.innerHeight * 0.5; // 50vh
-
-      // Show button when scrolled past 50% of header
-      if (scrollY > headerHeight * 0.5) button.style.opacity = '1';
-      else button.style.opacity = '0';
+      const headerHeight = window.innerHeight * 0.5;
+      button.style.opacity = scrollY > headerHeight * 0.5 ? '1' : '0';
     };
 
-    window.addEventListener('scroll', handleScroll);
-    handleScroll();
-  });
+    window.addEventListener('scroll', scrollHandler);
+    scrollHandler(); // Initial call
+  };
+
+  // Add listener for page load and astro page load
+  document.addEventListener('DOMContentLoaded', setupBlogButton);
+  document.addEventListener('astro:page-load', setupBlogButton);
 </script>
 
 <style>

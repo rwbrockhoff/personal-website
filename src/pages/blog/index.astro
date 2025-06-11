@@ -13,7 +13,7 @@ const posts = await getCollection('blog');
     <p>Thoughts on development, data analysis, and technology</p>
   </Hero>
 
-  <Section className="posts-container">
+  <Section id="blog" className="posts-container">
     <div class="posts-grid">
       {
         posts.map((post) => (

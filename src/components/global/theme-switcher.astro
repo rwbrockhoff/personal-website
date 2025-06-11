@@ -38,10 +38,7 @@
 </button>
 
 <script>
-  // Inline script that runs on the client
-  const themeToggle = document.getElementById('theme-toggle');
-
-  const setTheme = (theme) => {
+  const setTheme = (theme: string) => {
     document.documentElement.setAttribute('data-theme', theme);
     localStorage.setItem('theme', theme);
   };
@@ -60,13 +57,25 @@
     return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   };
 
-  // Run on page load
-  setTheme(getPreferredTheme());
+  const initTheme = () => {
+    // Set the theme
+    setTheme(getPreferredTheme());
 
-  // Add click event
-  themeToggle.addEventListener('click', toggleTheme);
+    // Attach click event to toggle button
+    const themeToggle = document.getElementById('theme-toggle');
+    if (themeToggle) {
+      // Remove existing listener to prevent duplicates
+      themeToggle.removeEventListener('click', toggleTheme);
+      // Add the click event
+      themeToggle.addEventListener('click', toggleTheme);
+    }
+  };
 
-  // Watch for OS changes
+  // Add listener for page load and astro page load
+  document.addEventListener('DOMContentLoaded', initTheme);
+  document.addEventListener('astro:page-load', initTheme);
+
+  // Watch for OS theme changes
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
     if (!localStorage.getItem('theme')) {
       setTheme(e.matches ? 'dark' : 'light');
