@@ -29,17 +29,4 @@ const { id, className = '', readableWidth = false } = Astro.props as SectionProp
     padding: 4rem var(--space-xl);
     width: 100%;
   }
-
-  .readable-width {
-    display: flex;
-    flex-direction: column;
-    margin: auto;
-    width: 60%;
-  }
-
-  @media (max-width: 768px) {
-    .readable-width {
-      width: 100%;
-    }
-  }
 </style>

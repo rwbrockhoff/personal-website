@@ -1,0 +1,51 @@
+---
+import { Image } from 'astro:assets';
+
+interface Props {
+  src: ImageMetadata;
+  alt: string;
+  caption?: string;
+  priority?: boolean;
+  class?: string;
+  fullSize?: boolean;
+}
+
+const { src, alt, caption, priority = false, class: className, fullSize = false } = Astro.props;
+---
+
+<figure class="blog-figure">
+  <Image
+    src={src}
+    alt={alt}
+    class={`blog-image ${className || ''} ${fullSize ? 'full-size-image' : ''}`}
+    loading={priority ? 'eager' : 'lazy'}
+    fetchpriority={priority ? 'high' : 'auto'}
+  />
+  {caption && <figcaption>{caption}</figcaption>}
+</figure>
+
+<style>
+  .blog-figure {
+    margin: var(--space-md) 0;
+  }
+
+  .blog-image {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 600px;
+    border-radius: var(--border-radius-min);
+    box-shadow: var(--box-shadow-light);
+  }
+
+  .full-size-image {
+    max-height: 100%;
+  }
+
+  figcaption {
+    font-style: italic;
+    color: var(--text-color-muted);
+    margin-top: var(--space-md);
+    font-size: 0.9rem;
+  }
+</style>

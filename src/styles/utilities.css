@@ -4,9 +4,9 @@
 }
 
 .with-icon svg {
-  height: 1.25em;
   width: 1.25em;
-  margin-right: 0.25em;
+  height: 1.25em;
+  margin-right: var(--space-min);
 }
 
 .flex-center {
@@ -15,6 +15,43 @@
   justify-content: center;
 }
 
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
 .text-color-invert {
   color: var(--text-color-invert);
+}
+
+.white-text h1,
+.white-text h2,
+.white-text h3,
+.white-text h4,
+.white-text h5,
+.white-text h6,
+.white-text p,
+.white-text span,
+.white-text li {
+  color: white;
+}
+
+.readable-width {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 60%;
+}
+
+@media (max-width: 1200px) {
+  .readable-width {
+    width: 100%;
+    padding: var(--space-md) var(--space-xxl);
+  }
+}
+
+@media (max-width: 768px) {
+  .readable-width {
+    padding: var(--space-min) var(--space-lg);
+  }
 }

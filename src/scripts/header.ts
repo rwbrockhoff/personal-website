@@ -1,43 +1,87 @@
 // Script for adding styles/animations to header component
 
-const sections = document.querySelectorAll('section');
-const navLinks = document.querySelector('.nav-links');
-const navLink = document.querySelectorAll('.nav-link');
-const header = document.querySelector('header');
-const hamburger = document.querySelector('.hamburger-menu');
+// Global scroll handler to prevent scope issues
+let currentScrollHandler: (() => void) | null = null;
 
-// Navigation menu toggle
-hamburger?.addEventListener('click', () => {
-  navLinks?.classList.toggle('active');
-  hamburger.classList.toggle('active');
-});
+const initializeHeader = (): void => {
+  const sections = document.querySelectorAll('section');
+  const navLinks = document.querySelector('.nav-links');
+  const navLink = document.querySelectorAll('.nav-link');
+  const header = document.querySelector('header');
+  const hamburger = document.querySelector('.hamburger-menu');
 
-// Close menu when clicking on links
-navLink.forEach((link) => {
-  link.addEventListener('click', () => {
-    navLinks?.classList.remove('active');
-    hamburger?.classList.remove('active');
-  });
-});
+  // Remove old listener to prevent duplicates
+  if (currentScrollHandler) window.removeEventListener('scroll', currentScrollHandler);
 
-// Add scroll animations
-window.addEventListener('scroll', () => {
-  let current: string | null = '';
-
-  // Change header styles on scroll
-  header?.classList.toggle('scrolled-header', window.scrollY > 0);
-
-  sections.forEach((section) => {
-    const rect = section.getBoundingClientRect();
-
-    // Ensure section is in the viewport (adjusting for small sections)
-    if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
-      current = section.getAttribute('id');
-    }
+  // Navigation menu toggle
+  hamburger?.addEventListener('click', () => {
+    navLinks?.classList.toggle('active');
+    hamburger.classList.toggle('active');
   });
 
-  // Toggle active class to nav link on scroll
+  // Close menu when clicking on links
   navLink.forEach((link) => {
-    link.classList.toggle('active', link.getAttribute('href') === `#${current}`);
+    link.addEventListener('click', () => {
+      navLinks?.classList.remove('active');
+      hamburger?.classList.remove('active');
+    });
   });
-});
+
+  // Create scroll handler
+  const handleScroll = (): void => {
+    let current: string | null = '';
+    const currentPath = window.location.pathname;
+
+    // Change header styles on scroll
+    header?.classList.toggle('scrolled-header', window.scrollY > 0);
+
+    if (window.scrollY < 50) {
+      // When near top of page, assign active based on current page
+      if (currentPath === '/' || currentPath === '') {
+        current = 'home';
+      } else {
+        // For other pages like /blog, use clean path
+        current = currentPath.replace('/', '') || 'home';
+      }
+    } else {
+      // Assign current to sections within main user view
+      sections.forEach((section) => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
+          current = section.getAttribute('id');
+        }
+      });
+    }
+
+    // Toggle active class to nav link on scroll
+    navLink.forEach((link) => {
+      const href = link.getAttribute('href');
+      let shouldBeActive = false;
+
+      if (current && href) {
+        if (href.includes('#')) {
+          // Hash/section links: #home, /#about, etc.
+          const cleanHref = href.replace(/[/#]/g, '');
+          shouldBeActive = cleanHref === current;
+        } else {
+          // Page links: /blog
+          const cleanHref = href.replace('/', '') || 'home';
+          shouldBeActive = cleanHref === current;
+        }
+      }
+
+      link.classList.toggle('active', shouldBeActive);
+    });
+  };
+
+  // Store reference and add listener
+  currentScrollHandler = handleScroll;
+  window.addEventListener('scroll', handleScroll);
+
+  // Run once on page load to set initial state
+  handleScroll();
+};
+
+// Add listener for page load and astro page load
+document.addEventListener('DOMContentLoaded', initializeHeader);
+document.addEventListener('astro:page-load', initializeHeader);

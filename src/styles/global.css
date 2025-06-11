@@ -14,6 +14,7 @@
 
   /* -- Semantic Colors -- */
   --text-color: #000000;
+  --text-color-muted: #9ca3af;
   --text-color-invert: #ffffff;
   --text-color-primary: var(--primary-800);
   --primary-color: var(--primary-600);
@@ -68,19 +69,19 @@
   --nav-height: 5rem;
   --max-content-width: 1200px;
 
-  /* -- Breakpoints -- */
-  --breakpoint-xs: 0;
-  --breakpoint-sm: 576px;
-  --breakpoint-md: 768px;
-  --breakpoint-lg: 992px;
-  --breakpoint-xl: 1200px;
+  /* -- Breakpoints -- */ /* 
+   xs: 0
+   sm: 576px
+   md: 768px
+   lg: 992px
+   xl: 1200px
+*/
 
   /* -- Effects -- */
   --box-shadow-default: 0px 8px 0px -4px rgba(0, 0, 0, 0.75);
   --box-shadow-light: 0px 8px 0px -3px rgba(0, 0, 0, 0.1);
   --box-shadow-primary: 0px 8px 0px -3px rgba(122, 132, 94, 0.75);
   --transition-speed: 0.3s;
-  --background-transition: background-color 1s ease-in-out;
 }
 
 /* Dark Theme Variables */
@@ -112,7 +113,6 @@ body {
   font-family: var(--font-family-base);
   line-height: var(--line-height-base);
   margin: 0;
-  transition: var(--background-transition);
 }
 
 #app {
@@ -168,6 +168,7 @@ p {
 h1 {
   font-size: var(--font-size-2xl);
   line-height: var(--line-height-sm);
+  margin: var(--space-md) 0;
 }
 
 h2 {
@@ -179,22 +180,26 @@ h2 {
 h3 {
   font-size: var(--font-size-lg);
   line-height: var(--line-height-sm);
+  margin: var(--space-sm) 0;
 }
 
 h4 {
   font-size: var(--font-size-md);
   line-height: var(--line-height-base);
+  margin: var(--space-sm) 0;
 }
 
 h5 {
   font-size: var(--font-size-xs);
   line-height: var(--line-height-base);
+  margin: var(--space-xs) 0;
 }
 
 h6 {
   font-size: var(--font-size-xxs);
   font-weight: var(--font-weight-light);
   line-height: var(--line-height-base);
+  margin: var(--space-xs) 0;
 }
 
 p,
@@ -216,14 +221,20 @@ a:hover {
   opacity: 0.9;
 }
 
+/* Horizontal Rule */
+hr {
+  border: none;
+  height: 1px;
+  background-color: var(--text-color-muted);
+  margin: var(--space-xl) 0;
+}
+
 .background-alt {
   background-color: var(--background-alt);
-  transition: var(--background-transition);
 }
 
 .subtitle {
   font-weight: 400;
-  margin: var(--space-xl) 0;
 }
 
 /* Change Defaults for Focus/Selection Behaviors */

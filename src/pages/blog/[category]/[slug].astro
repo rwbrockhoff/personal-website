@@ -1,0 +1,145 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import Layout from '@layouts/layout.astro';
+import Hero from '@components/global/hero.astro';
+import GithubIcon from '@images/icons/github.svg';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+
+  return posts.map((post) => {
+    const [category, slug] = post.slug.split('/');
+    return { params: { category, slug } };
+  });
+}
+
+const { category, slug } = Astro.params;
+const post = await getEntry('blog', `${category}/${slug}`);
+
+if (!post) throw new Error(`Post not found for slug: ${slug}`);
+
+const { data, render } = post;
+const { Content } = await render();
+---
+
+<Layout title={data.title}>
+  <article>
+    <Hero className="flex-center flex-col readable-width white-text">
+      <h1>{data.title}</h1>
+      <p>{data.description}</p>
+
+      <p class="post-tags">
+        <strong>tags: </strong>
+        {data.tags?.join(', ') || 'No tags'}
+      </p>
+
+      {
+        data.githubLink && (
+          <a
+            href={data.githubLink}
+            class="button button-inverse with-icon"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <GithubIcon aria-hidden="true" />
+            Github
+          </a>
+        )
+      }
+    </Hero>
+
+    <section class="article-content">
+      <a href="/blog" class="blog-button hover-underline">Back to Blog</a>
+      <div class="readable-width">
+        <Content />
+      </div>
+    </section>
+  </article>
+</Layout>
+
+<script>
+  let scrollHandler: (() => void) | null = null;
+
+  const setupBlogButton = () => {
+    const button = document.querySelector('.blog-button') as HTMLElement;
+    if (!button) return;
+
+    // Remove old listener
+    if (scrollHandler) window.removeEventListener('scroll', scrollHandler);
+
+    // Create handler
+    scrollHandler = () => {
+      const scrollY = window.scrollY;
+      const headerHeight = window.innerHeight * 0.5;
+      button.style.opacity = scrollY > headerHeight * 0.5 ? '1' : '0';
+    };
+
+    window.addEventListener('scroll', scrollHandler);
+    scrollHandler(); // Initial call
+  };
+
+  // Add listener for page load and astro page load
+  document.addEventListener('DOMContentLoaded', setupBlogButton);
+  document.addEventListener('astro:page-load', setupBlogButton);
+</script>
+
+<style>
+  article {
+    min-height: 100vh;
+  }
+
+  section.article-content {
+    margin: var(--space-xxl) auto;
+  }
+
+  article :global(p) {
+    margin-bottom: 1rem;
+  }
+
+  article :global(h1, h2, h3, h4, h5, h6) {
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  article :global(ul, ol) {
+    margin-top: calc(-1 * var(--space-min));
+  }
+
+  section :global(a) {
+    color: var(--primary-color);
+  }
+
+  article :global(p code) {
+    font-size: var(--font-size-xs);
+    background-color: var(--primary-100);
+    padding: var(--space-min);
+    border-radius: var(--border-radius-min);
+    margin: 0 0.1rem;
+  }
+
+  /* global required even for theme in Astro blog */
+  :global([data-theme='dark']) article :global(p code) {
+    background-color: var(--primary-900);
+  }
+
+  a.blog-button {
+    position: sticky;
+    z-index: 100;
+    top: var(--space-xxl);
+    left: var(--space-xxl);
+    color: var(--primary-color);
+    opacity: 0;
+    cursor: pointer;
+    transition: all var(--transition-speed) ease;
+  }
+
+  p.post-tags {
+    font-size: var(--font-size-xs);
+  }
+
+  @media (max-width: 1200px) {
+    a.blog-button {
+      display: none;
+    }
+  }
+</style>

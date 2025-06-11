@@ -1,0 +1,114 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '@layouts/layout.astro';
+import Hero from '@components/global/hero.astro';
+import Section from '@components/global/section.astro';
+
+const posts = await getCollection('blog');
+---
+
+<Layout title="Blog">
+  <Hero className="flex-center flex-col white-text">
+    <h1>Blog</h1>
+    <p>Thoughts on development, data analysis, and technology</p>
+  </Hero>
+
+  <Section id="blog" className="posts-container">
+    <div class="posts-grid">
+      {
+        posts.map((post) => (
+          <article class="post-card">
+            <a href={`/blog/${post.slug}/`} class="post-link">
+              <div class="post-content flex-col">
+                <p class="post-category">{post.data.category.replace('-', ' ')}</p>
+                <h2 class="post-title">{post.data.title}</h2>
+
+                <p class="post-description">{post.data.description}</p>
+
+                {post.data.tags && <p class="post-tags">{post.data.tags.join(', ')}</p>}
+              </div>
+            </a>
+          </article>
+        ))
+      }
+    </div>
+  </Section>
+</Layout>
+
+<style>
+  .posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--space-lg);
+    padding: var(--space-xl);
+  }
+
+  .post-card {
+    background: var(--background-alt);
+    border-radius: var(--border-radius);
+    transition: all 0.2s ease;
+    overflow: hidden;
+    box-shadow: var(--box-shadow-light);
+    border: 2px solid var(--background-alt);
+  }
+
+  .post-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--box-shadow-primary);
+    border: 2px solid var(--primary-color);
+  }
+
+  .post-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    height: 100%;
+  }
+
+  .post-content {
+    padding: var(--space-lg);
+    height: 100%;
+  }
+
+  .post-title {
+    color: var(--text-color);
+    margin-bottom: var(--space-sm);
+  }
+
+  .post-description {
+    color: var(--text-color);
+    flex-grow: 1;
+  }
+
+  .post-category {
+    font-size: var(--font-size-xs);
+    background-color: var(--primary-400);
+    width: fit-content;
+    padding: var(--space-min) var(--space-sm);
+    border-radius: var(--border-radius-min);
+    color: white;
+  }
+
+  .post-tags {
+    border-top: 1px solid var(--text-color-muted);
+    margin-top: var(--space-lg);
+    padding-top: var(--space-md);
+    font-size: var(--font-size-xs);
+    font-style: italic;
+  }
+
+  @media (max-width: 768px) {
+    .blog-container {
+      padding: var(--space-md) var(--space-sm);
+    }
+
+    .posts-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-md);
+    }
+
+    .post-content {
+      padding: var(--space-md);
+    }
+  }
+</style>

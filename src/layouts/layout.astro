@@ -2,8 +2,15 @@
 import '@styles/index.css';
 import '@fontsource-variable/fraunces';
 
+import { ClientRouter } from 'astro:transitions';
 import Header from '@components/global/header.astro';
 import Footer from '@components/global/footer.astro';
+
+interface LayoutProps {
+  title?: string;
+}
+
+const { title } = Astro.props as LayoutProps;
 ---
 
 <!doctype html>
@@ -12,9 +19,9 @@ import Footer from '@components/global/footer.astro';
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-
+    <ClientRouter />
     <meta name="generator" content={Astro.generator} />
-    <title>Ryan Brockhoff | Web Developer & Data Analyst</title>
+    <title>{title ? `${title} |` : ''} Ryan Brockhoff - Web Developer & Data Analyst</title>
   </head>
 
   <Header />
@@ -24,4 +31,5 @@ import Footer from '@components/global/footer.astro';
     </main>
     <Footer />
   </body>
+  <script src="@scripts/console-message.ts"></script>
 </html>

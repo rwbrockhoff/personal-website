@@ -1,12 +1,12 @@
 .button {
   display: inline-block;
   padding: var(--space-min) var(--space-md);
+  margin: var(--space-sm);
   text-align: center;
   background-color: var(--primary-color);
   color: white;
   font-size: var(--font-size-base);
   border-radius: var(--border-radius);
-  transition: all var(--transition-speed) ease;
   border: none;
 }
 
@@ -26,4 +26,11 @@
   background-color: var(--background-alt);
   transform: translateY(-1px);
   box-shadow: var(--box-shadow-light);
+}
+
+.astro-code {
+  padding: var(--space-md);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow-light);
+  margin-bottom: var(--space-lg);
 }
