@@ -1,16 +1,16 @@
 :root {
   /* -- Theme Colors -- */
-  --primary-50: #f4f5f0;
-  --primary-100: #e6e9de;
-  --primary-200: #d1d5c1;
-  --primary-300: #a9b18f;
-  --primary-400: #97a07b;
-  --primary-500: #7a845e;
-  --primary-600: #5f6848;
-  --primary-700: #4a513a;
-  --primary-800: #3d4232;
-  --primary-900: #363a2d;
-  --primary-950: #1b1e15;
+  --primary-50: #f4f6f3;
+  --primary-100: #e6e8e3;
+  --primary-200: #ccd2c8;
+  --primary-300: #a8b3a2;
+  --primary-400: #7f8e79;
+  --primary-500: #62745c;
+  --primary-600: #485744;
+  --primary-700: #3a4636;
+  --primary-800: #2f392c;
+  --primary-900: #272f25;
+  --primary-950: #151a14;
 
   /* -- Semantic Colors -- */
   --text-color: #000000;
