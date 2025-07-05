@@ -7,7 +7,6 @@ console.log(
 
     💼 I'm currently seeking opportunities in:
         • Full-Stack Development
-        • Data Analytics
 
     📧 Let's build something amazing together:
         ryanbrockhoff@protonmail.com
@@ -31,10 +30,10 @@ console.log('%cshowContact()', 'color: #4ecdc4; font-family: monospace;');
 
 (window as any).showSkills = (): void => {
   const skills: Record<string, string[]> = {
-    languages: ['Python', 'JavaScript/Typescript', 'SQL'],
+    languages: ['JavaScript/Typescript', 'Python'],
     frameworks: ['React', 'Node.js'],
     databases: ['PostgreSQL'],
-    tools: ['Git', 'Docker', 'AWS', 'Jupyter'],
+    tools: ['Git', 'Docker', 'AWS'],
     analytics: ['Pandas', 'Matplotlib', 'Numpy', 'Seaborn'],
   };
 

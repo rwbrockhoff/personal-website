@@ -8,7 +8,7 @@ const blogCollection = defineCollection({
     pubDate: z.date(),
     tags: z.array(z.string()).optional(),
     image: z.string().optional(),
-    category: z.enum(['data-analytics', 'tech', 'personal']),
+    category: z.enum(['tech', 'personal']),
     githubLink: z.string().optional(),
   }),
 });
