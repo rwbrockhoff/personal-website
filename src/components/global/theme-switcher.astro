@@ -51,14 +51,13 @@
 
   const getPreferredTheme = () => {
     const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-      return savedTheme;
-    }
+
+    if (savedTheme) return savedTheme;
     return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   };
 
   const initTheme = () => {
-    // Set the theme
+    // Set the theme passing in preferred theme
     setTheme(getPreferredTheme());
 
     // Attach click event to toggle button
