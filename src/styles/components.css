@@ -1,36 +1,44 @@
-.button {
-  display: inline-block;
-  padding: var(--space-min) var(--space-md);
-  margin: var(--space-sm);
-  text-align: center;
-  background-color: var(--primary-color);
-  color: white;
-  font-size: var(--font-size-base);
-  border-radius: var(--border-radius);
-  border: none;
-}
+@layer components {
+  .button {
+    display: inline-block;
+    padding: var(--space-min) var(--space-md);
+    margin: var(--space-sm);
+    text-align: center;
+    background-color: var(--primary-color);
+    color: white;
+    font-size: var(--font-size-base);
+    border-radius: var(--border-radius);
+    border: none;
+  }
 
-.button:hover {
-  background-color: var(--primary-600);
-  transform: translateY(-1px);
-  box-shadow: var(--box-shadow-light);
-}
+  .button:hover {
+    background-color: var(--primary-600);
+    transform: translateY(-1px);
+    box-shadow: var(--box-shadow-light);
+  }
 
-/* Inverse button variant */
-.button-inverse {
-  background-color: var(--background);
-  color: var(--text-color-primary);
-}
+  .button-inverse {
+    background-color: var(--background);
+    color: var(--text-color-primary);
+  }
 
-.button-inverse:hover {
-  background-color: var(--background-alt);
-  transform: translateY(-1px);
-  box-shadow: var(--box-shadow-light);
-}
+  .button-inverse:hover {
+    background-color: var(--background-alt);
+    transform: translateY(-1px);
+    box-shadow: var(--box-shadow-light);
+  }
 
-.astro-code {
-  padding: var(--space-md);
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow-light);
-  margin-bottom: var(--space-lg);
+  .astro-code {
+    padding: var(--space-md);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow-light);
+    margin-bottom: var(--space-lg);
+  }
+
+  .tag {
+    border: 2px solid var(--primary-300);
+    padding: 0.2rem var(--space-xs);
+    font-size: var(--font-size-xs);
+    border-radius: var(--border-radius-min);
+  }
 }

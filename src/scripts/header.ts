@@ -1,8 +1,9 @@
 // Script for adding styles/animations to header component
 
-// Global handlers to prevent scope issues
+// Global handlers
 let currentScrollHandler: (() => void) | null = null;
 let currentHamburgerHandler: (() => void) | null = null;
+let currentDocumentClickHandler: ((e: Event) => void) | null = null;
 
 const initializeHeader = (): void => {
   const sections = document.querySelectorAll('section');
@@ -26,55 +27,69 @@ const initializeHeader = (): void => {
         hamburger?.classList.remove('active');
       });
     });
+
+    // Close menu clicking outside of navigation
+    if (!currentDocumentClickHandler) {
+      currentDocumentClickHandler = (e: Event) => {
+        const target = e.target as Element;
+        const nav = document.querySelector('nav');
+
+        // Check if menu is open and click is outside navigation
+        if (navLinks?.classList.contains('active') && nav && !nav.contains(target)) {
+          navLinks.classList.remove('active');
+          hamburger?.classList.remove('active');
+        }
+      };
+      document.addEventListener('click', currentDocumentClickHandler);
+    }
   }
 
-  // Initialize scroll handler if it doesn't exist
   if (!currentScrollHandler) {
     currentScrollHandler = (): void => {
-    let current: string | null = '';
-    const currentPath = window.location.pathname;
+      let current: string | null = '';
+      const currentPath = window.location.pathname;
 
-    // Change header styles on scroll
-    header?.classList.toggle('scrolled-header', window.scrollY > 0);
+      // Change header styles on scroll
+      header?.classList.toggle('scrolled-header', window.scrollY > 0);
 
-    if (window.scrollY < 50) {
-      // When near top of page, assign active based on current page
-      if (currentPath === '/' || currentPath === '') {
-        current = 'home';
-      } else {
-        // For other pages like /blog, use clean path
-        current = currentPath.replace('/', '') || 'home';
-      }
-    } else {
-      // Assign current to sections within main user view
-      sections.forEach((section) => {
-        const rect = section.getBoundingClientRect();
-        if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
-          current = section.getAttribute('id');
-        }
-      });
-    }
-
-    // Toggle active class to nav link on scroll
-    navLink.forEach((link) => {
-      const href = link.getAttribute('href');
-      let shouldBeActive = false;
-
-      if (current && href) {
-        if (href.includes('#')) {
-          // Hash/section links: #home, /#about, etc.
-          const cleanHref = href.replace(/[/#]/g, '');
-          shouldBeActive = cleanHref === current;
+      if (window.scrollY < 50) {
+        // When near top of page, assign active based on current page
+        if (currentPath === '/' || currentPath === '') {
+          current = 'home';
         } else {
-          // Page links: /blog
-          const cleanHref = href.replace('/', '') || 'home';
-          shouldBeActive = cleanHref === current;
+          // For other pages like /blog, use clean path
+          current = currentPath.replace('/', '') || 'home';
         }
+      } else {
+        // Assign current to sections within main user view
+        sections.forEach((section) => {
+          const rect = section.getBoundingClientRect();
+          if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
+            current = section.getAttribute('id');
+          }
+        });
       }
 
-      link.classList.toggle('active', shouldBeActive);
-    });
-  };
+      // Toggle active class to nav link on scroll
+      navLink.forEach((link) => {
+        const href = link.getAttribute('href');
+        let shouldBeActive = false;
+
+        if (current && href) {
+          if (href.includes('#')) {
+            // Hash/section links: #home, /#about, etc.
+            const cleanHref = href.replace(/[/#]/g, '');
+            shouldBeActive = cleanHref === current;
+          } else {
+            // Page links: /blog
+            const cleanHref = href.replace('/', '') || 'home';
+            shouldBeActive = cleanHref === current;
+          }
+        }
+
+        link.classList.toggle('active', shouldBeActive);
+      });
+    };
 
     // Add listener and run once on page load
     window.addEventListener('scroll', currentScrollHandler);

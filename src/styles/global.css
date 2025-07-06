@@ -1,4 +1,8 @@
-@import './reset.css';
-@import './theme.css';
-@import './typography.css';
-@import './base.css';
+@layer reset, theme, typography, base, components, utilities;
+
+@import './reset.css' layer(reset);
+@import './theme.css' layer(theme);
+@import './typography.css' layer(typography);
+@import './base.css' layer(base);
+@import './components.css' layer(components);
+@import './utilities.css' layer(utilities);

@@ -4,8 +4,8 @@ import Layout from '@layouts/layout.astro';
 
 <Layout title="Ryan Brockhoff - Full Stack Developer">
   <section class="section">
-    <div class="content background-alt flex-center">
-      <div class="inner-content background-alt flex-center">
+    <div class="content background-alt flex-center width-100">
+      <div class="inner-content background-alt flex-center flex-col">
         <h1>404</h1>
 
         <h4 class="subtitle">Uh oh. This page doesn't exist.</h4>
@@ -17,8 +17,8 @@ import Layout from '@layouts/layout.astro';
 </Layout>
 
 <style>
+@layer components {
   .content {
-    width: 100%;
     height: 100vh;
     color: var(--text-color);
     background-image: var(--background-grid);
@@ -30,11 +30,11 @@ import Layout from '@layouts/layout.astro';
   }
 
   .inner-content {
-    flex-direction: column;
     height: fit-content;
     width: fit-content;
     padding: 4rem;
     box-shadow: var(--box-shadow-light);
     border-radius: var(--border-radius-md);
   }
+}
 </style>

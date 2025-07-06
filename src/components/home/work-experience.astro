@@ -7,23 +7,23 @@ import { workExperience } from '@data/work-experience.ts';
   <h2>Experience</h2>
   {
     workExperience.map((role, index) => (
-      <div class="timeline-item" style={`animation-delay: ${index * 0.2}s`}>
-        <div class="timeline-content background-alt">
-          <h4 class="timeline-title">{role.title}</h4>
-          <p class="timeline-description">
+      <div class="role-item" style={`animation-delay: ${index * 0.2}s`}>
+        <div class="role-content background-alt">
+          <h4 class="role-title">{role.title}</h4>
+          <p class="role-description">
             {role.company} • {role.duration}
           </p>
-          <p class="timeline-main-description">{role.description}</p>
+          <p class="role-main-description">{role.description}</p>
 
-          <div class="timeline-expanded-content">
-            <ul class="timeline-details">
+          <div class="role-expanded-content">
+            <ul class="role-details">
               {role.details.map((detail) => (
                 <li>{detail}</li>
               ))}
             </ul>
-            <div class="timeline-tags">
+            <div class="role-tags">
               {role.tags.map((tag) => (
-                <span class="timeline-tag">{tag}</span>
+                <span class="tag">{tag}</span>
               ))}
             </div>
           </div>
@@ -34,88 +34,85 @@ import { workExperience } from '@data/work-experience.ts';
 </Section>
 
 <style>
-  .timeline-item {
-    position: relative;
-    margin: var(--space-md) 0;
-    opacity: 0;
-    transform: translateY(30px);
-    animation: fadeInUp 0.6s ease-in-out forwards;
-  }
-
-  .timeline-content {
-    padding: var(--space-md);
-    border-radius: var(--border-radius);
-    transition: all var(--transition-speed) ease-in-out;
-    overflow: hidden;
-    cursor: pointer;
-  }
-
-  .timeline-content:hover {
-    box-shadow: var(--box-shadow-primary);
-  }
-
-  .timeline-description {
-    font-size: var(--font-size-base);
-    color: var(--text-color-primary);
-    margin: var(--space-min) 0;
-    font-style: italic;
-  }
-
-  .timeline-main-description {
-    margin-bottom: var(--space-sm);
-  }
-
-  .timeline-expanded-content {
-    max-height: 0;
-    opacity: 0;
-    overflow: hidden;
-    transition:
-      max-height 300ms ease-out,
-      opacity 200ms ease-out;
-  }
-
-  .timeline-content:hover .timeline-expanded-content {
-    max-height: 200px;
-    opacity: 1;
-  }
-
-  .timeline-details {
-    margin: var(--space-sm) 0;
-    padding-left: var(--space-md);
-  }
-
-  .timeline-details li {
-    margin-bottom: var(--space-xs);
-    color: var(--text-color-secondary);
-  }
-
-  .timeline-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-xs);
-    margin-top: var(--space-sm);
-  }
-
-  .timeline-tag {
-    border: 2px solid var(--primary-300);
-    padding: 0.2rem var(--space-xs);
-    font-size: var(--font-size-xs);
-    border-radius: var(--border-radius-min);
-    background-color: var(--primary-100);
-    color: var(--primary-800);
-  }
-
-  @keyframes fadeInUp {
-    to {
-      opacity: 1;
-      transform: translateY(0);
+  @layer components {
+    .role-item {
+      position: relative;
+      margin: var(--space-md) 0;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 0.6s ease-in-out forwards;
     }
-  }
 
-  @media (max-width: 768px) {
-    .timeline-expanded-content {
-      max-height: none;
+    .role-content {
+      padding: var(--space-md);
+      border-radius: var(--border-radius);
+      transition: all var(--transition-speed) ease-in-out;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .role-content:hover {
+      box-shadow: var(--box-shadow-primary);
+    }
+
+    .role-description {
+      font-size: var(--font-size-base);
+      color: var(--text-color-primary);
+      margin: var(--space-min) 0;
+      font-style: italic;
+    }
+
+    .role-main-description {
+      margin-bottom: var(--space-sm);
+    }
+
+    .role-expanded-content {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition:
+        max-height 300ms ease-out,
+        opacity 200ms ease-out;
+    }
+
+    .role-content:hover .role-expanded-content {
+      max-height: 200px;
       opacity: 1;
+    }
+
+    .role-details {
+      margin: var(--space-sm) 0;
+      padding-left: var(--space-md);
+    }
+
+    .role-details li {
+      margin-bottom: var(--space-xs);
+      color: var(--text-color-secondary);
+    }
+
+    .role-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+      margin-top: var(--space-sm);
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .role-expanded-content {
+        max-height: none;
+        opacity: 1;
+      }
+
+      .role-content {
+        cursor: default;
+      }
     }
   }
 </style>

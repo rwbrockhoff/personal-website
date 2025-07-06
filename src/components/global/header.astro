@@ -13,7 +13,7 @@ import ThemeSwitcher from './theme-switcher.astro';
         <a href="/#projects" class="nav-link hover-underline">Projects</a>
         <ThemeSwitcher />
       </div>
-      <div class="hamburger-menu">
+      <div class="hamburger-menu mobile-flex mobile-flex-col">
         <div class="bar"></div>
         <div class="bar"></div>
         <div class="bar"></div>
@@ -23,88 +23,44 @@ import ThemeSwitcher from './theme-switcher.astro';
 </header>
 
 <style>
-  header {
-    position: fixed;
-    top: var(--space-md);
-    left: 50%;
-    transform: translateX(-50%);
-    width: 50%;
-    z-index: 100;
-    height: var(--nav-height);
-    transition: background-color var(--transition-speed) ease-in-out;
-    border-radius: var(--border-radius-md);
-    color: white;
-  }
-
-  .logo {
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--primary-100);
-  }
-
-  .nav-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: var(--max-content-width);
-    margin: 0 auto;
-    padding: 0 var(--space-xl);
-    height: var(--nav-height);
-  }
-
-  .nav-links {
-    display: flex;
-    align-items: flex-end;
-    gap: var(--space-xl);
-  }
-
-  header.scrolled-header {
-    background-color: var(--background-translucent);
-    backdrop-filter: blur(10px);
-    border-bottom: 2px solid var(--background-alt);
-    color: var(--text-color);
-  }
-
-  /* Invert nav text/icon color on scroll & active menu (mobile) */
-  header.scrolled-header .logo,
-  header.scrolled-header :global(.theme-toggle),
-  .nav-links.active :global(.theme-toggle) {
-    color: var(--text-color);
-  }
-
-  @media (max-width: 768px) {
+  @layer components {
     header {
-      width: 90%;
+      position: fixed;
+      top: var(--space-md);
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50%;
+      z-index: 100;
+      height: var(--nav-height);
+      transition: background-color var(--transition-speed) ease-in-out;
+      border-radius: var(--border-radius-md);
+      color: white;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--primary-100);
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: var(--max-content-width);
+      margin: 0 auto;
+      padding: 0 var(--space-xl);
+      height: var(--nav-height);
     }
 
     .nav-links {
-      display: none;
-    }
-
-    .nav-links.active {
       display: flex;
-      flex-direction: column;
       align-items: flex-end;
-      position: absolute;
-      top: 120%;
-      left: 0;
-      width: 100%;
-      box-sizing: border-box;
-      background: linear-gradient(
-        to left,
-        var(--background) 40%,
-        var(--background-translucent) 100%
-      );
-      color: var(--text-color);
-      padding: var(--space-xl);
-      border-radius: var(--border-radius-md);
-      font-size: var(--font-size-lg);
-      box-shadow: var(--box-shadow-light);
+      gap: var(--space-xl);
     }
 
     .hamburger-menu {
-      display: flex;
-      flex-direction: column;
+      display: none;
       gap: 6px;
       cursor: pointer;
     }
@@ -116,33 +72,84 @@ import ThemeSwitcher from './theme-switcher.astro';
       transition: all 0.3s ease;
     }
 
-    .hamburger-menu.active .bar:nth-child(1) {
-      transform: translateY(9px) rotate(45deg);
+    header.scrolled-header {
+      background-color: var(--background-translucent);
+      backdrop-filter: blur(10px);
+      border-bottom: 2px solid var(--background-alt);
+      color: var(--text-color);
     }
 
-    .hamburger-menu.active .bar:nth-child(2) {
-      opacity: 0;
+    /* Invert nav text/icon color on scroll & active menu (mobile) */
+    header.scrolled-header .logo,
+    header.scrolled-header :global(.theme-toggle),
+    .nav-links.active :global(.theme-toggle) {
+      color: var(--text-color);
     }
 
-    .hamburger-menu.active .bar:nth-child(3) {
-      transform: translateY(-9px) rotate(-45deg);
-    }
-  }
-
-  @media (min-width: 769px) {
-    .hamburger-menu {
-      display: none;
+    /* Menu icons lighter on scroll */
+    header.scrolled-header .bar,
+    .nav-links.active + .hamburger-menu .bar {
+      background-color: var(--primary-300);
     }
 
-    header {
-      width: 90%;
-    }
-  }
+    @media (max-width: 768px) {
+      header {
+        width: 90%;
+      }
 
-  /* Only show smaller menu on larger screens */
-  @media (min-width: 1200px) {
-    header {
-      width: 50%;
+      .nav-links {
+        display: none;
+      }
+
+      .nav-links.active {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        position: absolute;
+        top: 120%;
+        left: 0;
+        width: 100%;
+        box-sizing: border-box;
+        background: linear-gradient(
+          to left,
+          var(--background) 40%,
+          var(--background-translucent) 100%
+        );
+        color: var(--text-color);
+        padding: var(--space-xl);
+        border-radius: var(--border-radius-md);
+        font-size: var(--font-size-lg);
+        box-shadow: var(--box-shadow-light);
+      }
+
+      .hamburger-menu.active .bar:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+      }
+
+      .hamburger-menu.active .bar:nth-child(2) {
+        opacity: 0;
+      }
+
+      .hamburger-menu.active .bar:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
+      }
+    }
+
+    @media (min-width: 769px) {
+      .hamburger-menu {
+        display: none;
+      }
+
+      header {
+        width: 90%;
+      }
+    }
+
+    /* Only show smaller menu on larger screens */
+    @media (min-width: 1200px) {
+      header {
+        width: 50%;
+      }
     }
   }
 </style>
