@@ -22,8 +22,6 @@ import ThemeSwitcher from './theme-switcher.astro';
   </nav>
 </header>
 
-<script src="@scripts/header.ts"></script>
-
 <style>
   header {
     position: fixed;
@@ -60,7 +58,6 @@ import ThemeSwitcher from './theme-switcher.astro';
     gap: var(--space-xl);
   }
 
-  /* Scrolled Header Styles */
   header.scrolled-header {
     background-color: var(--background-translucent);
     backdrop-filter: blur(10px);
@@ -68,7 +65,7 @@ import ThemeSwitcher from './theme-switcher.astro';
     color: var(--text-color);
   }
 
-  /* Invert Nav Text/SVG Color on Scroll & Active Menu (mobile) */
+  /* Invert nav text/icon color on scroll & active Menu (mobile) */
   header.scrolled-header .logo,
   header.scrolled-header :global(.theme-toggle),
   .nav-links.active :global(.theme-toggle) {
@@ -84,7 +81,7 @@ import ThemeSwitcher from './theme-switcher.astro';
       display: none;
     }
 
-    /* Mobile Nav Styles When Active */
+    /* mobile styles - when active */
     .nav-links.active {
       display: flex;
       flex-direction: column;
@@ -106,7 +103,7 @@ import ThemeSwitcher from './theme-switcher.astro';
       box-shadow: var(--box-shadow-light);
     }
 
-    /* Hamburger Menu Styles */
+    /* menu styles */
     .hamburger-menu {
       display: flex;
       flex-direction: column;
@@ -121,11 +118,12 @@ import ThemeSwitcher from './theme-switcher.astro';
       transition: all 0.3s ease;
     }
 
-    /* Create X Icon from menu bars when active */
+    /* Create close icon (x) from menu bars when active */
     .hamburger-menu.active .bar:nth-child(1) {
       transform: translateY(9px) rotate(45deg);
     }
 
+    // hide one bar
     .hamburger-menu.active .bar:nth-child(2) {
       opacity: 0;
     }

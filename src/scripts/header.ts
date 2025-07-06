@@ -1,7 +1,8 @@
 // Script for adding styles/animations to header component
 
-// Global scroll handler to prevent scope issues
+// Global handlers to prevent scope issues
 let currentScrollHandler: (() => void) | null = null;
+let currentHamburgerHandler: (() => void) | null = null;
 
 const initializeHeader = (): void => {
   const sections = document.querySelectorAll('section');
@@ -10,25 +11,26 @@ const initializeHeader = (): void => {
   const header = document.querySelector('header');
   const hamburger = document.querySelector('.hamburger-menu');
 
-  // Remove old listener to prevent duplicates
-  if (currentScrollHandler) window.removeEventListener('scroll', currentScrollHandler);
+  // Initialize hamburger handler if it doesn't exist
+  if (!currentHamburgerHandler) {
+    currentHamburgerHandler = () => {
+      navLinks?.classList.toggle('active');
+      hamburger?.classList.toggle('active');
+    };
+    hamburger?.addEventListener('click', currentHamburgerHandler);
 
-  // Navigation menu toggle
-  hamburger?.addEventListener('click', () => {
-    navLinks?.classList.toggle('active');
-    hamburger.classList.toggle('active');
-  });
-
-  // Close menu when clicking on links
-  navLink.forEach((link) => {
-    link.addEventListener('click', () => {
-      navLinks?.classList.remove('active');
-      hamburger?.classList.remove('active');
+    // Close menu when clicking on links
+    navLink.forEach((link) => {
+      link.addEventListener('click', () => {
+        navLinks?.classList.remove('active');
+        hamburger?.classList.remove('active');
+      });
     });
-  });
+  }
 
-  // Create scroll handler
-  const handleScroll = (): void => {
+  // Initialize scroll handler if it doesn't exist
+  if (!currentScrollHandler) {
+    currentScrollHandler = (): void => {
     let current: string | null = '';
     const currentPath = window.location.pathname;
 
@@ -74,12 +76,10 @@ const initializeHeader = (): void => {
     });
   };
 
-  // Store reference and add listener
-  currentScrollHandler = handleScroll;
-  window.addEventListener('scroll', handleScroll);
-
-  // Run once on page load to set initial state
-  handleScroll();
+    // Add listener and run once on page load
+    window.addEventListener('scroll', currentScrollHandler);
+    currentScrollHandler();
+  }
 };
 
 // Add listener for page load and astro page load

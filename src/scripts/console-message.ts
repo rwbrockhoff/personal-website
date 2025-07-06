@@ -5,8 +5,7 @@ console.log(
     If you're here, you probably appreciate clean code and
     attention to detail. Let's connect!
 
-    💼 I'm currently seeking opportunities in:
-        • Full-Stack Development
+    💼 I'm currently seeking full-stack development opportunities.
 
     📧 Let's build something amazing together:
         ryanbrockhoff@protonmail.com

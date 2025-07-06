@@ -1,19 +1,19 @@
 ---
 import Section from '@components/global/section.astro';
-import { workExperience } from '@data/work-experience';
+import { workExperience } from '@data/work-experience.ts';
 ---
 
 <Section id="experience" readableWidth>
   <h2>Experience</h2>
   {
-    workExperience.map((job, index) => (
+    workExperience.map((role, index) => (
       <div class="timeline-item" style={`animation-delay: ${index * 0.2}s`}>
         <div class="timeline-content background-alt">
-          <h4 class="timeline-title">{job.title}</h4>
+          <h4 class="timeline-title">{role.title}</h4>
           <p class="timeline-description">
-            {job.company} • {job.duration}
+            {role.company} • {role.duration}
           </p>
-          <p>{job.description}</p>
+          <p>{role.description}</p>
         </div>
       </div>
     ))

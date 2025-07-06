@@ -1,13 +1,13 @@
 ---
 import Section from '@components/global/section.astro';
 import ProjectCard from '@components/home/project-card.astro';
-import { projects } from '@data/projects.js';
+import { projects } from '@data/projects.ts';
 import CodeIcon from '@images/icons/code.svg';
 ---
 
 <Section id="projects" className="background-alt">
   <h2 class="flex-center with-icon">
-    <CodeIcon aria-hidden="true" />My Projects
+    <CodeIcon aria-hidden="true" />Current Projects
   </h2>
   <div class="projects-container">
     {
