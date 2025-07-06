@@ -30,9 +30,12 @@ export const workExperience: Role[] = [
     title: 'Full-Stack Developer',
     company: 'Tidytrek',
     duration: '2024 - Present',
-    description:
-      'Architect and develop a production-ready SaaS application for backpacking gear management using React 18, TypeScript, and Node.js/Express. Implement drag-and-drop interfaces with optimistic updates, AWS S3 integration, and comprehensive testing with Vitest and Playwright.',
-    details: ['Something I did at this company', 'Another thing I did at this company', 'And more'],
-    tags: ['Node.js', 'Express', 'PostgreSQL', 'AWS', 'TypeScript'],
+    description: 'Architect and develop a production-ready SaaS application for backpacking gear management.',
+    details: [
+      'Developed SaaS product from concept to production deployment',
+      'Managed full product lifecycle including design, development, testing, and deployment',
+      'Built scalable architecture to support business growth and user expansion',
+    ],
+    tags: ['React', 'TypeScript', 'Node.js', 'PostgreSQL', 'AWS'],
   },
 ];

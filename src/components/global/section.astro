@@ -29,4 +29,10 @@ const { id, className = '', readableWidth = false } = Astro.props as SectionProp
     padding: 4rem var(--space-xl);
     width: 100%;
   }
+
+  @media (max-width: 768px) {
+    .container {
+      padding: var(--space-xl) var(--space-lg);
+    }
+  }
 </style>

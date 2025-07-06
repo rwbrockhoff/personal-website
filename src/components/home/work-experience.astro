@@ -13,7 +13,20 @@ import { workExperience } from '@data/work-experience.ts';
           <p class="timeline-description">
             {role.company} • {role.duration}
           </p>
-          <p>{role.description}</p>
+          <p class="timeline-main-description">{role.description}</p>
+
+          <div class="timeline-expanded-content">
+            <ul class="timeline-details">
+              {role.details.map((detail) => (
+                <li>{detail}</li>
+              ))}
+            </ul>
+            <div class="timeline-tags">
+              {role.tags.map((tag) => (
+                <span class="timeline-tag">{tag}</span>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     ))
@@ -32,7 +45,13 @@ import { workExperience } from '@data/work-experience.ts';
   .timeline-content {
     padding: var(--space-md);
     border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow-light);
+    transition: all var(--transition-speed) ease-in-out;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .timeline-content:hover {
+    box-shadow: var(--box-shadow-primary);
   }
 
   .timeline-description {
@@ -42,10 +61,61 @@ import { workExperience } from '@data/work-experience.ts';
     font-style: italic;
   }
 
+  .timeline-main-description {
+    margin-bottom: var(--space-sm);
+  }
+
+  .timeline-expanded-content {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition:
+      max-height 300ms ease-out,
+      opacity 200ms ease-out;
+  }
+
+  .timeline-content:hover .timeline-expanded-content {
+    max-height: 200px;
+    opacity: 1;
+  }
+
+  .timeline-details {
+    margin: var(--space-sm) 0;
+    padding-left: var(--space-md);
+  }
+
+  .timeline-details li {
+    margin-bottom: var(--space-xs);
+    color: var(--text-color-secondary);
+  }
+
+  .timeline-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    margin-top: var(--space-sm);
+  }
+
+  .timeline-tag {
+    border: 2px solid var(--primary-300);
+    padding: 0.2rem var(--space-xs);
+    font-size: var(--font-size-xs);
+    border-radius: var(--border-radius-min);
+    background-color: var(--primary-100);
+    color: var(--primary-800);
+  }
+
   @keyframes fadeInUp {
     to {
       opacity: 1;
       transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .timeline-expanded-content {
+      max-height: none;
+      opacity: 1;
     }
   }
 </style>

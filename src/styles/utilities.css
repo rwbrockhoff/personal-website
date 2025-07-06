@@ -52,6 +52,6 @@
 
 @media (max-width: 768px) {
   .readable-width {
-    padding: var(--space-min) var(--space-lg);
+    padding: var(--space-min) 0;
   }
 }
