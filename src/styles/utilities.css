@@ -7,7 +7,7 @@
   .with-icon svg {
     width: 1.25em;
     height: 1.25em;
-    margin-right: var(--space-min);
+    margin-right: var(--space-1);
   }
 
   .flex-center {
@@ -71,13 +71,13 @@
   @media (max-width: 1200px) {
     .readable-width {
       width: 100%;
-      padding: var(--space-md) var(--space-xxl);
+      padding: var(--space-4) var(--space-12);
     }
   }
 
   @media (max-width: 768px) {
     .readable-width {
-      padding: var(--space-min) 0;
+      padding: var(--space-1) 0;
     }
 
     .mobile-width-100 {
@@ -93,7 +93,7 @@
     }
 
     .mobile-margin-auto {
-      margin: var(--space-xxl) auto;
+      margin: var(--space-12) auto;
     }
 
     .mobile-hidden {

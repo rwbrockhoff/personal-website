@@ -1,12 +1,12 @@
 @layer components {
   .button {
     display: inline-block;
-    padding: var(--space-min) var(--space-md);
-    margin: var(--space-sm);
+    padding: var(--space-1) var(--space-4);
+    margin: var(--space-3);
     text-align: center;
     background-color: var(--primary-color);
     color: white;
-    font-size: var(--font-size-base);
+    font-size: var(--font-size-4);
     border-radius: var(--border-radius);
     border: none;
   }
@@ -14,7 +14,7 @@
   .button:hover {
     background-color: var(--primary-600);
     transform: translateY(-1px);
-    box-shadow: var(--box-shadow-light);
+    box-shadow: var(--shadow-light);
   }
 
   .button-inverse {
@@ -25,20 +25,20 @@
   .button-inverse:hover {
     background-color: var(--background-alt);
     transform: translateY(-1px);
-    box-shadow: var(--box-shadow-light);
+    box-shadow: var(--shadow-light);
   }
 
   .astro-code {
-    padding: var(--space-md);
+    padding: var(--space-4);
     border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow-light);
-    margin-bottom: var(--space-lg);
+    box-shadow: var(--shadow-light);
+    margin-bottom: var(--space-6);
   }
 
   .tag {
     border: 2px solid var(--primary-300);
-    padding: 0.2rem var(--space-xs);
-    font-size: var(--font-size-xs);
-    border-radius: var(--border-radius-min);
+    padding: 0.2rem var(--space-2);
+    font-size: var(--font-size-2);
+    border-radius: var(--border-radius);
   }
 }

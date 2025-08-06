@@ -1,4 +1,5 @@
 import laptopImage from '@images/devices/mac.png';
+import type { ImageMetadata } from 'astro';
 
 type Project = {
   title: string;
@@ -8,7 +9,7 @@ type Project = {
   tags: string[];
   demoLink: string;
   githubLink: string;
-  deviceImageSrc: any;
+  deviceImageSrc: ImageMetadata;
   isWeb: boolean;
 };
 // Project data

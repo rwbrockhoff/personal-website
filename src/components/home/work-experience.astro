@@ -37,33 +37,33 @@ import { workExperience } from '@data/work-experience.ts';
   @layer components {
     .role-item {
       position: relative;
-      margin: var(--space-md) 0;
+      margin: var(--space-4) 0;
       opacity: 0;
       transform: translateY(30px);
       animation: fadeInUp 0.6s ease-in-out forwards;
     }
 
     .role-content {
-      padding: var(--space-md);
+      padding: var(--space-4);
       border-radius: var(--border-radius);
-      transition: all var(--transition-speed) ease-in-out;
+      transition: all var(--transition);
       overflow: hidden;
       cursor: pointer;
     }
 
     .role-content:hover {
-      box-shadow: var(--box-shadow-primary);
+      box-shadow: var(--shadow-primary);
     }
 
     .role-description {
-      font-size: var(--font-size-base);
+      font-size: var(--font-size-4);
       color: var(--text-color-primary);
-      margin: var(--space-min) 0;
+      margin: var(--space-1) 0;
       font-style: italic;
     }
 
     .role-main-description {
-      margin-bottom: var(--space-sm);
+      margin-bottom: var(--space-3);
     }
 
     .role-expanded-content {
@@ -81,20 +81,20 @@ import { workExperience } from '@data/work-experience.ts';
     }
 
     .role-details {
-      margin: var(--space-sm) 0;
-      padding-left: var(--space-md);
+      margin: var(--space-3) 0;
+      padding-left: var(--space-4);
     }
 
     .role-details li {
-      margin-bottom: var(--space-xs);
+      margin-bottom: var(--space-2);
       color: var(--text-color-secondary);
     }
 
     .role-tags {
       display: flex;
       flex-wrap: wrap;
-      gap: var(--space-xs);
-      margin-top: var(--space-sm);
+      gap: var(--space-2);
+      margin-top: var(--space-3);
     }
 
     @keyframes fadeInUp {

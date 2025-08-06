@@ -1,4 +1,4 @@
-@layer reset, theme, typography, base, components, utilities;
+@layer reset, theme, typography, base, components, utilities, spacing;
 
 @import './reset.css' layer(reset);
 @import './theme.css' layer(theme);
@@ -6,3 +6,4 @@
 @import './base.css' layer(base);
 @import './components.css' layer(components);
 @import './utilities.css' layer(utilities);
+@import './spacing.css' layer(spacing);

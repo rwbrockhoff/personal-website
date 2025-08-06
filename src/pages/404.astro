@@ -17,24 +17,24 @@ import Layout from '@layouts/layout.astro';
 </Layout>
 
 <style>
-@layer components {
-  .content {
-    height: 100vh;
-    color: var(--text-color);
-    background-image: var(--background-grid);
-    background-size: var(--space-md) var(--space-md);
-  }
+  @layer components {
+    .content {
+      height: 100vh;
+      color: var(--text-color);
+      background-image: var(--background-grid);
+      background-size: var(--space-4) var(--space-4);
+    }
 
-  h1 {
-    font-size: 8rem;
-  }
+    h1 {
+      font-size: 8rem;
+    }
 
-  .inner-content {
-    height: fit-content;
-    width: fit-content;
-    padding: 4rem;
-    box-shadow: var(--box-shadow-light);
-    border-radius: var(--border-radius-md);
+    .inner-content {
+      height: fit-content;
+      width: fit-content;
+      padding: 4rem;
+      box-shadow: var(--shadow-light);
+      border-radius: var(--border-radius-lg);
+    }
   }
-}
 </style>

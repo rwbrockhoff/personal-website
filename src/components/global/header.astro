@@ -13,11 +13,11 @@ import ThemeSwitcher from './theme-switcher.astro';
         <a href="/#projects" class="nav-link hover-underline">Projects</a>
         <ThemeSwitcher />
       </div>
-      <div class="hamburger-menu mobile-flex mobile-flex-col">
+      <button class="hamburger-menu mobile-flex mobile-flex-col" aria-label="Toggle navigation menu" aria-expanded="false">
         <div class="bar"></div>
         <div class="bar"></div>
         <div class="bar"></div>
-      </div>
+      </button>
     </div>
   </nav>
 </header>
@@ -26,14 +26,14 @@ import ThemeSwitcher from './theme-switcher.astro';
   @layer components {
     header {
       position: fixed;
-      top: var(--space-md);
+      top: var(--space-4);
       left: 50%;
       transform: translateX(-50%);
       width: 50%;
       z-index: 100;
       height: var(--nav-height);
-      transition: background-color var(--transition-speed) ease-in-out;
-      border-radius: var(--border-radius-md);
+      transition: background-color var(--transition);
+      border-radius: var(--border-radius-lg);
       color: white;
     }
 
@@ -49,27 +49,30 @@ import ThemeSwitcher from './theme-switcher.astro';
       align-items: center;
       max-width: var(--max-content-width);
       margin: 0 auto;
-      padding: 0 var(--space-xl);
+      padding: 0 var(--space-8);
       height: var(--nav-height);
     }
 
     .nav-links {
       display: flex;
       align-items: flex-end;
-      gap: var(--space-xl);
+      gap: var(--space-8);
     }
 
     .hamburger-menu {
       display: none;
       gap: 6px;
       cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
     }
 
     .bar {
-      width: 25px;
-      height: 3px;
+      width: var(--space-6);
+      height: var(--space-1);
       background-color: var(--primary-color);
-      transition: all 0.3s ease;
+      transition: all var(--transition);
     }
 
     header.scrolled-header {
@@ -116,10 +119,10 @@ import ThemeSwitcher from './theme-switcher.astro';
           var(--background-translucent) 100%
         );
         color: var(--text-color);
-        padding: var(--space-xl);
-        border-radius: var(--border-radius-md);
-        font-size: var(--font-size-lg);
-        box-shadow: var(--box-shadow-light);
+        padding: var(--space-8);
+        border-radius: var(--border-radius-lg);
+        font-size: var(--font-size-7);
+        box-shadow: var(--shadow-light);
       }
 
       .hamburger-menu.active .bar:nth-child(1) {

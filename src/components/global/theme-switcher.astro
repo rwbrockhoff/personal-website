@@ -63,9 +63,6 @@
     // Attach click event to toggle button
     const themeToggle = document.getElementById('theme-toggle');
     if (themeToggle) {
-      // Remove existing listener to prevent duplicates
-      themeToggle.removeEventListener('click', toggleTheme);
-      // Add the click event
       themeToggle.addEventListener('click', toggleTheme);
     }
   };
@@ -91,7 +88,7 @@
     width: 40px;
     height: 40px;
     position: relative;
-    transition: transform var(--transition-speed) ease-in-out;
+    transition: transform var(--transition);
   }
 
   .theme-toggle:hover {
@@ -104,9 +101,30 @@
     position: absolute;
   }
 
+  /* White icons when header is NOT scrolled (at top of page) */
+  :global(header:not(.scrolled-header)) .icon-sun,
+  :global(header:not(.scrolled-header)) .icon-moon {
+    color: white;
+  }
+
+  /* Default text color for other situations */
   .icon-sun,
   .icon-moon {
     color: var(--text-color);
+  }
+
+  /* Slow rotation animation for sun icon only */
+  .icon-sun {
+    animation: rotate 30s linear infinite;
+  }
+
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
   }
 
   :root .icon-moon {

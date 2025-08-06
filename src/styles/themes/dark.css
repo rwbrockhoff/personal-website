@@ -1,0 +1,15 @@
+[data-theme='dark'] {
+  --text-color: #ffffff;
+  --text-color-invert: #000000;
+  --text-color-primary: var(--primary-100);
+  --primary-color: var(--primary-600);
+
+  --background: var(--primary-950);
+  --background-alt: var(--primary-700);
+  --background-dark: var(--primary-900);
+  --background-translucent: rgba(27, 30, 21, 0.8);
+  --background-grid: radial-gradient(var(--primary-600) 0.5px, var(--primary-800) 0.5px);
+
+  --shadow-default: 0px 8px 0px -4px var(--primary-700);
+  --shadow-light: 0px 8px 0px -3px rgba(45, 45, 45, 0.6);
+}

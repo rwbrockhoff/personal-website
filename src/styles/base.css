@@ -1,13 +1,13 @@
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: calc(var(--nav-height) - var(--space-md));
+  scroll-padding-top: calc(var(--nav-height) - var(--space-4));
 }
 
 body {
   background-color: var(--background);
   color: var(--text-color);
   font-family: var(--font-family-base);
-  line-height: var(--line-height-base);
+  line-height: var(--line-height-normal);
   margin: 0;
 }
 
@@ -24,7 +24,7 @@ main {
 a {
   color: inherit;
   text-decoration: none;
-  transition: all var(--transition-speed) ease;
+  transition: all var(--transition) ease;
 }
 
 a:hover {
@@ -35,7 +35,7 @@ hr {
   border: none;
   height: 1px;
   background-color: var(--text-color-muted);
-  margin: var(--space-xl) 0;
+  margin: var(--space-8) 0;
 }
 
 .background-alt {
@@ -48,6 +48,6 @@ hr {
 
 @media (max-width: 768px) {
   .container {
-    padding: 4rem var(--space-md);
+    padding: 4rem var(--space-4);
   }
 }
