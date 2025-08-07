@@ -1,6 +1,5 @@
 ---
 import '@styles/index.css';
-import '@fontsource-variable/fraunces';
 
 import { ClientRouter } from 'astro:transitions';
 import Navbar from '@components/global/navbar.astro';
@@ -19,6 +18,30 @@ const { title } = Astro.props as LayoutProps;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="/favicon.svg"
+      media="(prefers-color-scheme: light)"
+    />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="/favicon-dark.svg"
+      media="(prefers-color-scheme: dark)"
+    />
+
+    <meta
+      name="description"
+      content="Software Engineer with full-stack SaaS experience. Building scalable applications with React, TypeScript, Node.js, and PostgreSQL."
+    />
+    <meta name="author" content="Ryan Brockhoff" />
+
+    <meta property="og:title" content="Ryan Brockhoff - Software Engineer" />
+    <meta property="og:description" content="Software Engineer with full-stack SaaS experience." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://ryanbrockhoff.com" />
+
     <ClientRouter />
     <meta name="generator" content={Astro.generator} />
     <title>{title ? `${title} |` : ''} Ryan Brockhoff - Software Engineer</title>
@@ -33,7 +56,6 @@ const { title } = Astro.props as LayoutProps;
       <Footer />
     </div>
   </body>
-  <script src="@scripts/console-message.ts"></script>
   <script src="@scripts/navbar.ts"></script>
 </html>
 

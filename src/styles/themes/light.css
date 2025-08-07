@@ -13,6 +13,9 @@
   --background-translucent: rgba(249, 246, 243, 0.7);
   --background-grid: radial-gradient(var(--primary-400) 0.5px, var(--primary-600) 0.5px);
 
+  --glass-background: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(0, 0, 0, 0.15);
+  
   --shadow-default: 0px 8px 0px -4px rgba(0, 0, 0, 0.75);
   --shadow-light: 0px 8px 0px -3px rgba(0, 0, 0, 0.1);
   --shadow-primary: 0px 8px 0px -3px rgba(122, 132, 94, 0.75);

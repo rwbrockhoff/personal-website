@@ -1,50 +1,59 @@
 // Script for adding styles/animations to header component
 
-let currentScrollHandler: (() => void) | null = null;
+// Global references to clean up listeners
 let currentHamburgerHandler: (() => void) | null = null;
 let currentDocumentClickHandler: ((e: Event) => void) | null = null;
+let currentScrollHandler: (() => void) | null = null;
 
 const initializeHeader = (): void => {
+  // Clean up existing listeners
+  if (currentHamburgerHandler) {
+    document.querySelector('.hamburger-menu')?.removeEventListener('click', currentHamburgerHandler);
+  }
+  if (currentDocumentClickHandler) {
+    document.removeEventListener('click', currentDocumentClickHandler);
+  }
+  if (currentScrollHandler) {
+    window.removeEventListener('scroll', currentScrollHandler);
+  }
+
   const sections = document.querySelectorAll('section');
   const navLinks = document.querySelector('.nav-links');
   const navLink = document.querySelectorAll('.nav-link');
   const header = document.querySelector('header');
   const hamburger = document.querySelector('.hamburger-menu');
 
-  // Initialize hamburger handler if it doesn't exist
-  if (!currentHamburgerHandler) {
-    currentHamburgerHandler = () => {
-      navLinks?.classList.toggle('active');
-      hamburger?.classList.toggle('active');
-    };
-    hamburger?.addEventListener('click', currentHamburgerHandler);
+  if (!hamburger || !navLinks || !header) return;
 
-    // Close menu when clicking on links
-    navLink.forEach((link) => {
-      link.addEventListener('click', () => {
-        navLinks?.classList.remove('active');
-        hamburger?.classList.remove('active');
-      });
+  // Hamburger click handler
+  currentHamburgerHandler = () => {
+    navLinks.classList.toggle('active');
+    hamburger.classList.toggle('active');
+  };
+  hamburger.addEventListener('click', currentHamburgerHandler);
+
+  // Close menu when clicking on nav links
+  navLink.forEach((link) => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('active');
+      hamburger.classList.remove('active');
     });
+  });
 
-    // Close menu clicking outside of navigation
-    if (!currentDocumentClickHandler) {
-      currentDocumentClickHandler = (e: Event) => {
-        const target = e.target as Element;
-        const nav = document.querySelector('nav');
+  // Close menu when clicking outside navigation
+  currentDocumentClickHandler = (e: Event) => {
+    const target = e.target as Element;
+    const nav = document.querySelector('nav');
 
-        // Check if menu is open and click is outside navigation
-        if (navLinks?.classList.contains('active') && nav && !nav.contains(target)) {
-          navLinks.classList.remove('active');
-          hamburger?.classList.remove('active');
-        }
-      };
-      document.addEventListener('click', currentDocumentClickHandler);
+    if (navLinks.classList.contains('active') && nav && !nav.contains(target)) {
+      navLinks.classList.remove('active');
+      hamburger.classList.remove('active');
     }
-  }
+  };
+  document.addEventListener('click', currentDocumentClickHandler);
 
-  if (!currentScrollHandler) {
-    currentScrollHandler = (): void => {
+  // Scroll handler for nav link highlighting  
+  currentScrollHandler = (): void => {
       let current: string | null = '';
       const currentPath = window.location.pathname;
 
@@ -90,10 +99,9 @@ const initializeHeader = (): void => {
       });
     };
 
-    // Add listener and run once on page load
-    window.addEventListener('scroll', currentScrollHandler);
-    currentScrollHandler();
-  }
+  // Add scroll listener and run once
+  window.addEventListener('scroll', currentScrollHandler);
+  currentScrollHandler();
 };
 
 // Add listener for page load and astro page load

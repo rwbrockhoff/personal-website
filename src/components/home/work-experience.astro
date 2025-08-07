@@ -1,19 +1,24 @@
 ---
 import { workExperience } from '@data/work-experience.ts';
 import AutoGrid from '@components/layout/AutoGrid.astro';
-import { Briefcase } from 'lucide-astro';
+import Flex from '@components/layout/Flex.astro';
+import { Briefcase, MapPin } from 'lucide-astro';
 ---
 
 <section id="experience">
-  <h2 class="with-icon justify-center"><Briefcase />Experience</h2>
+  <h2 class="container-title with-icon"><Briefcase />Experience</h2>
   <div class="container container-with-title experience-container">
     <AutoGrid minWidth="250px" gap="var(--space-4)" class="experience-grid">
       {
         workExperience.map((role, index) => (
-          <div class="role-card" style={`animation-delay: ${index * 0.1}s`}>
+          <div class="role-card animate-on-scroll" style={`animation-delay: ${index * 0.3}s`}>
             <h4 class="role-title">{role.title}</h4>
             <p class="role-company">{role.company}</p>
-            <p class="role-duration">{role.duration}</p>
+            <Flex gap="var(--space-2)" alignItems="center" class="role-duration-line">
+              <span>{role.duration}</span>
+              <span>|</span>
+              <span>{role.location}</span>
+            </Flex>
             <p class="role-description">{role.description}</p>
           </div>
         ))
@@ -41,8 +46,11 @@ import { Briefcase } from 'lucide-astro';
       box-shadow: var(--shadow-glass);
       opacity: 0;
       transform: translateY(20px);
-      animation: fadeInUp 0.5s ease-out forwards;
       transition: all var(--transition);
+    }
+
+    .role-card.animate {
+      animation: fadeInUp 0.6s ease-out forwards;
     }
 
     .role-card:hover {
@@ -60,11 +68,15 @@ import { Briefcase } from 'lucide-astro';
       margin-bottom: var(--space-1);
     }
 
-    .role-duration {
+    .role-duration-line {
       font-size: var(--font-size-3);
       color: var(--text-color-secondary);
       margin-bottom: var(--space-3);
       font-style: italic;
+    }
+
+    .location-inline {
+      gap: var(--space-1);
     }
 
     .role-description {
@@ -78,6 +90,32 @@ import { Briefcase } from 'lucide-astro';
         transform: translateY(0);
       }
     }
-
   }
 </style>
+
+<script>
+  const observeCards = () => {
+    const cards = document.querySelectorAll('.animate-on-scroll');
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+        rootMargin: '50px',
+      }
+    );
+
+    cards.forEach((card) => observer.observe(card));
+  };
+
+  // Run on page load and Astro navigation
+  document.addEventListener('DOMContentLoaded', observeCards);
+  document.addEventListener('astro:page-load', observeCards);
+</script>
