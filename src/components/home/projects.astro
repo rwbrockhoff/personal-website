@@ -1,29 +1,102 @@
 ---
-import Section from '@components/global/section.astro';
-import ProjectCard from '@components/home/project-card.astro';
-import { projects } from '@data/projects.js';
-import CodeIcon from '@images/icons/code.svg';
+import { Image } from 'astro:assets';
+import { FolderKanban, Github, ExternalLink } from 'lucide-astro';
+import desktopPreview from '@images/desktop-preview.png';
 ---
 
-<Section id="projects" className="background-alt">
-  <h2 class="flex-center with-icon">
-    <CodeIcon aria-hidden="true" />My Projects
-  </h2>
-  <div class="projects-container">
-    {
-      projects.map((project) => (
-        <ProjectCard
-          title={project.title}
-          description={project.description}
-          highlights={project.highlights}
-          imageSrc={project.imageSrc}
-          tags={project.tags}
-          demoLink={project.demoLink}
-          githubLink={project.githubLink}
-          deviceImageSrc={project.deviceImageSrc}
-          isWeb={project.isWeb}
+<section id="projects">
+  <h2 class="with-icon justify-center"><FolderKanban />Current Project</h2>
+  <div class="container">
+    <div class="project-grid">
+      <div class="left-panel">
+        <h3>Tidytrek</h3>
+        <p>
+          A comprehensive backpacking trip planner that helps outdoor enthusiasts organize gear,
+          track pack weight, and plan multi-day adventures. Features intelligent packing suggestions
+          and detailed weight optimization.
+        </p>
+        <p class="tech-stack">
+          <strong>Tech Stack:</strong> React, TypeScript, Node.js, PostgreSQL, Prisma, Tailwind CSS
+        </p>
+        <div class="project-links">
+          <a
+            href="https://github.com/rwbrockhoff/tidytrek-frontend"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-secondary with-icon"
+          >
+            <Github />Github
+          </a>
+          <a
+            href="https://tidytrek.co"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-primary with-icon"
+          >
+            <ExternalLink />Live Site
+          </a>
+        </div>
+      </div>
+      <div class="right-panel">
+        <Image
+          src={desktopPreview}
+          alt="TidyTrek desktop app preview showing pack list interface"
         />
-      ))
-    }
+      </div>
+    </div>
   </div>
-</Section>
+</section>
+
+<style>
+  .container {
+    max-width: var(--max-content-width);
+    margin: 0 auto;
+    padding: var(--space-12) var(--space-4);
+    width: 80%;
+  }
+
+  .project-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-8);
+    align-items: center;
+  }
+
+  .right-panel img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-medium);
+  }
+
+  .left-panel {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .left-panel p {
+    font-size: var(--font-size-5);
+  }
+
+  .project-links {
+    display: flex;
+    gap: var(--space-3);
+  }
+
+  .tech-stack {
+    color: var(--text-color-secondary);
+    font-size: var(--font-size-4);
+  }
+
+  @media (max-width: 768px) {
+    .project-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-6);
+    }
+
+    .project-links {
+      justify-content: center;
+    }
+  }
+</style>

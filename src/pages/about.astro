@@ -1,0 +1,170 @@
+---
+import Layout from '@layouts/layout.astro';
+import { Image } from 'astro:assets';
+import { Github, User, BookOpen } from 'lucide-astro';
+import ContactCta from '@components/shared/contact-cta.astro';
+import profilePhoto from '@images/profile.png';
+---
+
+<Layout title="About - Ryan Brockhoff">
+  <main>
+    <section class="hero-section">
+      <div class="container">
+        <h1 class="about-hero">About Me</h1>
+        <p class="hero-subtext">
+          Full-stack software engineer passionate about building meaningful applications.
+        </p>
+
+        <div class="about-grid">
+          <div class="left-panel">
+            <div class="about-image">
+              <Image src={profilePhoto} alt="Ryan Brockhoff, software engineer" />
+            </div>
+          </div>
+
+          <div class="right-panel">
+            <div class="about-info">
+              <p>
+                I'm a software engineer with a unique background building both products and businesses. After starting my career as a software engineer at a B2B platform, I founded and scaled an outdoor adventure business before returning to software development with Tidytrek, a SaaS platform I've built from concept to production. I bring both technical depth and business perspective to development work, and I'm looking to join teams building meaningful products.
+              </p>
+              
+              <p>
+                When I'm not coding, you'll find me trail running here in Colorado, reading at my favorite coffee shops, or exploring new technologies.
+              </p>
+
+              <ul class="about-links">
+                <li class="hover-underline with-icon">
+                  <User aria-hidden="true" />
+                  <a
+                    href="https://www.linkedin.com/in/ryanbrockhoff/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Visit my LinkedIn profile">LinkedIn</a
+                  >
+                </li>
+                <li class="hover-underline with-icon">
+                  <Github aria-hidden="true" />
+                  <a
+                    href="https://github.com/rwbrockhoff/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Visit my Github profile">Github</a
+                  >
+                </li>
+                <li class="hover-underline with-icon">
+                  <BookOpen aria-hidden="true" />
+                  <a
+                    href="https://medium.com/@brockhoff"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Visit my Medium profile">Medium</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <ContactCta />
+  </main>
+</Layout>
+
+<style>
+  .hero-section {
+    margin-top: calc(var(--nav-height) + var(--space-4));
+    padding: var(--space-12) 0;
+    margin-bottom: var(--space-12);
+  }
+
+  .container {
+    text-align: center;
+  }
+
+  .about-hero {
+    font-size: clamp(3rem, 8vw, 5.5rem);
+    letter-spacing: -0.04em;
+    line-height: 1.1;
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--space-4);
+  }
+
+  .hero-subtext {
+    font-size: var(--font-size-5);
+    color: var(--text-color-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-12);
+    align-items: center;
+    margin-top: 6rem;
+    text-align: left;
+  }
+
+  .about-image {
+    display: flex;
+    justify-content: center;
+  }
+
+  .about-image img {
+    width: 12rem;
+    height: auto;
+    border-radius: 100%;
+    box-shadow: var(--shadow-medium);
+  }
+
+  .about-info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+
+  .about-info p {
+    font-size: var(--font-size-5);
+    line-height: var(--line-height-relaxed);
+    color: var(--text-color);
+    text-wrap: pretty;
+  }
+
+  .about-links {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: var(--space-4);
+    list-style: none;
+  }
+
+  @media (max-width: 768px) {
+    .hero-section {
+      padding: var(--space-8) 0;
+      margin-bottom: var(--space-16);
+    }
+
+    .about-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-8);
+      text-align: left;
+      margin-top: var(--space-12);
+    }
+
+    .about-image {
+      text-align: center;
+    }
+
+    .about-links {
+      justify-content: space-between;
+      flex-wrap: wrap;
+      width: 90%;
+    }
+
+    .about-image img {
+      width: 8rem;
+    }
+  }
+</style>

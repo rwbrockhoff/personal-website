@@ -1,0 +1,34 @@
+---
+export interface Props {
+  direction?: "row" | "column";
+  gap?: string;
+  alignItems?: string;
+  justifyContent?: string;
+  wrap?: boolean;
+  class?: string;
+}
+
+const { 
+  direction = "row",
+  gap = "var(--space-4)", 
+  alignItems = "center",
+  justifyContent = "flex-start",
+  wrap = false,
+  class: className = ""
+} = Astro.props;
+---
+
+<div class={`flex ${className}`}>
+  <slot />
+</div>
+
+<style define:vars={{ direction, gap, alignItems, justifyContent, wrap: wrap ? 'wrap' : 'nowrap' }}>
+  .flex {
+    display: flex;
+    flex-direction: var(--direction);
+    gap: var(--gap);
+    align-items: var(--alignItems);
+    justify-content: var(--justifyContent);
+    flex-wrap: var(--wrap);
+  }
+</style>

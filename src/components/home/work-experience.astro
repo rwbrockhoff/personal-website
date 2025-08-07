@@ -1,51 +1,121 @@
 ---
-import Section from '@components/global/section.astro';
-import { workExperience } from '@data/work-experience';
+import { workExperience } from '@data/work-experience.ts';
+import AutoGrid from '@components/layout/AutoGrid.astro';
+import Flex from '@components/layout/Flex.astro';
+import { Briefcase, MapPin } from 'lucide-astro';
 ---
 
-<Section id="experience" readableWidth>
-  <h2>Experience</h2>
-  {
-    workExperience.map((job, index) => (
-      <div class="timeline-item" style={`animation-delay: ${index * 0.2}s`}>
-        <div class="timeline-content background-alt">
-          <h4 class="timeline-title">{job.title}</h4>
-          <p class="timeline-description">
-            {job.company} • {job.duration}
-          </p>
-          <p>{job.description}</p>
-        </div>
-      </div>
-    ))
-  }
-</Section>
+<section id="experience">
+  <h2 class="container-title with-icon"><Briefcase />Experience</h2>
+  <div class="container container-with-title experience-container">
+    <AutoGrid minWidth="250px" gap="var(--space-4)" class="experience-grid">
+      {
+        workExperience.map((role, index) => (
+          <div class="role-card animate-on-scroll" style={`animation-delay: ${index * 0.3}s`}>
+            <h4 class="role-title">{role.title}</h4>
+            <p class="role-company">{role.company}</p>
+            <Flex gap="var(--space-2)" alignItems="center" class="role-duration-line">
+              <span>{role.duration}</span>
+              <span>|</span>
+              <span>{role.location}</span>
+            </Flex>
+            <p class="role-description">{role.description}</p>
+          </div>
+        ))
+      }
+    </AutoGrid>
+  </div>
+</section>
 
 <style>
-  .timeline-item {
-    position: relative;
-    margin: var(--space-md) 0;
-    opacity: 0;
-    transform: translateY(30px);
-    animation: fadeInUp 0.6s ease-in-out forwards;
-  }
+  @layer components {
+    .experience-container {
+      padding: var(--space-20) 0;
+    }
 
-  .timeline-content {
-    padding: var(--space-md);
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow-light);
-  }
+    .experience-grid {
+      margin-top: var(--space-8);
+    }
 
-  .timeline-description {
-    font-size: var(--font-size-base);
-    color: var(--text-color-primary);
-    margin: var(--space-min) 0;
-    font-style: italic;
-  }
+    .role-card {
+      background: var(--glass-background);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--glass-border);
+      padding: var(--space-6);
+      border-radius: var(--border-radius-xl);
+      box-shadow: var(--shadow-glass);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all var(--transition);
+    }
 
-  @keyframes fadeInUp {
-    to {
-      opacity: 1;
-      transform: translateY(0);
+    .role-card.animate {
+      animation: fadeInUp 0.6s ease-out forwards;
+    }
+
+    .role-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-large);
+    }
+
+    .role-title {
+      margin-bottom: var(--space-2);
+    }
+
+    .role-company {
+      font-weight: var(--font-weight-medium);
+      color: var(--text-color-primary);
+      margin-bottom: var(--space-1);
+    }
+
+    .role-duration-line {
+      font-size: var(--font-size-3);
+      color: var(--text-color-secondary);
+      margin-bottom: var(--space-3);
+      font-style: italic;
+    }
+
+    .location-inline {
+      gap: var(--space-1);
+    }
+
+    .role-description {
+      color: var(--text-color);
+      line-height: var(--line-height-relaxed);
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   }
 </style>
+
+<script>
+  const observeCards = () => {
+    const cards = document.querySelectorAll('.animate-on-scroll');
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+        rootMargin: '50px',
+      }
+    );
+
+    cards.forEach((card) => observer.observe(card));
+  };
+
+  // Run on page load and Astro navigation
+  document.addEventListener('DOMContentLoaded', observeCards);
+  document.addEventListener('astro:page-load', observeCards);
+</script>

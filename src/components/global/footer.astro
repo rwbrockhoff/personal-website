@@ -1,5 +1,9 @@
+---
+import { MountainSnow } from 'lucide-astro';
+---
+
 <footer>
-  <p>⛰</p>
+  <MountainSnow />
   <p>©2019–2025 Ryan Brockhoff</p>
   <p>
     Built with <a
@@ -14,41 +18,29 @@
       rel="noopener noreferrer">AWS</a
     >.
   </p>
-  <p class="null-terminator">/0</p>
 </footer>
 
 <style>
   footer {
     background-color: var(--primary-900);
-    padding: var(--space-xl) 0;
+    border-top: 5px solid var(--primary-700);
+    padding: var(--space-8) 0;
     text-align: center;
     opacity: 1;
-    background-image: radial-gradient(var(--primary-600) 0.5px, var(--primary-900) 0.5px);
-    background-size: var(--space-md) var(--space-md);
     position: relative;
   }
 
-  footer:hover p.null-terminator {
-    opacity: 1;
+  footer * {
+    color: var(--primary-200);
   }
 
   footer p {
-    color: var(--primary-200);
-    line-height: var(--line-height-lg);
+    line-height: var(--line-height-relaxed);
   }
 
   .footer-content {
     max-width: var(--max-content-width);
     margin: 0 auto;
-    padding: 0 var(--space-xl);
-  }
-
-  p.null-terminator {
-    position: absolute;
-    bottom: 1em;
-    right: 3em;
-    font-family: 'Courier New', Courier, monospace;
-    opacity: 0;
-    transition: all var(--transition-speed) ease;
+    padding: 0 var(--space-8);
   }
 </style>

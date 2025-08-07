@@ -1,17 +1,19 @@
 ---
 import Layout from '@layouts/layout.astro';
-import HomeHero from '@components/home/home-hero.astro';
-import About from '@components/home/about.astro';
+import Hero from '@components/home/hero.astro';
 import WorkExperience from '@components/home/work-experience.astro';
-import Projects from '@components/home/projects.astro';
+import CurrentProject from '@components/home/current-project.astro';
+import ContactCta from '@components/shared/contact-cta.astro';
 ---
 
-<Layout title="Ryan Brockhoff - Full Stack Developer">
-  <HomeHero />
+<Layout title="Ryan Brockhoff - Software Engineer">
+  <Hero />
 
-  <About />
+  <CurrentProject />
 
   <WorkExperience />
 
-  <Projects />
+  <div id="contact">
+    <ContactCta />
+  </div>
 </Layout>

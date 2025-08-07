@@ -1,0 +1,104 @@
+---
+import { Image } from 'astro:assets';
+import { FolderKanban, Github, ExternalLink } from 'lucide-astro';
+import Grid from '@components/layout/Grid.astro';
+import Stack from '@components/layout/Stack.astro';
+import Flex from '@components/layout/Flex.astro';
+import desktopPreview from '@images/desktop-preview.png';
+import desktopPreviewDark from '@images/desktop-preview-dark.png';
+---
+
+<section id="projects">
+  <h2 class="container-title with-icon"><FolderKanban />Current Project</h2>
+  <div class="container container-with-title">
+    <Grid gap="var(--space-8)">
+      <Stack gap="var(--space-6)">
+        <h3>Tidytrek</h3>
+        <p class="project-description">
+          A full-stack SaaS application for backpackers and hikers to organize gear, create packing
+          lists, and share pack configurations. Built with enterprise-grade architecture and modern
+          development practices.
+        </p>
+        <p class="tech-stack">
+          <strong>Tech Stack:</strong> React, TypeScript, Node.js/Express, PostgreSQL, TanStack Query,
+          Vite, AWS S3, Docker
+        </p>
+        <Flex gap="var(--space-3)">
+          <a
+            href="https://github.com/rwbrockhoff/tidytrek-frontend"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-secondary with-icon"
+          >
+            <Github />Github
+          </a>
+          <a
+            href="https://tidytrek.co"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-primary with-icon"
+          >
+            <ExternalLink />Live Site
+          </a>
+        </Flex>
+      </Stack>
+
+      <div class="project-image">
+        <Image
+          src={desktopPreview}
+          alt="TidyTrek desktop app preview showing pack list interface"
+          class="light-image"
+        />
+        <Image
+          src={desktopPreviewDark}
+          alt="TidyTrek desktop app preview showing pack list interface in dark mode"
+          class="dark-image"
+        />
+      </div>
+    </Grid>
+  </div>
+</section>
+
+<style>
+  .project-image {
+    position: relative;
+  }
+
+  .project-image img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-medium);
+  }
+
+  .light-image {
+    display: block;
+  }
+
+  .dark-image {
+    display: none;
+  }
+
+  :global([data-theme='dark']) .light-image {
+    display: none;
+  }
+
+  :global([data-theme='dark']) .dark-image {
+    display: block;
+  }
+
+  .project-description {
+    font-size: var(--font-size-5);
+  }
+
+  .tech-stack {
+    color: var(--text-color-secondary);
+    font-size: var(--font-size-4);
+  }
+
+  @media (max-width: 768px) {
+    .flex {
+      justify-content: center;
+    }
+  }
+</style>

@@ -1,0 +1,50 @@
+/* CSS Reset */
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+/* Change Defaults for Focus/Selection Behaviors */
+*:focus-visible {
+  outline: 2px solid var(--primary-300);
+}
+
+::selection {
+  color: white;
+  background: var(--primary-400);
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}

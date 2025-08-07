@@ -1,0 +1,177 @@
+---
+import ThemeSwitcher from './theme-switcher.astro';
+---
+
+<header>
+  <nav>
+    <div class="nav-container">
+      <div class="logo"><a href="/#home">RB</a></div>
+      <div class="nav-links">
+        <a href="/#projects" class="nav-link">Current Project</a>
+        <a href="/#experience" class="nav-link">Experience</a>
+        <a href="/#contact" class="nav-link">Contact</a>
+        <a href="/about" class="nav-link">About</a>
+        <ThemeSwitcher />
+      </div>
+      <button
+        class="hamburger-menu mobile-flex mobile-flex-col"
+        aria-label="Toggle navigation menu"
+        aria-expanded="false"
+      >
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<style>
+  @layer components {
+    header {
+      position: fixed;
+      top: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      width: fit-content;
+      z-index: 100;
+      height: var(--nav-height);
+      transition: all var(--transition);
+      border-radius: var(--border-radius-pill);
+      color: var(--text-color);
+      background: var(--glass-background);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--glass-border);
+    }
+
+    header.scrolled {
+      box-shadow: var(--shadow-glass);
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-color-primary);
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0 var(--space-6);
+      height: var(--nav-height);
+      gap: var(--space-12);
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: var(--space-1);
+    }
+
+    .nav-link {
+      padding: var(--space-2) var(--space-3);
+      border-radius: var(--border-radius-pill);
+      transition: all var(--transition);
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(4px);
+    }
+
+    .hamburger-menu {
+      display: none;
+      gap: 6px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+    }
+
+    .bar {
+      width: var(--space-6);
+      height: var(--space-1);
+      background-color: var(--text-color-primary);
+      transition: all var(--transition);
+    }
+
+    header.scrolled-header {
+      background-color: var(--background-translucent);
+      backdrop-filter: blur(10px);
+      border-bottom: 2px solid var(--background-alt);
+      color: var(--text-color);
+    }
+
+    /* Invert nav text/icon color on scroll & active menu (mobile) */
+    header.scrolled-header .logo,
+    header.scrolled-header :global(.theme-toggle),
+    .nav-links.active :global(.theme-toggle) {
+      color: var(--text-color);
+    }
+
+    /* Menu icons lighter on scroll */
+    header.scrolled-header .bar,
+    .nav-links.active + .hamburger-menu .bar {
+      background-color: var(--primary-300);
+    }
+
+    @media (max-width: 768px) {
+      header {
+        width: 90%;
+      }
+
+      .nav-container {
+        justify-content: space-between;
+        gap: 0;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .nav-links.active {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        position: absolute;
+        top: 120%;
+        left: 0;
+        width: 100%;
+        box-sizing: border-box;
+        background: linear-gradient(
+          to left,
+          var(--background) 40%,
+          var(--background-translucent) 100%
+        );
+        color: var(--text-color);
+        padding: var(--space-8);
+        border-radius: var(--border-radius-xl);
+        font-size: var(--font-size-7);
+        box-shadow: var(--shadow-light);
+      }
+
+      .hamburger-menu.active .bar:nth-child(1) {
+        transform: translateY(10px) rotate(45deg);
+      }
+
+      .hamburger-menu.active .bar:nth-child(2) {
+        opacity: 0;
+      }
+
+      .hamburger-menu.active .bar:nth-child(3) {
+        transform: translateY(-10px) rotate(-45deg);
+      }
+    }
+
+    @media (min-width: 769px) {
+      .hamburger-menu {
+        display: none;
+      }
+    }
+  }
+</style>

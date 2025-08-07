@@ -1,9 +1,8 @@
 ---
 import '@styles/index.css';
-import '@fontsource-variable/fraunces';
 
 import { ClientRouter } from 'astro:transitions';
-import Header from '@components/global/header.astro';
+import Navbar from '@components/global/navbar.astro';
 import Footer from '@components/global/footer.astro';
 
 interface LayoutProps {
@@ -19,17 +18,61 @@ const { title } = Astro.props as LayoutProps;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="/favicon.svg"
+      media="(prefers-color-scheme: light)"
+    />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="/favicon-dark.svg"
+      media="(prefers-color-scheme: dark)"
+    />
+
+    <meta
+      name="description"
+      content="Software Engineer with full-stack SaaS experience. Building scalable applications with React, TypeScript, Node.js, and PostgreSQL."
+    />
+    <meta name="author" content="Ryan Brockhoff" />
+
+    <meta property="og:title" content="Ryan Brockhoff - Software Engineer" />
+    <meta property="og:description" content="Software Engineer with full-stack SaaS experience." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://ryanbrockhoff.com" />
+
     <ClientRouter />
     <meta name="generator" content={Astro.generator} />
-    <title>{title ? `${title} |` : ''} Ryan Brockhoff - Web Developer & Data Analyst</title>
+    <title>{title ? `${title} |` : ''} Ryan Brockhoff - Software Engineer</title>
   </head>
 
-  <Header />
+  <Navbar />
   <body>
-    <main>
-      <slot />
-    </main>
-    <Footer />
+    <div class="page-layout">
+      <main>
+        <slot />
+      </main>
+      <Footer />
+    </div>
   </body>
-  <script src="@scripts/console-message.ts"></script>
+  <script src="@scripts/navbar.ts"></script>
 </html>
+
+<style>
+  html,
+  body {
+    height: 100%;
+    margin: 0;
+  }
+
+  .page-layout {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1;
+  }
+</style>

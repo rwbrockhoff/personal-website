@@ -2,7 +2,7 @@
 import { getCollection, getEntry } from 'astro:content';
 import Layout from '@layouts/layout.astro';
 import Hero from '@components/global/hero.astro';
-import GithubIcon from '@images/icons/github.svg';
+import { Github } from 'lucide-astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -41,7 +41,7 @@ const { Content } = await render();
             target="_blank"
             rel="noopener noreferrer"
           >
-            <GithubIcon aria-hidden="true" />
+            <Github aria-hidden="true" />
             Github
           </a>
         )
@@ -64,10 +64,8 @@ const { Content } = await render();
     const button = document.querySelector('.blog-button') as HTMLElement;
     if (!button) return;
 
-    // Remove old listener
     if (scrollHandler) window.removeEventListener('scroll', scrollHandler);
 
-    // Create handler
     scrollHandler = () => {
       const scrollY = window.scrollY;
       const headerHeight = window.innerHeight * 0.5;
@@ -75,10 +73,9 @@ const { Content } = await render();
     };
 
     window.addEventListener('scroll', scrollHandler);
-    scrollHandler(); // Initial call
+    scrollHandler();
   };
 
-  // Add listener for page load and astro page load
   document.addEventListener('DOMContentLoaded', setupBlogButton);
   document.addEventListener('astro:page-load', setupBlogButton);
 </script>
@@ -89,7 +86,7 @@ const { Content } = await render();
   }
 
   section.article-content {
-    margin: var(--space-xxl) auto;
+    margin: var(--space-12) auto;
   }
 
   article :global(p) {
@@ -102,7 +99,7 @@ const { Content } = await render();
   }
 
   article :global(ul, ol) {
-    margin-top: calc(-1 * var(--space-min));
+    margin-top: calc(-1 * var(--space-1));
   }
 
   section :global(a) {
@@ -110,14 +107,14 @@ const { Content } = await render();
   }
 
   article :global(p code) {
-    font-size: var(--font-size-xs);
+    font-size: var(--font-size-2);
     background-color: var(--primary-100);
-    padding: var(--space-min);
-    border-radius: var(--border-radius-min);
+    padding: var(--space-1);
+    border-radius: var(--border-radius);
     margin: 0 0.1rem;
   }
 
-  /* global required even for theme in Astro blog */
+  /* global required for dark theme in astro blog */
   :global([data-theme='dark']) article :global(p code) {
     background-color: var(--primary-900);
   }
@@ -125,16 +122,16 @@ const { Content } = await render();
   a.blog-button {
     position: sticky;
     z-index: 100;
-    top: var(--space-xxl);
-    left: var(--space-xxl);
-    color: var(--primary-color);
+    top: var(--space-12);
+    left: var(--space-12);
+    color: var(--text-color-muted);
     opacity: 0;
     cursor: pointer;
-    transition: all var(--transition-speed) ease;
+    transition: all var(--transition);
   }
 
   p.post-tags {
-    font-size: var(--font-size-xs);
+    font-size: var(--font-size-2);
   }
 
   @media (max-width: 1200px) {

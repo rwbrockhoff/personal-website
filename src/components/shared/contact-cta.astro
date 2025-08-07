@@ -1,0 +1,61 @@
+---
+import { Mail, User } from 'lucide-astro';
+import Stack from '@components/layout/Stack.astro';
+import Flex from '@components/layout/Flex.astro';
+---
+
+<section class="contact-cta">
+  <div class="container">
+    <Stack gap="var(--space-4)" alignItems="center">
+      <h2 class="text-center">Let's Connect</h2>
+      <p class="contact-intro">
+        Looking to join teams building meaningful products. I'd love to discuss opportunities.
+      </p>
+
+      <Flex gap="var(--space-4)" justifyContent="center" class="contact-buttons width-100">
+        <a
+          href="mailto:ryan@ryanbrockhoff.com"
+          class="btn-primary with-icon"
+          aria-label="Send me an email"
+        >
+          <Mail />Email Me
+        </a>
+
+        <a
+          href="https://www.linkedin.com/in/ryanbrockhoff/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-secondary with-icon"
+          aria-label="Connect with me on LinkedIn"
+        >
+          <User />LinkedIn
+        </a>
+      </Flex>
+    </Stack>
+  </div>
+</section>
+
+<style>
+  @layer components {
+    .contact-cta {
+      background-color: var(--background-light);
+      border-top-left-radius: var(--space-20);
+      border-top-right-radius: var(--space-20);
+    }
+
+    .contact-intro {
+      text-align: center;
+      font-size: var(--font-size-5);
+      color: var(--text-color-secondary);
+      max-width: 600px;
+    }
+
+    @media (max-width: 768px) {
+      .contact-buttons {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+      }
+    }
+  }
+</style>
