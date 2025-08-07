@@ -1,6 +1,7 @@
 ---
 import { workExperience } from '@data/work-experience.ts';
 import AutoGrid from '@components/layout/AutoGrid.astro';
+import Stack from '@components/layout/Stack.astro';
 import Flex from '@components/layout/Flex.astro';
 import { Briefcase, MapPin } from 'lucide-astro';
 ---
@@ -12,14 +13,16 @@ import { Briefcase, MapPin } from 'lucide-astro';
       {
         workExperience.map((role, index) => (
           <div class="role-card animate-on-scroll" style={`animation-delay: ${index * 0.3}s`}>
-            <h4 class="role-title">{role.title}</h4>
-            <p class="role-company">{role.company}</p>
-            <Flex gap="var(--space-2)" alignItems="center" class="role-duration-line">
-              <span>{role.duration}</span>
-              <span>|</span>
-              <span>{role.location}</span>
-            </Flex>
-            <p class="role-description">{role.description}</p>
+            <Stack gap="var(--space-2)">
+              <h4 class="role-title">{role.title}</h4>
+              <p class="role-company">{role.company}</p>
+              <Flex gap="var(--space-2)" alignItems="center" class="role-duration-line">
+                <span>{role.duration}</span>
+                <span>|</span>
+                <span>{role.location}</span>
+              </Flex>
+              <p class="role-description">{role.description}</p>
+            </Stack>
           </div>
         ))
       }
@@ -58,20 +61,14 @@ import { Briefcase, MapPin } from 'lucide-astro';
       box-shadow: var(--shadow-large);
     }
 
-    .role-title {
-      margin-bottom: var(--space-2);
-    }
-
     .role-company {
       font-weight: var(--font-weight-medium);
       color: var(--text-color-primary);
-      margin-bottom: var(--space-1);
     }
 
     .role-duration-line {
       font-size: var(--font-size-3);
       color: var(--text-color-secondary);
-      margin-bottom: var(--space-3);
       font-style: italic;
     }
 

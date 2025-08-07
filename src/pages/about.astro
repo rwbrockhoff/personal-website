@@ -3,7 +3,7 @@ import Layout from '@layouts/layout.astro';
 import { Image } from 'astro:assets';
 import { Github, User, BookOpen } from 'lucide-astro';
 import ContactCta from '@components/shared/contact-cta.astro';
-import profilePhoto from '@images/profile.png';
+import profileHeadshot from '@images/ryan-profile-headshot.webp';
 ---
 
 <Layout title="About - Ryan Brockhoff">
@@ -18,18 +18,24 @@ import profilePhoto from '@images/profile.png';
         <div class="about-grid">
           <div class="left-panel">
             <div class="about-image">
-              <Image src={profilePhoto} alt="Ryan Brockhoff, software engineer" />
+              <Image src={profileHeadshot} alt="Ryan Brockhoff, software engineer" />
             </div>
           </div>
 
           <div class="right-panel">
             <div class="about-info">
               <p>
-                I'm a software engineer with a unique background building both products and businesses. After starting my career as a software engineer at a B2B platform, I founded and scaled an outdoor adventure business before returning to software development with Tidytrek, a SaaS platform I've built from concept to production. I bring both technical depth and business perspective to development work, and I'm looking to join teams building meaningful products.
+                I'm a software engineer with a unique background building both products and
+                businesses. After starting my career as a software engineer at a B2B platform, I
+                founded and scaled an outdoor adventure business before returning to software
+                development with Tidytrek, a SaaS platform I've built from concept to production. I
+                bring both technical depth and business perspective to development work, and I'm
+                looking to join teams building meaningful products.
               </p>
-              
+
               <p>
-                When I'm not coding, you'll find me trail running here in Colorado, reading at my favorite coffee shops, or exploring new technologies.
+                When I'm not coding, you'll find me trail running here in Colorado, reading at my
+                favorite coffee shops, or exploring new technologies.
               </p>
 
               <ul class="about-links">
@@ -97,7 +103,6 @@ import profilePhoto from '@images/profile.png';
     margin: 0 auto;
   }
 
-
   .about-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -113,7 +118,7 @@ import profilePhoto from '@images/profile.png';
   }
 
   .about-image img {
-    width: 12rem;
+    width: 350px;
     height: auto;
     border-radius: 100%;
     box-shadow: var(--shadow-medium);
