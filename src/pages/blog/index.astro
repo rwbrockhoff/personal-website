@@ -2,7 +2,6 @@
 import { getCollection } from 'astro:content';
 import Layout from '@layouts/layout.astro';
 import Hero from '@components/global/hero.astro';
-import Section from '@components/global/section.astro';
 
 const posts = await getCollection('blog');
 ---
@@ -13,7 +12,7 @@ const posts = await getCollection('blog');
     <p>Thoughts on development, design, and technology</p>
   </Hero>
 
-  <Section id="blog" className="posts-container">
+  <section id="blog" class="posts-container">
     <div class="posts-grid">
       {
         posts.map((post) => (
@@ -32,7 +31,7 @@ const posts = await getCollection('blog');
         ))
       }
     </div>
-  </Section>
+  </section>
 </Layout>
 
 <style>

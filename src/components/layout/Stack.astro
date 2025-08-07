@@ -1,0 +1,26 @@
+---
+export interface Props {
+  gap?: string;
+  alignItems?: string;
+  class?: string;
+}
+
+const { 
+  gap = "var(--space-4)", 
+  alignItems = "stretch",
+  class: className = ""
+} = Astro.props;
+---
+
+<div class={`stack ${className}`}>
+  <slot />
+</div>
+
+<style define:vars={{ gap, alignItems }}>
+  .stack {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap);
+    align-items: var(--alignItems);
+  }
+</style>

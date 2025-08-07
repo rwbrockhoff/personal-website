@@ -7,13 +7,17 @@ import ThemeSwitcher from './theme-switcher.astro';
     <div class="nav-container">
       <div class="logo"><a href="/#home">RB</a></div>
       <div class="nav-links">
-        <a href="/#home" class="nav-link hover-underline">Home</a>
-        <a href="/#about" class="nav-link hover-underline">About</a>
-        <a href="/#experience" class="nav-link hover-underline">Experience</a>
-        <a href="/#projects" class="nav-link hover-underline">Projects</a>
+        <a href="/#projects" class="nav-link">Current Project</a>
+        <a href="/#experience" class="nav-link">Experience</a>
+        <a href="/#contact" class="nav-link">Contact</a>
+        <a href="/about" class="nav-link">About</a>
         <ThemeSwitcher />
       </div>
-      <button class="hamburger-menu mobile-flex mobile-flex-col" aria-label="Toggle navigation menu" aria-expanded="false">
+      <button
+        class="hamburger-menu mobile-flex mobile-flex-col"
+        aria-label="Toggle navigation menu"
+        aria-expanded="false"
+      >
         <div class="bar"></div>
         <div class="bar"></div>
         <div class="bar"></div>
@@ -29,34 +33,55 @@ import ThemeSwitcher from './theme-switcher.astro';
       top: var(--space-4);
       left: 50%;
       transform: translateX(-50%);
-      width: 50%;
+      width: fit-content;
       z-index: 100;
       height: var(--nav-height);
-      transition: background-color var(--transition);
-      border-radius: var(--border-radius-lg);
-      color: white;
+      transition: all var(--transition);
+      border-radius: var(--border-radius-pill);
+      color: var(--text-color);
+      background: var(--glass-background);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--glass-border);
+    }
+
+    header.scrolled {
+      box-shadow: var(--shadow-glass);
     }
 
     .logo {
-      font-size: 1.8rem;
+      font-size: 1.5rem;
       font-weight: 700;
-      color: var(--primary-100);
+      color: var(--text-color-primary);
     }
 
     .nav-container {
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
-      max-width: var(--max-content-width);
-      margin: 0 auto;
-      padding: 0 var(--space-8);
+      padding: 0 var(--space-6);
       height: var(--nav-height);
+      gap: var(--space-12);
+      white-space: nowrap;
     }
 
     .nav-links {
       display: flex;
-      align-items: flex-end;
-      gap: var(--space-8);
+      align-items: center;
+      gap: var(--space-1);
+    }
+
+    .nav-link {
+      padding: var(--space-2) var(--space-3);
+      border-radius: var(--border-radius-pill);
+      transition: all var(--transition);
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(4px);
     }
 
     .hamburger-menu {
@@ -71,7 +96,7 @@ import ThemeSwitcher from './theme-switcher.astro';
     .bar {
       width: var(--space-6);
       height: var(--space-1);
-      background-color: var(--primary-color);
+      background-color: var(--text-color-primary);
       transition: all var(--transition);
     }
 
@@ -100,6 +125,11 @@ import ThemeSwitcher from './theme-switcher.astro';
         width: 90%;
       }
 
+      .nav-container {
+        justify-content: space-between;
+        gap: 0;
+      }
+
       .nav-links {
         display: none;
       }
@@ -120,7 +150,7 @@ import ThemeSwitcher from './theme-switcher.astro';
         );
         color: var(--text-color);
         padding: var(--space-8);
-        border-radius: var(--border-radius-lg);
+        border-radius: var(--border-radius-xl);
         font-size: var(--font-size-7);
         box-shadow: var(--shadow-light);
       }
@@ -141,17 +171,6 @@ import ThemeSwitcher from './theme-switcher.astro';
     @media (min-width: 769px) {
       .hamburger-menu {
         display: none;
-      }
-
-      header {
-        width: 90%;
-      }
-    }
-
-    /* Only show smaller menu on larger screens */
-    @media (min-width: 1200px) {
-      header {
-        width: 50%;
       }
     }
   }

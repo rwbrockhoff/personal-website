@@ -1,0 +1,33 @@
+<section id="home">
+  <div class="container">
+    <h1 class="header-hero">Hi. I'm Ryan. <br />A software engineer.</h1>
+    <h4 class="header-sub-text">
+      full-stack engineer focused on scalable applications & user experience
+    </h4>
+  </div>
+</section>
+
+<style>
+  section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: calc(var(--nav-height) + var(--space-12));
+    margin-bottom: var(--space-12);
+    height: 45vh;
+  }
+
+  .header-hero {
+    font-size: clamp(3.5rem, 8vw, 5.5rem);
+    letter-spacing: -0.04em;
+    line-height: 1.1;
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--space-6);
+  }
+
+  .header-sub-text {
+    font-weight: 400;
+    color: var(--text-color-primary);
+  }
+</style>

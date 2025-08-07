@@ -1,0 +1,34 @@
+---
+export interface Props {
+  columns?: string;
+  gap?: string;
+  alignItems?: string;
+  class?: string;
+}
+
+const { 
+  columns = "1fr 1fr", 
+  gap = "var(--space-8)", 
+  alignItems = "center",
+  class: className = ""
+} = Astro.props;
+---
+
+<div class={`grid ${className}`}>
+  <slot />
+</div>
+
+<style define:vars={{ columns, gap, alignItems }}>
+  .grid {
+    display: grid;
+    grid-template-columns: var(--columns);
+    gap: var(--gap);
+    align-items: var(--alignItems);
+  }
+
+  @media (max-width: 768px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

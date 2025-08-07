@@ -1,100 +1,75 @@
 ---
-import Section from '@components/global/section.astro';
 import { workExperience } from '@data/work-experience.ts';
+import AutoGrid from '@components/layout/AutoGrid.astro';
+import { Briefcase } from 'lucide-astro';
 ---
 
-<Section id="experience" readableWidth>
-  <h2>Experience</h2>
-  {
-    workExperience.map((role, index) => (
-      <div class="role-item" style={`animation-delay: ${index * 0.2}s`}>
-        <div class="role-content background-alt">
-          <h4 class="role-title">{role.title}</h4>
-          <p class="role-description">
-            {role.company} • {role.duration}
-          </p>
-          <p class="role-main-description">{role.description}</p>
-
-          <div class="role-expanded-content">
-            <ul class="role-details">
-              {role.details.map((detail) => (
-                <li>{detail}</li>
-              ))}
-            </ul>
-            <div class="role-tags">
-              {role.tags.map((tag) => (
-                <span class="tag">{tag}</span>
-              ))}
-            </div>
+<section id="experience">
+  <h2 class="with-icon justify-center"><Briefcase />Experience</h2>
+  <div class="container container-with-title experience-container">
+    <AutoGrid minWidth="250px" gap="var(--space-4)" class="experience-grid">
+      {
+        workExperience.map((role, index) => (
+          <div class="role-card" style={`animation-delay: ${index * 0.1}s`}>
+            <h4 class="role-title">{role.title}</h4>
+            <p class="role-company">{role.company}</p>
+            <p class="role-duration">{role.duration}</p>
+            <p class="role-description">{role.description}</p>
           </div>
-        </div>
-      </div>
-    ))
-  }
-</Section>
+        ))
+      }
+    </AutoGrid>
+  </div>
+</section>
 
 <style>
   @layer components {
-    .role-item {
-      position: relative;
-      margin: var(--space-4) 0;
+    .experience-container {
+      padding: var(--space-20) 0;
+    }
+
+    .experience-grid {
+      margin-top: var(--space-8);
+    }
+
+    .role-card {
+      background: var(--glass-background);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--glass-border);
+      padding: var(--space-6);
+      border-radius: var(--border-radius-xl);
+      box-shadow: var(--shadow-glass);
       opacity: 0;
-      transform: translateY(30px);
-      animation: fadeInUp 0.6s ease-in-out forwards;
-    }
-
-    .role-content {
-      padding: var(--space-4);
-      border-radius: var(--border-radius);
+      transform: translateY(20px);
+      animation: fadeInUp 0.5s ease-out forwards;
       transition: all var(--transition);
-      overflow: hidden;
-      cursor: pointer;
     }
 
-    .role-content:hover {
-      box-shadow: var(--shadow-primary);
+    .role-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-large);
     }
 
-    .role-description {
-      font-size: var(--font-size-4);
+    .role-title {
+      margin-bottom: var(--space-2);
+    }
+
+    .role-company {
+      font-weight: var(--font-weight-medium);
       color: var(--text-color-primary);
-      margin: var(--space-1) 0;
+      margin-bottom: var(--space-1);
+    }
+
+    .role-duration {
+      font-size: var(--font-size-3);
+      color: var(--text-color-secondary);
+      margin-bottom: var(--space-3);
       font-style: italic;
     }
 
-    .role-main-description {
-      margin-bottom: var(--space-3);
-    }
-
-    .role-expanded-content {
-      max-height: 0;
-      opacity: 0;
-      overflow: hidden;
-      transition:
-        max-height 300ms ease-out,
-        opacity 200ms ease-out;
-    }
-
-    .role-content:hover .role-expanded-content {
-      max-height: 200px;
-      opacity: 1;
-    }
-
-    .role-details {
-      margin: var(--space-3) 0;
-      padding-left: var(--space-4);
-    }
-
-    .role-details li {
-      margin-bottom: var(--space-2);
-      color: var(--text-color-secondary);
-    }
-
-    .role-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--space-2);
-      margin-top: var(--space-3);
+    .role-description {
+      color: var(--text-color);
+      line-height: var(--line-height-relaxed);
     }
 
     @keyframes fadeInUp {
@@ -104,15 +79,5 @@ import { workExperience } from '@data/work-experience.ts';
       }
     }
 
-    @media (max-width: 768px) {
-      .role-expanded-content {
-        max-height: none;
-        opacity: 1;
-      }
-
-      .role-content {
-        cursor: default;
-      }
-    }
   }
 </style>

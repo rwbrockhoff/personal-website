@@ -2,7 +2,7 @@
 import { getCollection, getEntry } from 'astro:content';
 import Layout from '@layouts/layout.astro';
 import Hero from '@components/global/hero.astro';
-import GithubIcon from '@images/icons/github.svg';
+import { Github } from 'lucide-astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -41,7 +41,7 @@ const { Content } = await render();
             target="_blank"
             rel="noopener noreferrer"
           >
-            <GithubIcon aria-hidden="true" />
+            <Github aria-hidden="true" />
             Github
           </a>
         )

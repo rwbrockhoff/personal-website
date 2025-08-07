@@ -1,81 +1,101 @@
 ---
 import { Image } from 'astro:assets';
-import Section from '@components/global/section.astro';
 import Status from './status.astro';
+import Grid from '@components/layout/Grid.astro';
+import Stack from '@components/layout/Stack.astro';
+import Flex from '@components/layout/Flex.astro';
 import profilePhoto from '@images/profile.png';
-import MediumIcon from '@images/icons/medium.svg';
-import LinkedinIcon from '@images/icons/linkedin.svg';
-import GithubIcon from '@images/icons/github.svg';
+import { Github, User, BookOpen } from 'lucide-astro';
 ---
 
-<Section id="about" className="background-alt" readableWidth>
-  <div class="about-image">
-    <Image src={profilePhoto} alt="Ryan Brockhoff, web developer" />
+<section id="about">
+  <div class="container">
+    <h2 class="text-center">About Me</h2>
+    <Grid gap="var(--space-12)" class="about-section">
+      <div class="about-image">
+        <Image src={profilePhoto} alt="Ryan Brockhoff, software engineer" />
+      </div>
+      
+      <Stack gap="var(--space-6)">
+        <Status message="Currently building Tidytrek" />
+        
+        <p class="about-text">
+          I'm a full-stack software engineer focused on building scalable applications with
+          thoughtful user experiences. With professional experience in React, Node.js, and cloud
+          architecture, I create applications that perform well at scale while maintaining
+          intuitive user interfaces. I enjoy the full development lifecycle - from system design
+          and database modeling to responsive UI implementation. When I'm not coding, you can find
+          me hiking, reading, or exploring emerging web technologies.
+        </p>
+        
+        <Flex gap="var(--space-4)" wrap={true} class="about-links">
+          <div class="hover-underline with-icon">
+            <User aria-hidden="true" />
+            <a
+              href="https://www.linkedin.com/in/ryanbrockhoff/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Visit my LinkedIn profile">LinkedIn</a
+            >
+          </div>
+          <div class="hover-underline with-icon">
+            <Github aria-hidden="true" />
+            <a
+              href="https://github.com/rwbrockhoff/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Visit my Github profile">Github</a
+            >
+          </div>
+          <div class="hover-underline with-icon">
+            <BookOpen aria-hidden="true" />
+            <a
+              href="https://medium.com/@brockhoff"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Visit my Medium profile">Medium</a
+            >
+          </div>
+        </Flex>
+      </Stack>
+    </Grid>
   </div>
-
-  <h2>About Me</h2>
-
-  <Status message="Currently building Tidytrek" />
-
-  <ul class="about-links">
-    <li class="hover-underline with-icon">
-      <LinkedinIcon aria-hidden="true" />
-      <a
-        href="https://www.linkedin.com/in/ryanbrockhoff/"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Visit my LinkedIn profile">LinkedIn</a
-      >
-    </li>
-    <li class="hover-underline with-icon">
-      <GithubIcon aria-hidden="true" />
-      <a
-        href="https://github.com/rwbrockhoff/"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Visit my Github profile">Github</a
-      >
-    </li>
-    <li class="hover-underline with-icon">
-      <MediumIcon aria-hidden="true" />
-      <a
-        href="https://medium.com/@brockhoff"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Visit my Medium profile">Medium</a
-      >
-    </li>
-  </ul>
-  <div class="about-text">
-    <p>
-      I'm a full-stack developer focused on building scalable applications with thoughtful user
-      experiences. With professional experience in React, Node.js, and cloud architecture, I create
-      applications that perform well at scale while maintaining intuitive user interfaces. I enjoy
-      the full development lifecycle - from system design and database modeling to responsive UI
-      implementation.
-    </p>
-    <p>
-      When I'm not coding, you can find me hiking, reading, or exploring emerging web technologies.
-    </p>
-  </div>
-</Section>
+</section>
 
 <style>
+  .about-section {
+    margin-top: var(--space-8);
+  }
+
+  .about-image {
+    display: flex;
+    justify-content: center;
+  }
+
   .about-image img {
-    width: 5rem;
+    width: 12rem;
     height: auto;
     border-radius: 100%;
-    border: var(--space-1) solid var(--primary-color);
-    margin-bottom: var(--space-1);
+    box-shadow: var(--shadow-medium);
   }
 
-  .about-links {
-    padding: 0;
-    display: flex;
-    gap: 2rem;
+  .about-text {
+    font-size: var(--font-size-5);
+    line-height: var(--line-height-relaxed);
+    color: var(--text-color);
   }
 
-  .about-text p {
-    margin-bottom: var(--space-4);
+  @media (max-width: 768px) {
+    .about-section {
+      text-align: center;
+    }
+
+    .about-links {
+      justify-content: center;
+    }
+
+    .about-image img {
+      width: 8rem;
+    }
   }
 </style>

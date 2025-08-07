@@ -101,16 +101,9 @@
     position: absolute;
   }
 
-  /* White icons when header is NOT scrolled (at top of page) */
-  :global(header:not(.scrolled-header)) .icon-sun,
-  :global(header:not(.scrolled-header)) .icon-moon {
-    color: white;
-  }
-
-  /* Default text color for other situations */
   .icon-sun,
   .icon-moon {
-    color: var(--text-color);
+    color: inherit;
   }
 
   /* Slow rotation animation for sun icon only */

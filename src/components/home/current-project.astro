@@ -1,24 +1,28 @@
 ---
 import { Image } from 'astro:assets';
 import { FolderKanban, Github, ExternalLink } from 'lucide-astro';
+import Grid from '@components/layout/Grid.astro';
+import Stack from '@components/layout/Stack.astro';
+import Flex from '@components/layout/Flex.astro';
 import desktopPreview from '@images/desktop-preview.png';
 ---
 
 <section id="projects">
   <h2 class="with-icon justify-center"><FolderKanban />Current Project</h2>
-  <div class="container">
-    <div class="project-grid">
-      <div class="left-panel">
+  <div class="container container-with-title">
+    <Grid gap="var(--space-8)">
+      <Stack gap="var(--space-6)">
         <h3>Tidytrek</h3>
-        <p>
-          A comprehensive backpacking trip planner that helps outdoor enthusiasts organize gear,
-          track pack weight, and plan multi-day adventures. Features intelligent packing suggestions
-          and detailed weight optimization.
+        <p class="project-description">
+          A full-stack SaaS application for backpackers and hikers to organize gear, create packing
+          lists, and share pack configurations. Built with enterprise-grade architecture and modern
+          development practices.
         </p>
         <p class="tech-stack">
-          <strong>Tech Stack:</strong> React, TypeScript, Node.js, PostgreSQL, Prisma, Tailwind CSS
+          <strong>Tech Stack:</strong> React, TypeScript, Node.js/Express, PostgreSQL, TanStack Query,
+          Vite, AWS S3, Docker
         </p>
-        <div class="project-links">
+        <Flex gap="var(--space-3)">
           <a
             href="https://github.com/rwbrockhoff/tidytrek-frontend"
             target="_blank"
@@ -35,53 +39,29 @@ import desktopPreview from '@images/desktop-preview.png';
           >
             <ExternalLink />Live Site
           </a>
-        </div>
-      </div>
-      <div class="right-panel">
+        </Flex>
+      </Stack>
+
+      <div>
         <Image
           src={desktopPreview}
           alt="TidyTrek desktop app preview showing pack list interface"
         />
       </div>
-    </div>
+    </Grid>
   </div>
 </section>
 
 <style>
-  .container {
-    max-width: var(--max-content-width);
-    margin: 0 auto;
-    padding: var(--space-12) var(--space-4);
-    width: 80%;
-  }
-
-  .project-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-8);
-    align-items: center;
-  }
-
-  .right-panel img {
+  img {
     width: 100%;
     height: auto;
     border-radius: var(--border-radius-lg);
     box-shadow: var(--shadow-medium);
   }
 
-  .left-panel {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-4);
-  }
-
-  .left-panel p {
+  .project-description {
     font-size: var(--font-size-5);
-  }
-
-  .project-links {
-    display: flex;
-    gap: var(--space-3);
   }
 
   .tech-stack {
@@ -90,12 +70,7 @@ import desktopPreview from '@images/desktop-preview.png';
   }
 
   @media (max-width: 768px) {
-    .project-grid {
-      grid-template-columns: 1fr;
-      gap: var(--space-6);
-    }
-
-    .project-links {
+    .flex {
       justify-content: center;
     }
   }

@@ -1,5 +1,9 @@
+---
+import { MountainSnow } from 'lucide-astro';
+---
+
 <footer>
-  <p>⛰</p>
+  <MountainSnow />
   <p>©2019–2025 Ryan Brockhoff</p>
   <p>
     Built with <a
@@ -19,16 +23,18 @@
 <style>
   footer {
     background-color: var(--primary-900);
+    border-top: 5px solid var(--primary-700);
     padding: var(--space-8) 0;
     text-align: center;
     opacity: 1;
-    background-image: radial-gradient(var(--primary-600) 0.5px, var(--primary-900) 0.5px);
-    background-size: var(--space-4) var(--space-4);
     position: relative;
   }
 
-  footer p {
+  footer * {
     color: var(--primary-200);
+  }
+
+  footer p {
     line-height: var(--line-height-relaxed);
   }
 

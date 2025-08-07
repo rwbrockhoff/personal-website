@@ -1,6 +1,5 @@
 // Script for adding styles/animations to header component
 
-// Global handlers
 let currentScrollHandler: (() => void) | null = null;
 let currentHamburgerHandler: (() => void) | null = null;
 let currentDocumentClickHandler: ((e: Event) => void) | null = null;

@@ -9,6 +9,7 @@
   --background: #f9f6f3;
   --background-alt: #eae3d9;
   --background-dark: #dbcbb8;
+  --background-light: var(--primary-100);
   --background-translucent: rgba(249, 246, 243, 0.7);
   --background-grid: radial-gradient(var(--primary-400) 0.5px, var(--primary-600) 0.5px);
 
