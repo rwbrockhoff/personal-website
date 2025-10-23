@@ -6,9 +6,9 @@ import Flex from '@components/layout/Flex.astro';
 import { Briefcase, MapPin } from 'lucide-astro';
 ---
 
-<section id="experience">
+<section id="experience" class="experience-section">
   <h2 class="container-title with-icon"><Briefcase />Experience</h2>
-  <div class="container container-with-title experience-container">
+  <div class="container container-with-title">
     <AutoGrid minWidth="250px" gap="var(--space-4)" class="experience-grid">
       {
         workExperience.map((role, index) => (
@@ -32,12 +32,8 @@ import { Briefcase, MapPin } from 'lucide-astro';
 
 <style>
   @layer components {
-    .experience-container {
-      padding: var(--space-20) 0;
-    }
-
-    .experience-grid {
-      margin-top: var(--space-8);
+    .experience-section {
+      padding-block: var(--space-6);
     }
 
     .role-card {

@@ -14,25 +14,25 @@ export const workExperience: Role[] = [
     duration: '2019 - 2020',
     location: 'Remote',
     description:
-      'Developed user-facing features and internal tools for B2B employee engagement platform. Led key projects including user onboarding systems, analytics dashboards, and video recognition features.',
+      'Developed user-facing features for B2B employee engagement platform. Led key projects including user onboarding systems, analytics dashboards, and social recognition features.',
     tags: ['React', 'Javascript', 'Node.js', 'Express', 'PostgreSQL', 'AWS'],
   },
   {
     title: 'Founder & Business Strategist',
-    company: 'More Van Anything',
+    company: 'Scout Adventures',
     duration: '2020 - 2024',
     location: 'Seattle, WA',
     description:
-      'Scaled outdoor adventure business 300% through digital marketing and process automation. Managed website development, SEO optimization, and systematized service operations.',
+      'Built and scaled outdoor guiding business to 150+ clients. Managed website development, SEO, sales systems, and coordinated stakeholder expectations across projects.',
     tags: ['Digital Marketing', 'SEO', 'Web Development', 'Process Automation', 'Business Growth'],
   },
   {
-    title: 'Founder & Lead Engineer',
-    company: 'Tidytrek',
+    title: 'Freelance Software Engineer',
+    company: 'Artifact Studio',
     duration: '2024 - Present',
-    location: 'Denver, CO',
+    location: 'Remote',
     description:
-      'Founded and developed full-stack SaaS platform serving outdoor community. Architected scalable solution from concept through production deployment.',
-    tags: ['React', 'TypeScript', 'Node.js', 'PostgreSQL', 'AWS'],
+      'Completed freelance projects building full-stack applications while developing Tidytrek (full-stack SaaS) and publishing Artifact UI (500+ downloads).',
+    tags: ['React', 'TypeScript', 'Node.js', 'PostgreSQL', 'Stripe', 'AWS', 'WebSockets'],
   },
 ];
