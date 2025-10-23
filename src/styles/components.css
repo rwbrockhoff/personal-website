@@ -88,7 +88,7 @@
     .btn-secondary,
     .btn-outline {
       width: 100%;
-      padding: var(--space-4) var(--space-4);
+      padding: var(--space-2) var(--space-3);
       min-height: 44px;
       font-size: var(--font-size-5);
     }

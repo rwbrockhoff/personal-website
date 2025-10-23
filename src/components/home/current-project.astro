@@ -1,11 +1,13 @@
 ---
 import { Image } from 'astro:assets';
-import { FolderKanban, Github, ExternalLink } from 'lucide-astro';
+import { FolderKanban, Github, ExternalLink, FileText, Package } from 'lucide-astro';
 import Grid from '@components/layout/Grid.astro';
 import Stack from '@components/layout/Stack.astro';
 import Flex from '@components/layout/Flex.astro';
-import desktopPreview from '@images/desktop-preview.png';
-import desktopPreviewDark from '@images/desktop-preview-dark.png';
+import tidytrekDashboardLight from '@images/tidytrek-dashboard-light.webp';
+import tidytrekDashboardDark from '@images/tidytrek-dashboard-dark.webp';
+import artifactDashboardLight from '@images/artifact-dashboard-light.webp';
+import artifactDashboardDark from '@images/artifact-dashboard-dark.webp';
 ---
 
 <section id="projects">
@@ -13,17 +15,27 @@ import desktopPreviewDark from '@images/desktop-preview-dark.png';
   <div class="container container-with-title">
     <Grid gap="var(--space-8)">
       <Stack gap="var(--space-6)">
-        <h3>Tidytrek</h3>
+        <Stack gap="var(--space-2)">
+          <h3>Tidytrek</h3>
+          <p class="project-subtitle">Full-stack SaaS • Stripe payments • Real-time notifications</p>
+        </Stack>
         <p class="project-description">
-          A full-stack SaaS application for backpackers and hikers to organize gear, create packing
-          lists, and share pack configurations. Built with enterprise-grade architecture and modern
-          development practices.
+          A full-stack application for outdoor enthusiasts to organize gear and plan trips. Features Stripe
+          billing, real-time commenting, analytics dashboard, and OpenAPI REST API.
         </p>
         <p class="tech-stack">
           <strong>Tech Stack:</strong> React, TypeScript, Node.js/Express, PostgreSQL, TanStack Query,
           Vite, AWS S3, Docker
         </p>
-        <Flex gap="var(--space-3)">
+        <div class="button-group">
+          <a
+            href="https://tidytrek.co"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-primary with-icon"
+          >
+            <ExternalLink />Live Site
+          </a>
           <a
             href="https://github.com/rwbrockhoff/tidytrek-frontend"
             target="_blank"
@@ -33,24 +45,24 @@ import desktopPreviewDark from '@images/desktop-preview-dark.png';
             <Github />Github
           </a>
           <a
-            href="https://tidytrek.co"
+            href="https://api.tidytrek.co/docs"
             target="_blank"
             rel="noopener noreferrer"
-            class="btn-primary with-icon"
+            class="btn-secondary with-icon"
           >
-            <ExternalLink />Live Site
+            <FileText />API Docs
           </a>
-        </Flex>
+        </div>
       </Stack>
 
       <div class="project-image">
         <Image
-          src={desktopPreview}
+          src={tidytrekDashboardLight}
           alt="TidyTrek desktop app preview showing pack list interface"
           class="light-image"
         />
         <Image
-          src={desktopPreviewDark}
+          src={tidytrekDashboardDark}
           alt="TidyTrek desktop app preview showing pack list interface in dark mode"
           class="dark-image"
         />
@@ -69,6 +81,7 @@ import desktopPreviewDark from '@images/desktop-preview-dark.png';
     height: auto;
     border-radius: var(--border-radius-lg);
     box-shadow: var(--shadow-medium);
+    border: 1px solid var(--glass-border);
   }
 
   .light-image {
@@ -96,9 +109,86 @@ import desktopPreviewDark from '@images/desktop-preview-dark.png';
     font-size: var(--font-size-4);
   }
 
+  .button-group {
+    display: flex;
+    gap: var(--space-4);
+  }
+
   @media (max-width: 768px) {
-    .flex {
-      justify-content: center;
+    .button-group {
+      flex-direction: column;
+      width: 100%;
     }
+
+    .project-subtitle,
+    .tech-stack {
+      font-size: var(--font-size-5);
+    }
+  }
+</style>
+
+<section id="artifact-ui">
+  <div class="container container-with-title">
+    <Grid gap="var(--space-8)">
+      <Stack gap="var(--space-6)">
+        <Stack gap="var(--space-2)">
+          <h3>Artifact UI</h3>
+          <p class="project-subtitle">Open-source React component library • 500+ npm downloads</p>
+        </Stack>
+        <p class="project-description">
+          A lightweight React component library built on Radix UI primitives. Published to npm with
+          tree-shaking support, TypeScript definitions, and Storybook documentation.
+        </p>
+        <p class="tech-stack">
+          <strong>Tech Stack:</strong> React, TypeScript, Radix UI, Vite, Storybook
+        </p>
+        <div class="button-group">
+          <a
+            href="https://www.npmjs.com/package/@artifact-ui/core"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-primary with-icon"
+          >
+            <Package />npm Package
+          </a>
+          <a
+            href="https://github.com/artifact-ui/core"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-secondary with-icon"
+          >
+            <Github />GitHub
+          </a>
+          <a
+            href="https://artifact-ui.github.io/core"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-secondary with-icon"
+          >
+            <FileText />Storybook
+          </a>
+        </div>
+      </Stack>
+
+      <div class="project-image">
+        <Image
+          src={artifactDashboardLight}
+          alt="Artifact UI component library preview"
+          class="light-image"
+        />
+        <Image
+          src={artifactDashboardDark}
+          alt="Artifact UI component library preview in dark mode"
+          class="dark-image"
+        />
+      </div>
+    </Grid>
+  </div>
+</section>
+
+<style is:global>
+  .project-subtitle {
+    color: var(--text-color-primary);
+    font-size: var(--font-size-4);
   }
 </style>
